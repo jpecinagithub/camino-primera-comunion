@@ -151,7 +151,11 @@ export function NinosHome() {
                 {stars} {stars === 1 ? 'estrella' : 'estrellas'}
               </strong>
             </div>
-            <Link to="/ninos/progreso" style={{ fontSize: 'var(--font-size-sm)' }}>
+            <Link
+              to="/ninos/progreso"
+              className="ninos-etiqueta"
+              style={{ background: 'var(--color-gold)', color: 'var(--color-gold-dark)' }}
+            >
               Ver todo
             </Link>
           </div>
