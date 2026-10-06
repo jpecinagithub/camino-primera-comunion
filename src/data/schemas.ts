@@ -36,6 +36,7 @@ export const QuizQuestionSchema = z.object({
   correctIndex: z.number().int().min(0),
   hint: z.string().min(1),
   explanation: z.string().min(1),
+  audioSrc: z.string().optional(),
 }).refine((q) => q.correctIndex < q.options.length, {
   message: 'correctIndex debe apuntar a una opción existente',
   path: ['correctIndex'],
@@ -57,6 +58,7 @@ export const PrayerSchema = z.object({
 export const FamilyBlockSchema = z.object({
   activityTitle: z.string().min(1),
   activity: z.string().min(1),
+  audioSrc: z.string().optional(),
 });
 
 export const ParentNotesSchema = z.object({

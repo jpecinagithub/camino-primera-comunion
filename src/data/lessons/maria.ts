@@ -27,6 +27,7 @@ export const lessonMaria: Lesson = {
     {
       id: 'l-maria-b2',
       kind: 'descubre',
+      audioSrc: '/audio/bloque-maria-b2.mp3',
       title: 'María, Madre de Jesús',
       paragraphs: [
         'María cuidó a Jesús como todas las madres cuidan a sus hijos: le enseñó a hablar, a rezar y a amar.',
@@ -36,6 +37,7 @@ export const lessonMaria: Lesson = {
     {
       id: 'l-maria-b3',
       kind: 'descubre',
+      audioSrc: '/audio/bloque-maria-b3.mp3',
       title: 'Nuestra Madre del cielo',
       paragraphs: [
         'María no solo es la Madre de Jesús: también es nuestra madre. Nos quiere, nos escucha y nos lleva siempre a su Hijo.',
@@ -45,6 +47,7 @@ export const lessonMaria: Lesson = {
     {
       id: 'l-maria-b4',
       kind: 'piensa',
+      audioSrc: '/audio/bloque-maria-b4.mp3',
       title: 'Como María, digo "sí"',
       paragraphs: [
         'María nos enseña a decir "sí" a Dios con alegría, aunque a veces cueste.',
@@ -55,6 +58,7 @@ export const lessonMaria: Lesson = {
     {
       id: 'l-maria-b5',
       kind: 'reza',
+      audioSrc: '/audio/bloque-maria-b5.mp3',
       title: 'Ave María',
       paragraphs: [
         'La oración más bonita para hablar con María es el Ave María. Rézala despacio, pensando cada palabra.',
@@ -69,6 +73,7 @@ export const lessonMaria: Lesson = {
     questions: [
       {
         id: 'l-maria-q1',
+        audioSrc: '/audio/quiz-maria-1.mp3',
         question: '¿Qué respondió María cuando el ángel le anunció que sería la Madre de Jesús?',
         options: ['Dijo que no', 'Dijo "sí" a Dios con confianza', 'Pidió pensárselo un año'],
         correctIndex: 1,
@@ -78,6 +83,7 @@ export const lessonMaria: Lesson = {
       },
       {
         id: 'l-maria-q2',
+        audioSrc: '/audio/quiz-maria-2.mp3',
         question: '¿Quién es María para nosotros?',
         options: [
           'Solo un personaje del pasado',
@@ -91,6 +97,7 @@ export const lessonMaria: Lesson = {
       },
       {
         id: 'l-maria-q3',
+        audioSrc: '/audio/quiz-maria-3.mp3',
         question: '¿Cómo se llama la oración más conocida para hablar con María?',
         options: ['El Padrenuestro', 'El Ave María', 'El Gloria'],
         correctIndex: 1,
@@ -100,6 +107,7 @@ export const lessonMaria: Lesson = {
       },
       {
         id: 'l-maria-q4',
+        audioSrc: '/audio/quiz-maria-4.mp3',
         question: '¿Qué nos enseña María con su vida?',
         options: [
           'A decir "sí" a Dios con alegría',
@@ -125,6 +133,7 @@ export const lessonMaria: Lesson = {
     ],
   },
   family: {
+    audioSrc: '/audio/familia-maria.mp3',
     activityTitle: 'Un ramo para María',
     activity:
       'En mayo (o cualquier día), preparad juntos un pequeño altar a María con una imagen suya y flores (de verdad o de papel hechas por los niños). Rezad juntos un Ave María y ponedle una intención de la familia.',

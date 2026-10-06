@@ -26,6 +26,8 @@ export interface QuizQuestion {
   correctIndex: number;
   hint: string;
   explanation: string;
+  /** Ruta al MP3 de narración pre-generado (pregunta + opciones). */
+  audioSrc?: string;
 }
 
 export interface Quiz {
@@ -45,6 +47,8 @@ export interface Prayer {
 export interface FamilyBlock {
   activityTitle: string;
   activity: string;
+  /** Ruta al MP3 de narración pre-generado. */
+  audioSrc?: string;
 }
 
 export interface ParentNotes {

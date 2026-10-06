@@ -16,6 +16,7 @@ export const lessonBuenaNoticia: Lesson = {
     {
       id: 'l-buena-noticia-b1',
       kind: 'descubre',
+      audioSrc: '/audio/bloque-buena-noticia-b1.mp3',
       title: 'Jesús anuncia la Buena Noticia',
       imageLabel: 'Jesús hablando a una multitud junto al lago',
       paragraphs: [
@@ -49,6 +50,7 @@ export const lessonBuenaNoticia: Lesson = {
     {
       id: 'l-buena-noticia-b4',
       kind: 'descubre',
+      audioSrc: '/audio/bloque-buena-noticia-b4.mp3',
       title: 'Jesús quiere a los niños',
       paragraphs: [
         'Un día, unos niños quisieron acercarse a Jesús y los discípulos querían apartarlos. Pero Jesús dijo: "Dejad que los niños vengan a mí".',
@@ -58,6 +60,7 @@ export const lessonBuenaNoticia: Lesson = {
     {
       id: 'l-buena-noticia-b5',
       kind: 'piensa',
+      audioSrc: '/audio/bloque-buena-noticia-b5.mp3',
       title: 'Yo también anuncio la Buena Noticia',
       paragraphs: [
         'Anunciar la Buena Noticia no es solo cosa de curas y misioneros: tú también puedes.',
@@ -68,6 +71,7 @@ export const lessonBuenaNoticia: Lesson = {
     {
       id: 'l-buena-noticia-b6',
       kind: 'reza',
+      audioSrc: '/audio/bloque-buena-noticia-b6.mp3',
       title: 'Gracias por tu amor',
       paragraphs: [
         'Jesús, Buen Pastor, gracias por buscarme siempre.',
@@ -83,6 +87,7 @@ export const lessonBuenaNoticia: Lesson = {
     questions: [
       {
         id: 'l-buena-noticia-q1',
+        audioSrc: '/audio/quiz-buena-noticia-1.mp3',
         question: '¿Qué anunciaba Jesús por los pueblos?',
         options: [
           'La Buena Noticia del amor de Dios',
@@ -96,6 +101,7 @@ export const lessonBuenaNoticia: Lesson = {
       },
       {
         id: 'l-buena-noticia-q2',
+        audioSrc: '/audio/quiz-buena-noticia-2.mp3',
         question: 'En la parábola del Buen Pastor, ¿qué hace el pastor si se pierde una oveja?',
         options: [
           'La olvida y sigue con las demás',
@@ -109,6 +115,7 @@ export const lessonBuenaNoticia: Lesson = {
       },
       {
         id: 'l-buena-noticia-q3',
+        audioSrc: '/audio/quiz-buena-noticia-3.mp3',
         question: '¿Para qué hacía Jesús milagros?',
         options: [
           'Para presumir de sus poderes',
@@ -122,6 +129,7 @@ export const lessonBuenaNoticia: Lesson = {
       },
       {
         id: 'l-buena-noticia-q4',
+        audioSrc: '/audio/quiz-buena-noticia-4.mp3',
         question: '¿Qué dijo Jesús de los niños?',
         options: [
           '"Dejad que los niños vengan a mí"',
@@ -135,6 +143,7 @@ export const lessonBuenaNoticia: Lesson = {
       },
       {
         id: 'l-buena-noticia-q5',
+        audioSrc: '/audio/quiz-buena-noticia-5.mp3',
         question: '¿Cómo puedes anunciar tú la Buena Noticia?',
         options: [
           'Solo yendo a misa',
@@ -160,6 +169,7 @@ export const lessonBuenaNoticia: Lesson = {
     ],
   },
   family: {
+    audioSrc: '/audio/familia-buena-noticia.mp3',
     activityTitle: 'Parábolas en familia',
     activity:
       'Leed juntos la parábola del Buen Pastor (Evangelio de Lucas, capítulo 15). Después, cada uno dibuja su escena favorita. Hablad de las veces en que os habéis sentido "buscados y encontrados" por el amor de Dios.',

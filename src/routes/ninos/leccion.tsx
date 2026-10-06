@@ -57,7 +57,12 @@ interface Step {
   title: string;
   paragraphs: string[];
   block?: ContentBlock;
+  /** Ruta al MP3 de narración pre-generado (si existe, se usa AudioPlayer). */
+  audioSrc?: string;
 }
+
+/** Audio del paso estático "Juega" (texto fijo, no viene de datos). */
+const JUEGA_AUDIO_SRC = '/audio/paso-juega.mp3';
 
 const SECTION_META: Record<
   SectionKey,
@@ -84,6 +89,7 @@ function buildSteps(lesson: Lesson): Step[] {
       title: b.title,
       paragraphs: b.paragraphs,
       block: b,
+      audioSrc: b.audioSrc,
     });
   for (const b of byKind('escucha'))
     steps.push({
@@ -92,6 +98,7 @@ function buildSteps(lesson: Lesson): Step[] {
       title: b.title,
       paragraphs: b.paragraphs,
       block: b,
+      audioSrc: b.audioSrc,
     });
 
   if (lesson.gameIds.length > 0) {
@@ -102,6 +109,7 @@ function buildSteps(lesson: Lesson): Step[] {
       paragraphs: [
         'Lo que acabas de aprender también se puede jugar. Elige un juego y diviértete.',
       ],
+      audioSrc: JUEGA_AUDIO_SRC,
     });
   }
 
@@ -112,6 +120,7 @@ function buildSteps(lesson: Lesson): Step[] {
       title: b.title,
       paragraphs: b.paragraphs,
       block: b,
+      audioSrc: b.audioSrc,
     });
   for (const b of byKind('reza'))
     steps.push({
@@ -120,6 +129,7 @@ function buildSteps(lesson: Lesson): Step[] {
       title: b.title,
       paragraphs: b.paragraphs,
       block: b,
+      audioSrc: b.audioSrc,
     });
 
   // La oración de la lección cierra la sección "Reza".
@@ -128,6 +138,7 @@ function buildSteps(lesson: Lesson): Step[] {
     section: 'reza',
     title: lesson.prayer.title,
     paragraphs: lesson.prayer.lines,
+    audioSrc: lesson.prayer.audioSrc,
   });
 
   steps.push({
@@ -135,6 +146,7 @@ function buildSteps(lesson: Lesson): Step[] {
     section: 'familia',
     title: lesson.family.activityTitle,
     paragraphs: [lesson.family.activity],
+    audioSrc: lesson.family.audioSrc,
   });
 
   steps.push({
@@ -222,7 +234,14 @@ function QuizRunner({
         Pregunta {qIndex + 1} de {total}
       </span>
       <h2 style={{ margin: 0 }}>{q.question}</h2>
-      <ReadAloud text={readText} />
+      {q.audioSrc ? (
+        <AudioPlayer
+          src={q.audioSrc}
+          label={`Escuchar la pregunta ${qIndex + 1}`}
+        />
+      ) : (
+        <ReadAloud text={readText} />
+      )}
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
         {q.options.map((opt, idx) => {
           const isTried = tried.includes(idx);
@@ -437,15 +456,10 @@ export function Leccion() {
             </div>
           )}
 
-          {step.block?.audioSrc ? (
+          {step.audioSrc ? (
             <AudioPlayer
-              src={step.block.audioSrc}
+              src={step.audioSrc}
               label={`Escuchar la narración: ${step.title}`}
-            />
-          ) : step.key === 'oracion' && lesson.prayer.audioSrc ? (
-            <AudioPlayer
-              src={lesson.prayer.audioSrc}
-              label={`Escuchar la oración: ${step.title}`}
             />
           ) : (
             <ReadAloud text={readText} />

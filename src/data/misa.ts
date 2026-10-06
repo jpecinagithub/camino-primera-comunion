@@ -24,6 +24,8 @@ export interface MomentoMisa {
   gesto: string;
   /** La costumbre puede variar por parroquia. */
   preguntaCatequista?: boolean;
+  /** Ruta al MP3 de narración pre-generado. */
+  audioSrc?: string;
 }
 
 export const LUGARES_MISA: Record<
@@ -40,6 +42,7 @@ export const MISA_MOMENTOS: MomentoMisa[] = [
   {
     id: 'entrada',
     orden: 1,
+    audioSrc: '/audio/misa-01.mp3',
     titulo: 'Entrada',
     quePasa: 'El sacerdote entra con los monaguillos mientras todos cantamos el canto de entrada.',
     dondeMirar: 'altar',
@@ -48,6 +51,7 @@ export const MISA_MOMENTOS: MomentoMisa[] = [
   {
     id: 'senal-cruz',
     orden: 2,
+    audioSrc: '/audio/misa-02.mp3',
     titulo: 'Señal de la cruz',
     quePasa: 'El sacerdote nos saluda y nos persignamos: «En el nombre del Padre y del Hijo y del Espíritu Santo».',
     dondeMirar: 'altar',
@@ -56,6 +60,7 @@ export const MISA_MOMENTOS: MomentoMisa[] = [
   {
     id: 'acto-penitencial',
     orden: 3,
+    audioSrc: '/audio/misa-03.mp3',
     titulo: 'Acto penitencial',
     quePasa: 'Pedimos perdón a Dios por las veces que no hemos amado. «Yo confieso…».',
     dondeMirar: 'altar',
@@ -64,6 +69,7 @@ export const MISA_MOMENTOS: MomentoMisa[] = [
   {
     id: 'gloria',
     orden: 4,
+    audioSrc: '/audio/misa-04.mp3',
     titulo: 'Gloria',
     quePasa: 'Cantamos el himno de alabanza: «Gloria a Dios en el cielo». (En Cuaresma y Adviento no se canta.)',
     dondeMirar: 'altar',
@@ -72,6 +78,7 @@ export const MISA_MOMENTOS: MomentoMisa[] = [
   {
     id: 'oracion-colecta',
     orden: 5,
+    audioSrc: '/audio/misa-05.mp3',
     titulo: 'Oración colecta',
     quePasa: 'El sacerdote recoge en una oración todo lo que le queremos decir a Dios.',
     dondeMirar: 'altar',
@@ -80,6 +87,7 @@ export const MISA_MOMENTOS: MomentoMisa[] = [
   {
     id: 'primera-lectura',
     orden: 6,
+    audioSrc: '/audio/misa-06.mp3',
     titulo: 'Primera lectura',
     quePasa: 'Desde el ambón se lee un texto de la Biblia, normalmente del Antiguo Testamento.',
     dondeMirar: 'ambon',
@@ -88,6 +96,7 @@ export const MISA_MOMENTOS: MomentoMisa[] = [
   {
     id: 'salmo',
     orden: 7,
+    audioSrc: '/audio/misa-07.mp3',
     titulo: 'Salmo',
     quePasa: 'Respondemos a la lectura cantando o recitando el salmo: es una oración con música.',
     dondeMirar: 'ambon',
@@ -96,6 +105,7 @@ export const MISA_MOMENTOS: MomentoMisa[] = [
   {
     id: 'segunda-lectura',
     orden: 8,
+    audioSrc: '/audio/misa-08.mp3',
     titulo: 'Segunda lectura',
     quePasa: 'Los domingos y fiestas hay otra lectura, de las cartas de los apóstoles.',
     dondeMirar: 'ambon',
@@ -104,6 +114,7 @@ export const MISA_MOMENTOS: MomentoMisa[] = [
   {
     id: 'evangelio',
     orden: 9,
+    audioSrc: '/audio/misa-09.mp3',
     titulo: 'Evangelio',
     quePasa: '¡Lo más importante de la Palabra! El sacerdote lee lo que hizo y dijo Jesús. Nos ponemos de pie.',
     dondeMirar: 'ambon',
@@ -112,6 +123,7 @@ export const MISA_MOMENTOS: MomentoMisa[] = [
   {
     id: 'homilia',
     orden: 10,
+    audioSrc: '/audio/misa-10.mp3',
     titulo: 'Homilía',
     quePasa: 'El sacerdote nos explica lo que acabamos de escuchar para que lo entendamos mejor.',
     dondeMirar: 'ambon',
@@ -120,6 +132,7 @@ export const MISA_MOMENTOS: MomentoMisa[] = [
   {
     id: 'credo',
     orden: 11,
+    audioSrc: '/audio/misa-11.mp3',
     titulo: 'Credo',
     quePasa: 'Decimos juntos lo que creemos: «Creo en Dios, Padre todopoderoso…».',
     dondeMirar: 'altar',
@@ -128,6 +141,7 @@ export const MISA_MOMENTOS: MomentoMisa[] = [
   {
     id: 'oracion-fieles',
     orden: 12,
+    audioSrc: '/audio/misa-12.mp3',
     titulo: 'Oración de los fieles',
     quePasa: 'Pedimos por la Iglesia, por el mundo y por quienes lo necesitan. Cada petición termina con una respuesta.',
     dondeMirar: 'altar',
@@ -136,6 +150,7 @@ export const MISA_MOMENTOS: MomentoMisa[] = [
   {
     id: 'presentacion-dones',
     orden: 13,
+    audioSrc: '/audio/misa-13.mp3',
     titulo: 'Presentación de los dones',
     quePasa: 'Se llevan al altar el pan y el vino: los dones que se convertirán en Jesús.',
     dondeMirar: 'altar',
@@ -145,6 +160,7 @@ export const MISA_MOMENTOS: MomentoMisa[] = [
   {
     id: 'plegaria-eucaristica',
     orden: 14,
+    audioSrc: '/audio/misa-14.mp3',
     titulo: 'Plegaria eucarística',
     quePasa: 'El sacerdote da gracias a Dios con la gran oración de la Misa.',
     dondeMirar: 'altar',
@@ -153,6 +169,7 @@ export const MISA_MOMENTOS: MomentoMisa[] = [
   {
     id: 'santo',
     orden: 15,
+    audioSrc: '/audio/misa-15.mp3',
     titulo: 'Santo',
     quePasa: 'Cantamos: «Santo, Santo, Santo es el Señor». ¡Los ángeles también cantan con nosotros!',
     dondeMirar: 'altar',
@@ -161,6 +178,7 @@ export const MISA_MOMENTOS: MomentoMisa[] = [
   {
     id: 'consagracion',
     orden: 16,
+    audioSrc: '/audio/misa-16.mp3',
     titulo: 'Consagración',
     quePasa: 'El momento más importante: el pan y el vino se convierten en el Cuerpo y la Sangre de Jesús.',
     dondeMirar: 'altar',
@@ -169,6 +187,7 @@ export const MISA_MOMENTOS: MomentoMisa[] = [
   {
     id: 'padrenuestro',
     orden: 17,
+    audioSrc: '/audio/misa-17.mp3',
     titulo: 'Padrenuestro',
     quePasa: 'Rezamos juntos la oración que Jesús nos enseñó, cogidos de la mano.',
     dondeMirar: 'altar',
@@ -178,6 +197,7 @@ export const MISA_MOMENTOS: MomentoMisa[] = [
   {
     id: 'rito-paz',
     orden: 18,
+    audioSrc: '/audio/misa-18.mp3',
     titulo: 'Rito de la paz',
     quePasa: 'Nos deseamos la paz de Jesús unos a otros.',
     dondeMirar: 'bancos',
@@ -187,6 +207,7 @@ export const MISA_MOMENTOS: MomentoMisa[] = [
   {
     id: 'cordero-dios',
     orden: 19,
+    audioSrc: '/audio/misa-19.mp3',
     titulo: 'Cordero de Dios',
     quePasa: 'Cantamos «Cordero de Dios, que quitas el pecado del mundo, ten piedad de nosotros».',
     dondeMirar: 'altar',
@@ -195,6 +216,7 @@ export const MISA_MOMENTOS: MomentoMisa[] = [
   {
     id: 'comunion',
     orden: 20,
+    audioSrc: '/audio/misa-20.mp3',
     titulo: 'Comunión',
     quePasa: 'Recibimos el Cuerpo de Jesús. Es el momento más feliz: ¡Jesús viene a ti!',
     dondeMirar: 'altar',
@@ -204,6 +226,7 @@ export const MISA_MOMENTOS: MomentoMisa[] = [
   {
     id: 'silencio',
     orden: 21,
+    audioSrc: '/audio/misa-21.mp3',
     titulo: 'Silencio',
     quePasa: 'Después de comulgar hay un rato de silencio para hablar con Jesús en el corazón.',
     dondeMirar: 'bancos',
@@ -212,6 +235,7 @@ export const MISA_MOMENTOS: MomentoMisa[] = [
   {
     id: 'accion-gracias',
     orden: 22,
+    audioSrc: '/audio/misa-22.mp3',
     titulo: 'Acción de gracias',
     quePasa: 'El sacerdote reza una oración de gracias por todo lo que hemos recibido.',
     dondeMirar: 'altar',
@@ -220,6 +244,7 @@ export const MISA_MOMENTOS: MomentoMisa[] = [
   {
     id: 'bendicion',
     orden: 23,
+    audioSrc: '/audio/misa-23.mp3',
     titulo: 'Bendición',
     quePasa: 'El sacerdote nos bendice en el nombre del Padre, del Hijo y del Espíritu Santo.',
     dondeMirar: 'altar',
@@ -228,6 +253,7 @@ export const MISA_MOMENTOS: MomentoMisa[] = [
   {
     id: 'envio',
     orden: 24,
+    audioSrc: '/audio/misa-24.mp3',
     titulo: 'Envío',
     quePasa: '«Podéis ir en paz». La Misa termina, pero nuestra misión de amar empieza.',
     dondeMirar: 'bancos',

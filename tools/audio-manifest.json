@@ -253,6 +253,335 @@
       "at": "2026-10-06T07:50:45.280Z",
       "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
       "language": "es_ES"
+    },
+    "bloque-pc3.mp3": {
+      "bytes": 223141,
+      "chars": 374,
+      "at": "2026-10-06T08:45:33.749Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "bloque-pc4.mp3": {
+      "bytes": 183013,
+      "chars": 307,
+      "at": "2026-10-06T08:45:38.963Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "bloque-pc5.mp3": {
+      "bytes": 121957,
+      "chars": 207,
+      "at": "2026-10-06T08:45:42.770Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "familia-preparacion-primera-comunion.mp3": {
+      "bytes": 174757,
+      "chars": 330,
+      "at": "2026-10-06T08:45:47.659Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "quiz-preparacion-primera-comunion-1.mp3": {
+      "bytes": 96613,
+      "chars": 172,
+      "at": "2026-10-06T08:45:51.224Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "quiz-preparacion-primera-comunion-2.mp3": {
+      "bytes": 98533,
+      "chars": 163,
+      "at": "2026-10-06T08:45:54.414Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "quiz-preparacion-primera-comunion-3.mp3": {
+      "bytes": 93157,
+      "chars": 139,
+      "at": "2026-10-06T08:45:57.252Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "quiz-preparacion-primera-comunion-4.mp3": {
+      "bytes": 87397,
+      "chars": 161,
+      "at": "2026-10-06T08:46:00.280Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "misa-01.mp3": {
+      "bytes": 71077,
+      "chars": 130,
+      "at": "2026-10-06T08:46:02.556Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "misa-02.mp3": {
+      "bytes": 96037,
+      "chars": 157,
+      "at": "2026-10-06T08:46:05.493Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "misa-03.mp3": {
+      "bytes": 89317,
+      "chars": 143,
+      "at": "2026-10-06T08:46:08.563Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "misa-04.mp3": {
+      "bytes": 87973,
+      "chars": 152,
+      "at": "2026-10-06T08:46:11.559Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "misa-05.mp3": {
+      "bytes": 74533,
+      "chars": 132,
+      "at": "2026-10-06T08:46:14.540Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "misa-06.mp3": {
+      "bytes": 87013,
+      "chars": 137,
+      "at": "2026-10-06T08:46:17.622Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "misa-07.mp3": {
+      "bytes": 73573,
+      "chars": 125,
+      "at": "2026-10-06T08:46:20.188Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "misa-08.mp3": {
+      "bytes": 66853,
+      "chars": 124,
+      "at": "2026-10-06T08:46:22.467Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "misa-09.mp3": {
+      "bytes": 99493,
+      "chars": 177,
+      "at": "2026-10-06T08:46:25.790Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "misa-10.mp3": {
+      "bytes": 81253,
+      "chars": 141,
+      "at": "2026-10-06T08:46:28.575Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "misa-11.mp3": {
+      "bytes": 76837,
+      "chars": 124,
+      "at": "2026-10-06T08:46:31.097Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "misa-12.mp3": {
+      "bytes": 100837,
+      "chars": 194,
+      "at": "2026-10-06T08:46:34.416Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "misa-13.mp3": {
+      "bytes": 81637,
+      "chars": 150,
+      "at": "2026-10-06T08:46:37.403Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "misa-14.mp3": {
+      "bytes": 84517,
+      "chars": 139,
+      "at": "2026-10-06T08:46:40.029Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "misa-15.mp3": {
+      "bytes": 87013,
+      "chars": 126,
+      "at": "2026-10-06T08:46:42.998Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "misa-16.mp3": {
+      "bytes": 541477,
+      "chars": 161,
+      "at": "2026-10-06T08:46:56.372Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "misa-17.mp3": {
+      "bytes": 68197,
+      "chars": 116,
+      "at": "2026-10-06T08:46:58.874Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "misa-18.mp3": {
+      "bytes": 66661,
+      "chars": 113,
+      "at": "2026-10-06T08:47:01.038Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "misa-19.mp3": {
+      "bytes": 96421,
+      "chars": 147,
+      "at": "2026-10-06T08:47:04.568Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "misa-20.mp3": {
+      "bytes": 97957,
+      "chars": 142,
+      "at": "2026-10-06T08:47:07.541Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "misa-21.mp3": {
+      "bytes": 79717,
+      "chars": 149,
+      "at": "2026-10-06T08:47:10.107Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "misa-22.mp3": {
+      "bytes": 88741,
+      "chars": 140,
+      "at": "2026-10-06T08:47:12.862Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "misa-23.mp3": {
+      "bytes": 75493,
+      "chars": 129,
+      "at": "2026-10-06T08:47:15.358Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "misa-24.mp3": {
+      "bytes": 78373,
+      "chars": 125,
+      "at": "2026-10-06T08:47:18.258Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "reconciliacion-paso-1.mp3": {
+      "bytes": 73381,
+      "chars": 123,
+      "at": "2026-10-06T08:47:20.788Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "reconciliacion-paso-2.mp3": {
+      "bytes": 72421,
+      "chars": 126,
+      "at": "2026-10-06T08:47:23.494Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "reconciliacion-paso-3.mp3": {
+      "bytes": 88357,
+      "chars": 131,
+      "at": "2026-10-06T08:47:26.325Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "reconciliacion-paso-4.mp3": {
+      "bytes": 79141,
+      "chars": 142,
+      "at": "2026-10-06T08:47:28.896Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "reconciliacion-paso-5.mp3": {
+      "bytes": 72613,
+      "chars": 129,
+      "at": "2026-10-06T08:47:31.649Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "reconciliacion-paso-6.mp3": {
+      "bytes": 76453,
+      "chars": 130,
+      "at": "2026-10-06T08:47:34.596Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "reconciliacion-paso-7.mp3": {
+      "bytes": 74341,
+      "chars": 142,
+      "at": "2026-10-06T08:47:37.198Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "reconciliacion-paso-8.mp3": {
+      "bytes": 63013,
+      "chars": 100,
+      "at": "2026-10-06T08:47:39.146Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "ano-adviento.mp3": {
+      "bytes": 59173,
+      "chars": 98,
+      "at": "2026-10-06T08:47:41.109Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "ano-navidad.mp3": {
+      "bytes": 51493,
+      "chars": 87,
+      "at": "2026-10-06T08:47:43.040Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "ano-cuaresma.mp3": {
+      "bytes": 52261,
+      "chars": 85,
+      "at": "2026-10-06T08:47:44.943Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "ano-semana-santa.mp3": {
+      "bytes": 75877,
+      "chars": 130,
+      "at": "2026-10-06T08:47:47.490Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "ano-pascua.mp3": {
+      "bytes": 63781,
+      "chars": 91,
+      "at": "2026-10-06T08:47:49.585Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "ano-ordinario.mp3": {
+      "bytes": 51493,
+      "chars": 89,
+      "at": "2026-10-06T08:47:51.370Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "paso-juega.mp3": {
+      "bytes": 55333,
+      "chars": 96,
+      "at": "2026-10-06T08:47:53.281Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
     }
   }
 }

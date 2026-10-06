@@ -16,6 +16,7 @@ export const lessonDiosPadreCreador: Lesson = {
     {
       id: 'l-dios-padre-creador-b1',
       kind: 'descubre',
+      audioSrc: '/audio/bloque-dios-padre-creador-b1.mp3',
       title: 'Dios, nuestro Padre',
       imageLabel: 'Un padre abrazando a su hijo al atardecer',
       paragraphs: [
@@ -37,6 +38,7 @@ export const lessonDiosPadreCreador: Lesson = {
     {
       id: 'l-dios-padre-creador-b3',
       kind: 'descubre',
+      audioSrc: '/audio/bloque-dios-padre-creador-b3.mp3',
       title: 'Cuidamos el regalo',
       paragraphs: [
         'Cuando alguien nos hace un regalo bonito, lo cuidamos. La creación es el regalo más grande de Dios.',
@@ -46,6 +48,7 @@ export const lessonDiosPadreCreador: Lesson = {
     {
       id: 'l-dios-padre-creador-b4',
       kind: 'piensa',
+      audioSrc: '/audio/bloque-dios-padre-creador-b4.mp3',
       title: 'Gracias, Padre',
       paragraphs: [
         'Mira a tu alrededor: ¿cuántas cosas buenas te ha regalado Dios?',
@@ -56,6 +59,7 @@ export const lessonDiosPadreCreador: Lesson = {
     {
       id: 'l-dios-padre-creador-b5',
       kind: 'reza',
+      audioSrc: '/audio/bloque-dios-padre-creador-b5.mp3',
       title: 'Padre nuestro, gracias',
       paragraphs: [
         'Padre bueno, gracias por crear el mundo tan bonito.',
@@ -71,6 +75,7 @@ export const lessonDiosPadreCreador: Lesson = {
     questions: [
       {
         id: 'l-dios-padre-creador-q1',
+        audioSrc: '/audio/quiz-dios-padre-creador-1.mp3',
         question: '¿Cómo nos quiere Dios?',
         options: [
           'Como un Padre bueno que nos cuida',
@@ -84,6 +89,7 @@ export const lessonDiosPadreCreador: Lesson = {
       },
       {
         id: 'l-dios-padre-creador-q2',
+        audioSrc: '/audio/quiz-dios-padre-creador-2.mp3',
         question: '¿Qué hizo Dios al principio?',
         options: [
           'Creó el cielo, la tierra y todo lo que existe',
@@ -97,6 +103,7 @@ export const lessonDiosPadreCreador: Lesson = {
       },
       {
         id: 'l-dios-padre-creador-q3',
+        audioSrc: '/audio/quiz-dios-padre-creador-3.mp3',
         question: '¿Qué nos pide Dios con su creación?',
         options: [
           'Que la usemos sin pensar',
@@ -110,6 +117,7 @@ export const lessonDiosPadreCreador: Lesson = {
       },
       {
         id: 'l-dios-padre-creador-q4',
+        audioSrc: '/audio/quiz-dios-padre-creador-4.mp3',
         question: '¿Cuándo podemos hablar con Dios?',
         options: [
           'Solo en la iglesia',
@@ -135,6 +143,7 @@ export const lessonDiosPadreCreador: Lesson = {
     ],
   },
   family: {
+    audioSrc: '/audio/familia-dios-padre-creador.mp3',
     activityTitle: 'Paseo de los regalos de Dios',
     activity:
       'Salid a pasear juntos (al parque, al campo o por el barrio). Cada uno va señalando "regalos de Dios" que ve: un árbol, un pájaro, una nube bonita... Al volver, dibujad vuestro regalo favorito y colgadlo en casa.',

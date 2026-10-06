@@ -25,6 +25,7 @@ import {
 import { SectionTitle } from '../../components/SectionTitle';
 import { Button } from '../../components/Button';
 import { ReadAloud } from '../../a11y/ReadAloud';
+import { AudioPlayer } from '../../components/AudioPlayer';
 import { NUCLEUS_COLOR_TOKENS } from '../../data/nuclei';
 import { trackLessonOpened } from '../../analytics';
 import { getLessonBySlug } from '../../data/lessons/index';
@@ -66,13 +67,17 @@ interface PasoSimu {
   color: 'sky' | 'gold' | 'green' | 'coral';
   titulo: string;
   texto: string;
+  /** Ruta al MP3 de narración pre-generado. */
+  audioSrc?: string;
 }
 
-const PASOS_SIMULACION: PasoSimu[] = [
+/** Pasos de la simulación didáctica (exportado para tests de audios). */
+export const PASOS_SIMULACION: PasoSimu[] = [
   {
     icon: Church,
     color: 'sky',
     titulo: 'Llego a la iglesia',
+    audioSrc: '/audio/reconciliacion-paso-1.mp3',
     texto:
       'Voy a la iglesia tranquilo. Puedo rezar un ratito antes y pensar: «Jesús, quiero estar en paz contigo».',
   },
@@ -80,6 +85,7 @@ const PASOS_SIMULACION: PasoSimu[] = [
     icon: Users,
     color: 'gold',
     titulo: 'Saludo al sacerdote',
+    audioSrc: '/audio/reconciliacion-paso-2.mp3',
     texto:
       'Me acerco, le saludo con una sonrisa y me santiguo. El sacerdote está ahí para ayudarme, no para reñirme.',
   },
@@ -87,6 +93,7 @@ const PASOS_SIMULACION: PasoSimu[] = [
     icon: Sparkles,
     color: 'coral',
     titulo: '«Ave María Purísima…»',
+    audioSrc: '/audio/reconciliacion-paso-3.mp3',
     texto:
       'Digo: «Ave María Purísima» y él responde: «Sin pecado concebida». Así empezamos, con María de nuestra parte.',
   },
@@ -94,6 +101,7 @@ const PASOS_SIMULACION: PasoSimu[] = [
     icon: BookOpen,
     color: 'green',
     titulo: 'Cuento con sencillez',
+    audioSrc: '/audio/reconciliacion-paso-4.mp3',
     texto:
       'Le cuento a Jesús, a través del sacerdote, las veces que no amé. Con palabras sencillas, como se lo contaría a un amigo.',
   },
@@ -101,6 +109,7 @@ const PASOS_SIMULACION: PasoSimu[] = [
     icon: Ear,
     color: 'sky',
     titulo: 'Escucho su consejo',
+    audioSrc: '/audio/reconciliacion-paso-5.mp3',
     texto:
       'El sacerdote me da un consejo cariñoso para hacerlo mejor. Lo escucho con atención: ¡es Jesús quien me habla!',
   },
@@ -108,6 +117,7 @@ const PASOS_SIMULACION: PasoSimu[] = [
     icon: HandHeart,
     color: 'gold',
     titulo: 'Rezo la penitencia',
+    audioSrc: '/audio/reconciliacion-paso-6.mp3',
     texto:
       'Me propone una oración o un gesto bonito como penitencia. La rezo con alegría: es mi forma de decir «gracias».',
   },
@@ -115,6 +125,7 @@ const PASOS_SIMULACION: PasoSimu[] = [
     icon: Sun,
     color: 'coral',
     titulo: 'Recibo la absolución',
+    audioSrc: '/audio/reconciliacion-paso-7.mp3',
     texto:
       'El sacerdote extiende la mano y dice las palabras del perdón. En ese momento, Jesús me abraza y mi corazón queda limpio.',
   },
@@ -122,6 +133,7 @@ const PASOS_SIMULACION: PasoSimu[] = [
     icon: Heart,
     color: 'green',
     titulo: 'Doy gracias',
+    audioSrc: '/audio/reconciliacion-paso-8.mp3',
     texto:
       'Salgo contento y le doy gracias a Jesús. ¡Estoy en paz! Ahora a amar mucho a los demás.',
   },
@@ -198,7 +210,14 @@ export function Reconciliacion() {
         </span>
         <h2 style={{ margin: 0, textAlign: 'center' }}>{actual.titulo}</h2>
         <p className="ninos-parrafo">{actual.texto}</p>
-        <ReadAloud text={`${actual.titulo}. ${actual.texto}`} />
+        {actual.audioSrc ? (
+          <AudioPlayer
+            src={actual.audioSrc}
+            label={`Escuchar la narración: ${actual.titulo}`}
+          />
+        ) : (
+          <ReadAloud text={`${actual.titulo}. ${actual.texto}`} />
+        )}
 
         <div
           className="ninos-pasos"

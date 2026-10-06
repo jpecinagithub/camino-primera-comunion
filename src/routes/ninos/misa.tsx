@@ -9,9 +9,9 @@
  * Nota de parroquia: donde una costumbre pueda variar, el momento lleva
  * "Pregunta a tu catequista cómo se hace en tu parroquia."
  */
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Check, Eye, Hand, RotateCcw, Sparkles } from 'lucide-react';
+import { Check, Eye, Hand, Play, RotateCcw, Sparkles, Square } from 'lucide-react';
 import {
   LUGARES_MISA,
   MISA_MOMENTOS,
@@ -21,6 +21,7 @@ import type { LugarMisa, MomentoMisa } from '../../data/misa';
 import { getGame } from '../../games/registry';
 import { GameHost } from '../../games/GameHost';
 import { ReadAloud } from '../../a11y/ReadAloud';
+import { AudioPlayer } from '../../components/AudioPlayer';
 import { LiveRegion } from '../../a11y/live';
 import { SectionTitle } from '../../components/SectionTitle';
 import { Button } from '../../components/Button';
@@ -119,19 +120,121 @@ function MomentoCard({ momento }: { momento: MomentoMisa }) {
             Pregunta a tu catequista cómo se hace en tu parroquia.
           </p>
         )}
+        {momento.audioSrc ? (
+          <AudioPlayer
+            src={momento.audioSrc}
+            label={`Escuchar la narración: ${momento.titulo}`}
+          />
+        ) : (
+          <ReadAloud
+            text={`${momento.titulo}. ${momento.quePasa} Tú: ${momento.gesto}`}
+          />
+        )}
       </div>
     </article>
   );
 }
 
+/* --------------------- Playlist: todo el recorrido ------------------------ */
+/* Reproduce los 25 momentos EN SECUENCIA con un solo <audio> (evento 'ended'
+ * avanza al siguiente). Sin autoplay: el niño pulsa para empezar. */
+
+/** Playlist del recorrido completo (exportada para tests). */
+export function PlaylistRecorrido() {
+  const total = MISA_MOMENTOS.length;
+  const [playing, setPlaying] = useState(false);
+  const [index, setIndex] = useState(0);
+  const [live, setLive] = useState('');
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const start = () => {
+    setIndex(0);
+    setPlaying(true);
+    setLive(`Escuchando el recorrido de la Misa: momento 1 de ${total}.`);
+  };
+  const stop = () => {
+    setPlaying(false);
+    setLive('Reproducción detenida.');
+  };
+
+  useEffect(() => {
+    const a = audioRef.current;
+    if (!a) return;
+    if (playing) {
+      void a.play().catch(() => {
+        setPlaying(false);
+        setLive('No se ha podido reproducir el audio.');
+      });
+    } else {
+      a.pause();
+    }
+  }, [playing, index]);
+
+  useEffect(() => {
+    const a = audioRef.current;
+    return () => {
+      a?.pause();
+    };
+  }, []);
+
+  const onEnded = () => {
+    if (index + 1 < total) {
+      const next = index + 1;
+      setIndex(next);
+      setLive(`Momento ${next + 1} de ${total}: ${MISA_MOMENTOS[next].titulo}.`);
+    } else {
+      setPlaying(false);
+      setLive('Has escuchado todo el recorrido de la Misa. ¡Muy bien!');
+    }
+  };
+
+  const momento = MISA_MOMENTOS[index];
+
+  return (
+    <div className="ninos-card" aria-label="Escuchar todo el recorrido de la Misa">
+      <audio
+        ref={audioRef}
+        src={momento?.audioSrc}
+        preload="none"
+        onEnded={onEnded}
+      />
+      {!playing ? (
+        <Button
+          variant="secondary"
+          onClick={start}
+          className="ninos-boton-grande"
+        >
+          <Play size={26} aria-hidden="true" />
+          Escuchar todo el recorrido
+        </Button>
+      ) : (
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 'var(--space-2)',
+            alignItems: 'center',
+            textAlign: 'center',
+          }}
+        >
+          <p style={{ margin: 0, fontWeight: 700 }}>
+            🔊 Momento {index + 1} de {total}: {momento?.titulo}
+          </p>
+          <Button variant="secondary" onClick={stop}>
+            <Square size={22} aria-hidden="true" /> Detener
+          </Button>
+        </div>
+      )}
+      <LiveRegion message={live} />
+    </div>
+  );
+}
+
 function Recorrido() {
-  const textoLectura = MISA_MOMENTOS.map(
-    (m) => `${m.orden}. ${m.titulo}: ${m.quePasa} Tú: ${m.gesto}`,
-  ).join(' ');
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
       <IglesiaSVG />
-      <ReadAloud text={`La Misa paso a paso. ${textoLectura}`} label="Escuchar todo el recorrido" />
+      <PlaylistRecorrido />
       {MISA_MOMENTOS.map((m) => (
         <MomentoCard key={m.id} momento={m} />
       ))}

@@ -21,6 +21,7 @@ export const lessonBautismo: Lesson = {
     {
       id: 'bt1',
       kind: 'descubre',
+      audioSrc: '/audio/bloque-bt1.mp3',
       title: 'CREEMOS · Nacer a la vida nueva',
       paragraphs: [
         'El Bautismo es el primer regalo de Jesús: por él somos hijos de Dios de verdad.',
@@ -43,6 +44,7 @@ export const lessonBautismo: Lesson = {
     {
       id: 'bt3',
       kind: 'descubre',
+      audioSrc: '/audio/bloque-bt3.mp3',
       title: 'CELEBRAMOS · Los signos del Bautismo',
       paragraphs: [
         'En el Bautismo hay signos preciosos que hablan sin palabras:',
@@ -55,6 +57,7 @@ export const lessonBautismo: Lesson = {
     {
       id: 'bt4',
       kind: 'piensa',
+      audioSrc: '/audio/bloque-bt4.mp3',
       title: 'CELEBRAMOS · Mi Bautismo',
       paragraphs: [
         'El día de tu Bautismo, tus papás y tus padrinos dijeron «sí» a Jesús por ti.',
@@ -65,6 +68,7 @@ export const lessonBautismo: Lesson = {
     {
       id: 'bt5',
       kind: 'piensa',
+      audioSrc: '/audio/bloque-bt5.mp3',
       title: 'VIVIMOS · La Iglesia nos acoge',
       paragraphs: [
         'Por el Bautismo entramos en la gran familia de la Iglesia: ¡somos muchos hermanos y hermanas!',
@@ -75,6 +79,7 @@ export const lessonBautismo: Lesson = {
     {
       id: 'bt6',
       kind: 'reza',
+      audioSrc: '/audio/bloque-bt6.mp3',
       title: 'ORAMOS · Gracias por la vida nueva',
       paragraphs: [
         'Cierra los ojos y piensa en el agua del Bautismo que te hizo hijo de Dios.',
@@ -89,6 +94,7 @@ export const lessonBautismo: Lesson = {
     questions: [
       {
         id: 'qb1',
+audioSrc: '/audio/quiz-bautismo-1.mp3',
         question: '¿Qué nos regala el Bautismo?',
         options: [
           'Ser hijos de Dios y empezar una vida nueva',
@@ -102,6 +108,7 @@ export const lessonBautismo: Lesson = {
       },
       {
         id: 'qb2',
+audioSrc: '/audio/quiz-bautismo-2.mp3',
         question: '¿Qué palabras dice el sacerdote al derramar el agua?',
         options: [
           '«Bienvenido a nuestro grupo»',
@@ -115,6 +122,7 @@ export const lessonBautismo: Lesson = {
       },
       {
         id: 'qb3',
+audioSrc: '/audio/quiz-bautismo-3.mp3',
         question: '¿Qué nos dice el vestido blanco?',
         options: [
           'Que en la iglesia hace frío',
@@ -128,6 +136,7 @@ export const lessonBautismo: Lesson = {
       },
       {
         id: 'qb4',
+audioSrc: '/audio/quiz-bautismo-4.mp3',
         question: '¿Quiénes prometieron ayudarte a conocer a Jesús el día de tu Bautismo?',
         options: [
           'Tus vecinos',
@@ -156,6 +165,7 @@ export const lessonBautismo: Lesson = {
     ],
   },
   family: {
+    audioSrc: '/audio/familia-bautismo.mp3',
     activityTitle: 'Nuestro día del Bautismo',
     activity:
       'Buscad juntos alguna foto o recuerdo del Bautismo del niño. Contadle cómo fue ese día: quién vino, qué dijo el sacerdote, qué sintieron. Terminad rezando un Padrenuestro dando gracias a Dios por ese regalo.',

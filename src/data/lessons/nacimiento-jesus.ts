@@ -38,6 +38,7 @@ export const lessonNacimientoJesus: Lesson = {
     {
       id: 'l-nacimiento-jesus-b3',
       kind: 'descubre',
+      audioSrc: '/audio/bloque-nacimiento-jesus-b3.mp3',
       title: 'Dios se hace niño',
       paragraphs: [
         '¿Por qué Dios se hizo un bebé pequeñito? ¡Por amor! Quiso estar cerquita de nosotros y vivir como nosotros.',
@@ -47,6 +48,7 @@ export const lessonNacimientoJesus: Lesson = {
     {
       id: 'l-nacimiento-jesus-b4',
       kind: 'piensa',
+      audioSrc: '/audio/bloque-nacimiento-jesus-b4.mp3',
       title: 'Preparo mi corazón',
       paragraphs: [
         'En Navidad ponemos el belén y el árbol, pero lo más importante es preparar el corazón para recibir a Jesús.',
@@ -57,6 +59,7 @@ export const lessonNacimientoJesus: Lesson = {
     {
       id: 'l-nacimiento-jesus-b5',
       kind: 'reza',
+      audioSrc: '/audio/bloque-nacimiento-jesus-b5.mp3',
       title: 'Ven, Niño Jesús',
       paragraphs: [
         'Niño Jesús, gracias por nacer por mí.',
@@ -72,6 +75,7 @@ export const lessonNacimientoJesus: Lesson = {
     questions: [
       {
         id: 'l-nacimiento-jesus-q1',
+        audioSrc: '/audio/quiz-nacimiento-jesus-1.mp3',
         question: '¿En qué ciudad nació Jesús?',
         options: ['En Nazaret', 'En Belén', 'En Jerusalén'],
         correctIndex: 1,
@@ -81,6 +85,7 @@ export const lessonNacimientoJesus: Lesson = {
       },
       {
         id: 'l-nacimiento-jesus-q2',
+        audioSrc: '/audio/quiz-nacimiento-jesus-2.mp3',
         question: '¿Quiénes fueron los primeros en visitar al Niño Jesús?',
         options: [
           'Los reyes de otros países',
@@ -94,6 +99,7 @@ export const lessonNacimientoJesus: Lesson = {
       },
       {
         id: 'l-nacimiento-jesus-q3',
+        audioSrc: '/audio/quiz-nacimiento-jesus-3.mp3',
         question: '¿Cómo encontraron los magos el camino hasta Belén?',
         options: [
           'Siguiendo una estrella',
@@ -107,6 +113,7 @@ export const lessonNacimientoJesus: Lesson = {
       },
       {
         id: 'l-nacimiento-jesus-q4',
+        audioSrc: '/audio/quiz-nacimiento-jesus-4.mp3',
         question: '¿Por qué Dios se hizo un niño pequeñito?',
         options: [
           'Porque no tenía otra opción',
@@ -132,6 +139,7 @@ export const lessonNacimientoJesus: Lesson = {
     ],
   },
   family: {
+    audioSrc: '/audio/familia-nacimiento-jesus.mp3',
     activityTitle: 'Nuestro belén familiar',
     activity:
       'Montad juntos el belén en casa, colocando las figuras poco a poco durante el Adviento. Cada noche, al poner una figura, cada uno dice en voz alta un "regalo" que quiere hacerle al Niño Jesús (un perdón, una ayuda, una sonrisa).',

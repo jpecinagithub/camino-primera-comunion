@@ -21,6 +21,7 @@ export const lessonPerdonReconciliacion: Lesson = {
     {
       id: 'pr1',
       kind: 'descubre',
+      audioSrc: '/audio/bloque-pr1.mp3',
       title: 'CREEMOS · Cuando elegimos no amar',
       paragraphs: [
         'A veces, en vez de amar, elegimos no amar: decimos una mentira, nos enfadamos con un amigo o no ayudamos en casa.',
@@ -42,6 +43,7 @@ export const lessonPerdonReconciliacion: Lesson = {
     {
       id: 'pr3',
       kind: 'descubre',
+      audioSrc: '/audio/bloque-pr3.mp3',
       title: 'CREEMOS · El abrazo que nos renueva',
       paragraphs: [
         'La misericordia de Dios es como ese abrazo del padre: nos perdona del todo y nos hace empezar de nuevo.',
@@ -52,6 +54,7 @@ export const lessonPerdonReconciliacion: Lesson = {
     {
       id: 'pr4',
       kind: 'piensa',
+      audioSrc: '/audio/bloque-pr4.mp3',
       title: 'VIVIMOS · Volver a empezar',
       paragraphs: [
         'Cuando nos equivocamos, podemos hacer dos cosas muy importantes:',
@@ -63,6 +66,7 @@ export const lessonPerdonReconciliacion: Lesson = {
     {
       id: 'pr5',
       kind: 'reza',
+      audioSrc: '/audio/bloque-pr5.mp3',
       title: 'ORAMOS · Gracias por perdonarme',
       paragraphs: [
         'Piensa en el abrazo del padre de la historia: así te abraza Dios cada vez que vuelves a Él.',
@@ -77,6 +81,7 @@ export const lessonPerdonReconciliacion: Lesson = {
     questions: [
       {
         id: 'qp1',
+audioSrc: '/audio/quiz-perdon-reconciliacion-1.mp3',
         question: '¿Qué es el pecado?',
         options: [
           'Cuando elegimos no amar y nos apartamos de Dios y de los demás',
@@ -90,6 +95,7 @@ export const lessonPerdonReconciliacion: Lesson = {
       },
       {
         id: 'qp2',
+audioSrc: '/audio/quiz-perdon-reconciliacion-2.mp3',
         question: 'En la historia del hijo que volvió a casa, ¿qué hizo el padre?',
         options: [
           'Le cerró la puerta para que aprendiera',
@@ -103,6 +109,7 @@ export const lessonPerdonReconciliacion: Lesson = {
       },
       {
         id: 'qp3',
+audioSrc: '/audio/quiz-perdon-reconciliacion-3.mp3',
         question: '¿Qué significa la misericordia de Dios?',
         options: [
           'Que Dios nos perdona del todo y nos ayuda a empezar de nuevo',
@@ -116,6 +123,7 @@ export const lessonPerdonReconciliacion: Lesson = {
       },
       {
         id: 'qp4',
+audioSrc: '/audio/quiz-perdon-reconciliacion-4.mp3',
         question: 'Cuando nos equivocamos, ¿qué dos cosas podemos hacer?',
         options: [
           'Esconderlo y no contárselo a nadie',
@@ -144,6 +152,7 @@ export const lessonPerdonReconciliacion: Lesson = {
     ],
   },
   family: {
+    audioSrc: '/audio/familia-perdon-reconciliacion.mp3',
     activityTitle: 'La fiesta del perdón en casa',
     activity:
       'Contad en familia la historia del hijo que volvió a casa, cada uno con sus palabras. Después, cada uno pide perdón en voz alta por algo pequeño del día (un enfado, una palabra fea) y se dan un abrazo. Descubrid juntos qué bien sienta perdonar y ser perdonados.',

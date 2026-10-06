@@ -2,13 +2,25 @@
 /**
  * generate-audio.mjs — Generación reproducible de los audios de narración.
  * ----------------------------------------------------------------------------
- * Genera los MP3 de las narraciones (bloques `escucha` de las lecciones y
- * oraciones) con la voz elegida por el usuario y los guarda en `public/audio/`.
+ * Genera los MP3 de las narraciones con la voz elegida por el usuario y los
+ * guarda en `public/audio/`.
  *
  *   Voz:      avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k ("Vivacious Fountain",
  *             femenina, acento español peninsular, joven y alegre)
  *   Idioma:   es_ES
  *   Motor:    /opt/hatch/bin/tts speak (texto por stdin, nunca en el comando)
+ *
+ * Inventario (manifiesto):
+ *   - escucha-<slug>.mp3 ......... bloques `escucha` de las lecciones (17)
+ *   - oracion-<id>.mp3 ........... oraciones de lección + fundamentales (19)
+ *   - bloque-<id-corto>.mp3 ...... bloques `descubre`/`piensa`/`reza` (61)
+ *       (id-corto = id del bloque sin el prefijo "l-", p. ej. bloque-ser-cristiano-b1.mp3)
+ *   - familia-<slug>.mp3 ......... actividad "En familia" de cada lección (15)
+ *   - quiz-<slug>-<n>.mp3 ........ cada pregunta del quiz con sus opciones (62)
+ *   - misa-<nn>.mp3 .............. cada momento de la Misa (25)
+ *   - reconciliacion-paso-<n>.mp3 . pasos de "¿Qué ocurrirá cuando vaya a confesarme?" (8)
+ *   - ano-<id>.mp3 ............... tiempos del año litúrgico (6)
+ *   - paso-juega.mp3 ............. paso estático "Es hora de jugar" (1)
  *
  * Uso:
  *   node tools/generate-audio.mjs --inventory   # muestra el manifiesto sin generar
@@ -21,7 +33,7 @@
  * Los errores permanentes (auth, parámetros inválidos) abortan de inmediato.
  */
 import { spawnSync } from 'child_process';
-import { existsSync, mkdirSync, readFileSync, writeFileSync, mkdtempSync } from 'fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync, mkdtempSync, statSync } from 'fs';
 import { tmpdir } from 'os';
 import { join, dirname, resolve } from 'path';
 import { fileURLToPath, pathToFileURL } from 'url';
@@ -80,7 +92,43 @@ async function loadData() {
   const dataDir = transpileTree();
   const lessons = await import(pathToFileURL(join(dataDir, 'lessons', 'index.js')).href);
   const oraciones = await import(pathToFileURL(join(dataDir, 'oraciones.js')).href);
-  return { LESSONS: lessons.LESSONS, ORACIONES_FUNDAMENTALES: oraciones.ORACIONES_FUNDAMENTALES };
+  const misa = await import(pathToFileURL(join(dataDir, 'misa.js')).href);
+  return { LESSONS: lessons.LESSONS, ORACIONES_FUNDAMENTALES: oraciones.ORACIONES_FUNDAMENTALES, MISA_MOMENTOS: misa.MISA_MOMENTOS };
+}
+
+/* ------------- extracción de textos que viven en rutas (.tsx) ------------- */
+/* Los pasos de Reconciliación y los tiempos del Año litúrgico están definidos
+ * en los componentes de ruta (no en src/data), así que se extraen por regex
+ * del fuente. Si el conteo no cuadra, se aborta con error. */
+
+function extractPasos() {
+  const src = readFileSync(join(ROOT, 'src', 'routes', 'ninos', 'reconciliacion.tsx'), 'utf8');
+  const start = src.indexOf('const PASOS_SIMULACION');
+  if (start < 0) throw new Error('No se encontró PASOS_SIMULACION');
+  const end = src.indexOf('\n];', start);
+  const body = src.slice(start, end);
+  // Tolerante a la línea `audioSrc` (añadida por tools/apply-audio-src.mjs)
+  // que puede aparecer entre `titulo` y `texto`.
+  const re = /titulo:\s*'((?:[^'\\]|\\.)*)'\s*,(?:\s*audioSrc:\s*'[^']*',)?\s*texto:\s*'((?:[^'\\]|\\.)*)'/g;
+  const out = [];
+  let m;
+  while ((m = re.exec(body)) !== null) out.push({ titulo: m[1], texto: m[2] });
+  if (out.length !== 8) throw new Error(`Se esperaban 8 pasos de simulación, encontrados ${out.length}`);
+  return out;
+}
+
+function extractTiempos() {
+  const src = readFileSync(join(ROOT, 'src', 'routes', 'ano-liturgico.tsx'), 'utf8');
+  const start = src.indexOf('const TIEMPOS');
+  if (start < 0) throw new Error('No se encontró TIEMPOS');
+  const end = src.indexOf('\n];', start);
+  const body = src.slice(start, end);
+  const re = /id:\s*'([^']+)'[\s\S]*?nombre:\s*'((?:[^'\\]|\\.)*)'[\s\S]*?texto:\s*'((?:[^'\\]|\\.)*)'/g;
+  const out = [];
+  let m;
+  while ((m = re.exec(body)) !== null) out.push({ id: m[1], nombre: m[2], texto: m[3] });
+  if (out.length !== 6) throw new Error(`Se esperaban 6 tiempos litúrgicos, encontrados ${out.length}`);
+  return out;
 }
 
 /* --------------------------- forma hablada ------------------------------- */
@@ -97,7 +145,16 @@ function numeroALetras(n) {
 
 /** Convierte párrafos con viñetas a texto corrido apto para TTS. */
 function spokenForm(paragraphs) {
-  let t = paragraphs.join('\n');
+  return sanitizeSpoken(paragraphs.join('\n'));
+}
+
+/**
+ * Sanea un texto ya compuesto para narración. IMPORTANTE: los caracteres
+ * · • ▪ rompen el backend TTS (verificado el 2026-10-06: devuelven audio
+ * vacío/truncado), así que deben eliminarse de CUALQUIER texto enviado,
+ * incluidos los títulos que se concatenan sin pasar por spokenForm.
+ */
+function sanitizeSpoken(t) {
   t = t.replace(/[•·▪]/g, '. ');          // viñetas → pausa
   t = t.replace(/\s*\n\s*/g, '. ');       // saltos de línea → pausa
   t = t.replace(/\s{2,}/g, ' ');          // colapsa espacios
@@ -126,7 +183,7 @@ function buildManifest(LESSONS, ORACIONES_FUNDAMENTALES) {
         name,
         kind: 'escucha',
         source: `${lesson.slug} / ${b.id}`,
-        text: `${b.title}. ${spokenForm(b.paragraphs)}`,
+        text: sanitizeSpoken(`${b.title}. ${spokenForm(b.paragraphs)}`),
       });
     });
     const p = lesson.prayer;
@@ -134,7 +191,7 @@ function buildManifest(LESSONS, ORACIONES_FUNDAMENTALES) {
       name: `oracion-${p.id}.mp3`,
       kind: 'oracion',
       source: `lección ${lesson.slug} / ${p.id}`,
-      text: `${p.title}. ${spokenForm(p.lines)}`,
+      text: sanitizeSpoken(`${p.title}. ${spokenForm(p.lines)}`),
     });
   }
   for (const o of ORACIONES_FUNDAMENTALES) {
@@ -142,9 +199,81 @@ function buildManifest(LESSONS, ORACIONES_FUNDAMENTALES) {
       name: `oracion-${o.id}.mp3`,
       kind: 'oracion',
       source: `fundamental / ${o.id}`,
-      text: `${o.title}. ${spokenForm(o.lines)}`,
+      text: sanitizeSpoken(`${o.title}. ${spokenForm(o.lines)}`),
     });
   }
+  return items;
+}
+
+/* --------------------- manifiesto ampliado (toda la zona niños) ------------ */
+
+const JUEGA_TEXTO = 'Es hora de jugar. Lo que acabas de aprender también se puede jugar. Elige un juego y diviértete.';
+
+function buildManifestFull(LESSONS, MISA_MOMENTOS) {
+  const items = [];
+  for (const lesson of LESSONS) {
+    // Bloques descubre / piensa / reza.
+    for (const b of lesson.blocks) {
+      if (!['descubre', 'piensa', 'reza'].includes(b.kind)) continue;
+      const shortId = b.id.replace(/^l-/, '');
+      items.push({
+        name: `bloque-${shortId}.mp3`,
+        kind: 'bloque',
+        source: `${lesson.slug} / ${b.id} (${b.kind})`,
+        text: sanitizeSpoken(`${b.title}. ${spokenForm(b.paragraphs)}`),
+      });
+    }
+    // Paso "En familia".
+    items.push({
+      name: `familia-${lesson.slug}.mp3`,
+      kind: 'familia',
+      source: `lección ${lesson.slug} / familia`,
+      text: sanitizeSpoken(`${lesson.family.activityTitle}. ${spokenForm([lesson.family.activity])}`),
+    });
+    // Quiz: igual que el readText de QuizRunner.
+    lesson.quiz.questions.forEach((q, i) => {
+      items.push({
+        name: `quiz-${lesson.slug}-${i + 1}.mp3`,
+        kind: 'quiz',
+        source: `lección ${lesson.slug} / pregunta ${i + 1} (${q.id})`,
+        text: sanitizeSpoken(`${q.question}. Opciones: ${q.options.join('. ')}.`),
+      });
+    });
+  }
+  // Momentos de la Misa.
+  for (const m of MISA_MOMENTOS) {
+    items.push({
+      name: `misa-${String(m.orden).padStart(2, '0')}.mp3`,
+      kind: 'misa',
+      source: `misa / ${m.id} (orden ${m.orden})`,
+      text: sanitizeSpoken(`${m.titulo}. ${spokenForm([m.quePasa, `Tú: ${m.gesto}`])}`),
+    });
+  }
+  // Pasos de la simulación de Reconciliación.
+  extractPasos().forEach((p, i) => {
+    items.push({
+      name: `reconciliacion-paso-${i + 1}.mp3`,
+      kind: 'reconciliacion',
+      source: `reconciliación / paso ${i + 1} (${p.titulo})`,
+      text: sanitizeSpoken(`${p.titulo}. ${spokenForm([p.texto])}`),
+    });
+  });
+  // Tiempos del año litúrgico.
+  for (const t of extractTiempos()) {
+    items.push({
+      name: `ano-${t.id}.mp3`,
+      kind: 'ano',
+      source: `año litúrgico / ${t.id}`,
+      text: sanitizeSpoken(`${t.nombre}. ${spokenForm([t.texto])}`),
+    });
+  }
+  // Paso estático "Juega" del player de lección.
+  items.push({
+    name: 'paso-juega.mp3',
+    kind: 'paso',
+    source: 'lección / paso juega (texto estático)',
+    text: JUEGA_TEXTO,
+  });
   return items;
 }
 
@@ -171,9 +300,17 @@ function ttsOnce(text, outPath) {
   if (res.status === 0) {
     try {
       const parsed = JSON.parse(stdout.split('\n').pop());
-      if (parsed && parsed.ok) return { ok: true, bytes: parsed.bytes };
-    } catch { /* sigue abajo */ }
-    return { ok: true };
+      if (parsed && parsed.ok) {
+        // Valida que el MP3 existe y no está vacío (el backend a veces
+        // devuelve ok con fichero de 0 bytes en fallos transitorios).
+        const st = existsSync(outPath) ? statSync(outPath) : null;
+        if (st && st.size > 1024) return { ok: true, bytes: parsed.bytes };
+        return { ok: false, error: `MP3 vacío o ausente: ${outPath}`, permanent: false };
+      }
+      return { ok: false, error: `respuesta ok:false del CLI: ${stdout.slice(0, 120)}`, permanent: false };
+    } catch {
+      return { ok: false, error: `respuesta no JSON del CLI: ${stdout.slice(0, 120)}`, permanent: false };
+    }
   }
   return { ok: false, error: stderr || stdout || `exit ${res.status}`, permanent: isPermanentError(stderr + stdout) };
 }
@@ -198,15 +335,19 @@ async function synthesize(item, outPath) {
 /* --------------------------------- main ---------------------------------- */
 
 async function main() {
-  const { LESSONS, ORACIONES_FUNDAMENTALES } = await loadData();
-  const items = buildManifest(LESSONS, ORACIONES_FUNDAMENTALES);
+  const { LESSONS, ORACIONES_FUNDAMENTALES, MISA_MOMENTOS } = await loadData();
+  const items = [...buildManifest(LESSONS, ORACIONES_FUNDAMENTALES), ...buildManifestFull(LESSONS, MISA_MOMENTOS)];
 
   // Chequeo de unicidad de nombres.
   const names = items.map((i) => i.name);
   const dupes = names.filter((n, i) => names.indexOf(n) !== i);
   if (dupes.length > 0) throw new Error(`Nombres duplicados: ${dupes.join(', ')}`);
 
-  console.log(`Manifiesto: ${items.length} audios (${items.filter(i => i.kind === 'escucha').length} escuchas, ${items.filter(i => i.kind === 'oracion').length} oraciones)`);
+  console.log(`Manifiesto: ${items.length} audios`);
+  for (const k of ['escucha', 'oracion', 'bloque', 'familia', 'quiz', 'misa', 'reconciliacion', 'ano', 'paso']) {
+    const n = items.filter((i) => i.kind === k).length;
+    if (n > 0) console.log(`  - ${k}: ${n}`);
+  }
   if (INVENTORY_ONLY) {
     for (const i of items) console.log(`  ${i.name}  (${i.text.length} caracteres)  ← ${i.source}`);
     const totalChars = items.reduce((a, i) => a + i.text.length, 0);

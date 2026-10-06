@@ -16,6 +16,7 @@ export const lessonLaBiblia: Lesson = {
     {
       id: 'l-la-biblia-b1',
       kind: 'descubre',
+      audioSrc: '/audio/bloque-la-biblia-b1.mp3',
       title: 'Un libro muy especial',
       imageLabel: 'Una Biblia abierta con luz suave',
       paragraphs: [
@@ -26,6 +27,7 @@ export const lessonLaBiblia: Lesson = {
     {
       id: 'l-la-biblia-b2',
       kind: 'descubre',
+      audioSrc: '/audio/bloque-la-biblia-b2.mp3',
       title: 'Dos grandes partes',
       paragraphs: [
         'La Biblia tiene dos partes, como dos capítulos de una misma historia.',
@@ -47,6 +49,7 @@ export const lessonLaBiblia: Lesson = {
     {
       id: 'l-la-biblia-b4',
       kind: 'piensa',
+      audioSrc: '/audio/bloque-la-biblia-b4.mp3',
       title: 'Dios me habla hoy',
       paragraphs: [
         'La Biblia no es un libro del pasado: Dios me habla a mí, hoy, cuando la leo o la escucho.',
@@ -57,6 +60,7 @@ export const lessonLaBiblia: Lesson = {
     {
       id: 'l-la-biblia-b5',
       kind: 'reza',
+      audioSrc: '/audio/bloque-la-biblia-b5.mp3',
       title: 'Háblame, Señor',
       paragraphs: [
         'Señor, gracias por tu Palabra.',
@@ -72,6 +76,7 @@ export const lessonLaBiblia: Lesson = {
     questions: [
       {
         id: 'l-la-biblia-q1',
+        audioSrc: '/audio/quiz-la-biblia-1.mp3',
         question: '¿Qué es la Biblia?',
         options: [
           'Un libro de cuentos antiguos',
@@ -85,6 +90,7 @@ export const lessonLaBiblia: Lesson = {
       },
       {
         id: 'l-la-biblia-q2',
+        audioSrc: '/audio/quiz-la-biblia-2.mp3',
         question: '¿Cuáles son las dos grandes partes de la Biblia?',
         options: [
           'El Antiguo Testamento y el Nuevo Testamento',
@@ -98,6 +104,7 @@ export const lessonLaBiblia: Lesson = {
       },
       {
         id: 'l-la-biblia-q3',
+        audioSrc: '/audio/quiz-la-biblia-3.mp3',
         question: '¿Qué cuentan los Evangelios?',
         options: [
           'La historia de los reyes de Israel',
@@ -111,6 +118,7 @@ export const lessonLaBiblia: Lesson = {
       },
       {
         id: 'l-la-biblia-q4',
+        audioSrc: '/audio/quiz-la-biblia-4.mp3',
         question: '¿Cuándo escuchamos el Evangelio en la misa?',
         options: [
           'Nunca',
@@ -136,6 +144,7 @@ export const lessonLaBiblia: Lesson = {
     ],
   },
   family: {
+    audioSrc: '/audio/familia-la-biblia.mp3',
     activityTitle: 'Nuestro rincón de la Palabra',
     activity:
       'Preparad en casa un rincón bonito con la Biblia (una mesita, una vela de mentira o una flor). Cada noche, leed juntos un versículo corto y comentadlo. Empezad por el Evangelio de Marcos: es el más corto.',

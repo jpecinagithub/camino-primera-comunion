@@ -21,6 +21,7 @@ export const lessonMandamientoAmor: Lesson = {
     {
       id: 'ma1',
       kind: 'descubre',
+      audioSrc: '/audio/bloque-ma1.mp3',
       title: 'CREEMOS · La pregunta más importante',
       paragraphs: [
         'Un día le preguntaron a Jesús: «¿Cuál es el mandamiento más importante?».',
@@ -42,6 +43,7 @@ export const lessonMandamientoAmor: Lesson = {
     {
       id: 'ma3',
       kind: 'descubre',
+      audioSrc: '/audio/bloque-ma3.mp3',
       title: 'VIVIMOS · Los Diez Mandamientos, en positivo',
       paragraphs: [
         'Mira qué bonitos son cuando los leemos como un camino de amor:',
@@ -59,6 +61,7 @@ export const lessonMandamientoAmor: Lesson = {
     {
       id: 'ma4',
       kind: 'piensa',
+      audioSrc: '/audio/bloque-ma4.mp3',
       title: 'VIVIMOS · Amar de verdad, cada día',
       paragraphs: [
         'Amar no es solo una palabra bonita: es hacer cosas buenas por los demás.',
@@ -69,6 +72,7 @@ export const lessonMandamientoAmor: Lesson = {
     {
       id: 'ma5',
       kind: 'reza',
+      audioSrc: '/audio/bloque-ma5.mp3',
       title: 'ORAMOS · Enséñanos a amar',
       paragraphs: [
         'Jesús nos pide amar a Dios con todo el corazón y a los demás como a nosotros mismos.',
@@ -83,6 +87,7 @@ export const lessonMandamientoAmor: Lesson = {
     questions: [
       {
         id: 'qm1',
+audioSrc: '/audio/quiz-mandamiento-amor-1.mp3',
         question: '¿Cuál es el mandamiento más importante según Jesús?',
         options: [
           'Amar a Dios con todo el corazón y al prójimo como a uno mismo',
@@ -96,6 +101,7 @@ export const lessonMandamientoAmor: Lesson = {
       },
       {
         id: 'qm2',
+audioSrc: '/audio/quiz-mandamiento-amor-2.mp3',
         question: '¿Qué son los Diez Mandamientos?',
         options: [
           'Una lista de castigos para los que se portan mal',
@@ -109,6 +115,7 @@ export const lessonMandamientoAmor: Lesson = {
       },
       {
         id: 'qm3',
+audioSrc: '/audio/quiz-mandamiento-amor-3.mp3',
         question: 'El cuarto mandamiento nos invita a…',
         options: [
           'Querer y obedecer a papá y mamá',
@@ -122,6 +129,7 @@ export const lessonMandamientoAmor: Lesson = {
       },
       {
         id: 'qm4',
+audioSrc: '/audio/quiz-mandamiento-amor-4.mp3',
         question: '¿Cuál de estos gestos es amar de verdad?',
         options: [
           'Compartir tus juegos con un amigo',
@@ -151,6 +159,7 @@ export const lessonMandamientoAmor: Lesson = {
     ],
   },
   family: {
+    audioSrc: '/audio/familia-mandamiento-amor.mp3',
     activityTitle: 'El mandamiento de la semana',
     activity:
       'Elegid en familia un mandamiento para vivirlo de forma especial esta semana (por ejemplo, el cuarto: sorprender a papá y mamá con una ayuda en casa). Cada noche, contad qué gesto de amor habéis hecho y celebradlo juntos.',

@@ -32,6 +32,7 @@ export const lessonEucaristia: Lesson = {
     {
       id: 'eu2',
       kind: 'descubre',
+      audioSrc: '/audio/bloque-eu2.mp3',
       title: 'CREEMOS · Jesús está de verdad',
       paragraphs: [
         'En cada Misa, cuando el sacerdote repite las palabras de Jesús, el pan y el vino se convierten en su Cuerpo y su Sangre.',
@@ -42,6 +43,7 @@ export const lessonEucaristia: Lesson = {
     {
       id: 'eu3',
       kind: 'piensa',
+      audioSrc: '/audio/bloque-eu3.mp3',
       title: 'CELEBRAMOS · Recibir a Jesús en la Comunión',
       paragraphs: [
         'Comulgar es recibir a Jesús mismo, que viene a vivir dentro de nosotros.',
@@ -52,6 +54,7 @@ export const lessonEucaristia: Lesson = {
     {
       id: 'eu4',
       kind: 'piensa',
+      audioSrc: '/audio/bloque-eu4.mp3',
       title: 'VIVIMOS · El domingo y el sagrario',
       paragraphs: [
         'Los cristianos nos reunimos cada domingo para celebrar la Eucaristía: es el día de la fiesta con Jesús.',
@@ -62,6 +65,7 @@ export const lessonEucaristia: Lesson = {
     {
       id: 'eu5',
       kind: 'reza',
+      audioSrc: '/audio/bloque-eu5.mp3',
       title: 'ORAMOS · Gracias, Jesús, por quedarte',
       paragraphs: [
         'Después de comulgar, hay un momento precioso: la acción de gracias.',
@@ -76,6 +80,7 @@ export const lessonEucaristia: Lesson = {
     questions: [
       {
         id: 'qe1',
+audioSrc: '/audio/quiz-eucaristia-1.mp3',
         question: '¿Cuándo nos dejó Jesús el regalo de la Eucaristía?',
         options: [
           'En la Última Cena, la noche antes de entregar su vida',
@@ -89,6 +94,7 @@ export const lessonEucaristia: Lesson = {
       },
       {
         id: 'qe2',
+audioSrc: '/audio/quiz-eucaristia-2.mp3',
         question: '¿Qué ocurre en la consagración?',
         options: [
           'El pan se convierte en un pan más bonito',
@@ -102,6 +108,7 @@ export const lessonEucaristia: Lesson = {
       },
       {
         id: 'qe3',
+audioSrc: '/audio/quiz-eucaristia-3.mp3',
         question: '¿Qué significa comulgar?',
         options: [
           'Recibir a Jesús mismo, que viene a vivir dentro de nosotros',
@@ -115,6 +122,7 @@ export const lessonEucaristia: Lesson = {
       },
       {
         id: 'qe4',
+audioSrc: '/audio/quiz-eucaristia-4.mp3',
         question: '¿Dónde se queda Jesús después de la Misa?',
         options: [
           'En el sagrario, esperándonos',
@@ -143,6 +151,7 @@ export const lessonEucaristia: Lesson = {
     ],
   },
   family: {
+    audioSrc: '/audio/familia-eucaristia.mp3',
     activityTitle: 'Una visita a Jesús',
     activity:
       'Id juntos a la iglesia un día entre semana, cuando esté tranquila, a visitar a Jesús en el sagrario. Sentáos un rato en silencio delante de Él, contadle vuestras cosas en voz baja y rezad juntos la oración de esta lección. Descubrid qué paz se siente.',

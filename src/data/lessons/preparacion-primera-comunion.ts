@@ -21,6 +21,7 @@ export const lessonPreparacionPrimeraComunion: Lesson = {
     {
       id: 'pc1',
       kind: 'descubre',
+      audioSrc: '/audio/bloque-pc1.mp3',
       title: 'CREEMOS · El gran día se acerca',
       paragraphs: [
         '¡Tu Primera Comunión está cada vez más cerca! Será el día en que recibas a Jesús por primera vez en la Eucaristía.',
@@ -31,6 +32,7 @@ export const lessonPreparacionPrimeraComunion: Lesson = {
     {
       id: 'pc2',
       kind: 'piensa',
+      audioSrc: '/audio/bloque-pc2.mp3',
       title: 'VIVIMOS · Prepararse por dentro',
       paragraphs: [
         'Como cuando preparamos la casa para una visita importante, preparamos el corazón para recibir a Jesús:',
@@ -42,6 +44,7 @@ export const lessonPreparacionPrimeraComunion: Lesson = {
     {
       id: 'pc3',
       kind: 'piensa',
+      audioSrc: '/audio/bloque-pc3.mp3',
       title: 'CELEBRAMOS · Al comulgar',
       paragraphs: [
         'Cuando llegue tu turno, acércate con calma y con alegría: ¡vas al encuentro de Jesús!',
@@ -53,6 +56,7 @@ export const lessonPreparacionPrimeraComunion: Lesson = {
     {
       id: 'pc4',
       kind: 'descubre',
+      audioSrc: '/audio/bloque-pc4.mp3',
       title: 'VIVIMOS · Lo importante es Jesús',
       paragraphs: [
         'Ese día habrá fotos, trajes bonitos, comida en familia y quizá algún regalo. Todo eso está bien.',
@@ -63,6 +67,7 @@ export const lessonPreparacionPrimeraComunion: Lesson = {
     {
       id: 'pc5',
       kind: 'reza',
+      audioSrc: '/audio/bloque-pc5.mp3',
       title: 'ORAMOS · Ya casi estás aquí',
       paragraphs: [
         'Cuenta los días que faltan con ilusión, como se cuenta atrás una fiesta esperada.',
@@ -77,6 +82,7 @@ export const lessonPreparacionPrimeraComunion: Lesson = {
     questions: [
       {
         id: 'qpc1',
+audioSrc: '/audio/quiz-preparacion-primera-comunion-1.mp3',
         question: '¿Qué es lo más importante del día de la Primera Comunión?',
         options: [
           'Recibir a Jesús por primera vez en la Eucaristía',
@@ -90,6 +96,7 @@ export const lessonPreparacionPrimeraComunion: Lesson = {
       },
       {
         id: 'qpc2',
+audioSrc: '/audio/quiz-preparacion-primera-comunion-2.mp3',
         question: '¿Cómo nos preparamos por dentro?',
         options: [
           'Con reconciliación, oración y paz con los demás',
@@ -103,6 +110,7 @@ export const lessonPreparacionPrimeraComunion: Lesson = {
       },
       {
         id: 'qpc3',
+audioSrc: '/audio/quiz-preparacion-primera-comunion-3.mp3',
         question: 'Al recibir a Jesús, ¿qué respondemos?',
         options: [
           '«Amén», que significa «sí, lo creo»',
@@ -116,6 +124,7 @@ export const lessonPreparacionPrimeraComunion: Lesson = {
       },
       {
         id: 'qpc4',
+audioSrc: '/audio/quiz-preparacion-primera-comunion-4.mp3',
         question: 'Después de comulgar, ¿qué hacemos?',
         options: [
           'Hablamos con Jesús en silencio y le damos gracias',
@@ -145,6 +154,7 @@ export const lessonPreparacionPrimeraComunion: Lesson = {
     ],
   },
   family: {
+    audioSrc: '/audio/familia-preparacion-primera-comunion.mp3',
     activityTitle: 'La cuenta atrás del corazón',
     activity:
       'Haced juntos un calendario de cuenta atrás hasta el día de la Primera Comunión. Cada día, una pequeña preparación: una oración juntos, un gesto de amor, un perdón pedido. El día anterior, id a confesaros en familia (los padres también, si podéis) y cenad tranquilos hablando de lo que vais a celebrar.',

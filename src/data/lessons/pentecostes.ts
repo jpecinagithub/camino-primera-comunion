@@ -27,6 +27,7 @@ export const lessonPentecostes: Lesson = {
     {
       id: 'l-pentecostes-b2',
       kind: 'descubre',
+      audioSrc: '/audio/bloque-pentecostes-b2.mp3',
       title: 'Nace la Iglesia',
       paragraphs: [
         'Aquel día, muchísima gente escuchó a los apóstoles y quiso seguir a Jesús. Así nació la Iglesia.',
@@ -36,6 +37,7 @@ export const lessonPentecostes: Lesson = {
     {
       id: 'l-pentecostes-b3',
       kind: 'descubre',
+      audioSrc: '/audio/bloque-pentecostes-b3.mp3',
       title: 'El Espíritu Santo, nuestro ayudante',
       paragraphs: [
         'El Espíritu Santo no se quedó en el pasado: también viene a nosotros.',
@@ -45,6 +47,7 @@ export const lessonPentecostes: Lesson = {
     {
       id: 'l-pentecostes-b4',
       kind: 'piensa',
+      audioSrc: '/audio/bloque-pentecostes-b4.mp3',
       title: 'Pídele ayuda hoy',
       paragraphs: [
         '¿Cuándo puedes pedir ayuda al Espíritu Santo?',
@@ -55,6 +58,7 @@ export const lessonPentecostes: Lesson = {
     {
       id: 'l-pentecostes-b5',
       kind: 'reza',
+      audioSrc: '/audio/bloque-pentecostes-b5.mp3',
       title: 'Ven, Espíritu Santo',
       paragraphs: [
         'Ven, Espíritu Santo, llena mi corazón.',
@@ -70,6 +74,7 @@ export const lessonPentecostes: Lesson = {
     questions: [
       {
         id: 'l-pentecostes-q1',
+        audioSrc: '/audio/quiz-pentecostes-1.mp3',
         question: '¿Qué pasó en Pentecostés?',
         options: [
           'Vino el Espíritu Santo sobre los apóstoles',
@@ -83,6 +88,7 @@ export const lessonPentecostes: Lesson = {
       },
       {
         id: 'l-pentecostes-q2',
+        audioSrc: '/audio/quiz-pentecostes-2.mp3',
         question: '¿Por qué decimos que en Pentecostés nace la Iglesia?',
         options: [
           'Porque se construyó la primera iglesia',
@@ -96,6 +102,7 @@ export const lessonPentecostes: Lesson = {
       },
       {
         id: 'l-pentecostes-q3',
+        audioSrc: '/audio/quiz-pentecostes-3.mp3',
         question: '¿Cómo nos ayuda el Espíritu Santo?',
         options: [
           'Haciendo los deberes por nosotros',
@@ -109,6 +116,7 @@ export const lessonPentecostes: Lesson = {
       },
       {
         id: 'l-pentecostes-q4',
+        audioSrc: '/audio/quiz-pentecostes-4.mp3',
         question: '¿Qué puedes decir cuando necesitas ayuda?',
         options: [
           '"No puedo con esto"',
@@ -134,6 +142,7 @@ export const lessonPentecostes: Lesson = {
     ],
   },
   family: {
+    audioSrc: '/audio/familia-pentecostes.mp3',
     activityTitle: 'La llama de Pentecostés',
     activity:
       'Recortad en cartulina roja, naranja y amarilla llamas de fuego. En cada una, escribid un don que queréis pedir al Espíritu Santo (alegría, paciencia, valentía...). Pegadlas en una ventana de casa como recordatorio de que Él está con vosotros.',

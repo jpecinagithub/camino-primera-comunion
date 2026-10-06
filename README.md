@@ -87,11 +87,28 @@ generados con `tools/generate_icons.py`. Los MP3 de narración
 
 ## Audios de narración
 
-Las narraciones (bloques `escucha` y oraciones) se **pre-generan en tiempo de
+Todas las narraciones de la zona de niños se **pre-generan en tiempo de
 autoría** como MP3 y se sirven con el reproductor propio `AudioPlayer`
 (`src/components/AudioPlayer.tsx`): sin IA en runtime, contenido determinista
-y revisable, funciona offline. Donde no hay audio pre-generado se mantiene el
-botón "Leer en voz alta" (SpeechSynthesis) como reserva.
+y revisable, funciona offline. El botón "Leer en voz alta" (SpeechSynthesis)
+queda solo como reserva donde no exista audio pre-generado (zona de padres).
+
+Inventario completo (213 ficheros, `public/audio/`):
+
+| Prefijo | Contenido | Nº |
+|---|---|---|
+| `escucha-<slug>.mp3` | Bloques `escucha` de las lecciones | 17 |
+| `oracion-<id>.mp3` | Oraciones de lección + fundamentales | 19 |
+| `bloque-<id>.mp3` | Bloques `descubre` / `piensa` / `reza` | 61 |
+| `familia-<slug>.mp3` | Paso "En familia" de cada lección | 15 |
+| `quiz-<slug>-<n>.mp3` | Cada pregunta del quiz con sus opciones | 62 |
+| `misa-<nn>.mp3` | Cada momento de la Misa (01–24) | 24 |
+| `reconciliacion-paso-<n>.mp3` | Simulación "¿Qué ocurrirá cuando vaya a confesarme?" | 8 |
+| `ano-<id>.mp3` | Tiempos del año litúrgico | 6 |
+| `paso-juega.mp3` | Paso estático "Es hora de jugar" | 1 |
+
+El botón "Escuchar todo el recorrido" de la Misa reproduce los 24 momentos
+**en secuencia** (playlist con el evento `ended`), no un audio gigante.
 
 - Voz elegida por el usuario (2026-10-06): **"Vivacious Fountain"**
   (`avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k`), femenina, español peninsular,
@@ -100,11 +117,16 @@ botón "Leer en voz alta" (SpeechSynthesis) como reserva.
   inglés y árabe, sin español.
 - Generar: `node tools/generate-audio.mjs` (idempotente; `--force` regenera,
   `--inventory` muestra el manifiesto sin generar). Guarda en `public/audio/`
-  y registra el manifiesto en `tools/audio-manifest.json`. Nombres estables:
-  `escucha-<slug>.mp3` y `oracion-<id>.mp3`.
-- Si añades una lección con bloques `escucha` u oraciones nuevas, genera sus
-  audios y añade el campo `audioSrc` correspondiente en los datos
-  (`ContentBlock`, `Prayer`, `OracionFundamental`).
+  y registra el manifiesto en `tools/audio-manifest.json`. Después, ejecuta
+  `node tools/apply-audio-src.mjs` para rellenar los campos `audioSrc` en los
+  datos (`ContentBlock`, `QuizQuestion`, `FamilyBlock`, `Prayer`,
+  `MomentoMisa`, pasos de Reconciliación y tiempos del año litúrgico).
+- Si añades una lección con bloques nuevos, genera sus audios y añade el
+  campo `audioSrc` correspondiente en los datos.
+- Nota técnica (2026-10-06): los caracteres `·` `•` `▪` **rompen el backend
+  TTS** (devuelve audio vacío/truncado). `sanitizeSpoken()` en
+  `tools/generate-audio.mjs` los elimina de todo texto enviado al CLI,
+  incluidos los títulos. No envíes nunca esos caracteres al TTS.
 
 ## Privacidad infantil (privacy by design)
 
@@ -127,8 +149,9 @@ botón "Leer en voz alta" (SpeechSynthesis) como reserva.
 3. Añádela al array correspondiente (`part1.ts`/`part2.ts` o uno nuevo);
    `src/data/lessons/index.ts` la incluye en `LESSONS` automáticamente.
 4. Valídala: `validateLesson(leccion)` y añade un test en `__tests__/`.
-5. Genera los audios de sus bloques `escucha` y su oración:
-   `node tools/generate-audio.mjs` (rellena `audioSrc` en los datos).
+5. Genera los audios de sus bloques, paso "En familia", quiz y oración:
+   `node tools/generate-audio.mjs` y luego `node tools/apply-audio-src.mjs`
+   (rellena `audioSrc` en los datos).
 6. Aparecerá automáticamente en Mi Camino, Orar y la zona de padres.
 
 ## Cómo añadir un juego

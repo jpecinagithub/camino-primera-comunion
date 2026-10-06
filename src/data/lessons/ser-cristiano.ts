@@ -16,6 +16,7 @@ export const lessonSerCristiano: Lesson = {
     {
       id: 'l-ser-cristiano-b1',
       kind: 'descubre',
+      audioSrc: '/audio/bloque-ser-cristiano-b1.mp3',
       title: 'Ser cristiano es seguir a Jesús',
       imageLabel: 'Niños y niñas siguiendo a Jesús por un camino',
       paragraphs: [
@@ -37,6 +38,7 @@ export const lessonSerCristiano: Lesson = {
     {
       id: 'l-ser-cristiano-b3',
       kind: 'descubre',
+      audioSrc: '/audio/bloque-ser-cristiano-b3.mp3',
       title: 'Nuestra señal: el amor',
       paragraphs: [
         '¿Cómo se nota que somos cristianos? Jesús nos dio la respuesta: por el amor.',
@@ -46,6 +48,7 @@ export const lessonSerCristiano: Lesson = {
     {
       id: 'l-ser-cristiano-b4',
       kind: 'piensa',
+      audioSrc: '/audio/bloque-ser-cristiano-b4.mp3',
       title: 'Cristiano cada día',
       paragraphs: [
         'Ser cristiano no es solo cosa de los domingos. Es una forma de vivir todos los días.',
@@ -56,6 +59,7 @@ export const lessonSerCristiano: Lesson = {
     {
       id: 'l-ser-cristiano-b5',
       kind: 'reza',
+      audioSrc: '/audio/bloque-ser-cristiano-b5.mp3',
       title: 'Jesús, enséñame a amar',
       paragraphs: [
         'Jesús, amigo mío, gracias por llamarme a tu familia.',
@@ -70,6 +74,7 @@ export const lessonSerCristiano: Lesson = {
     questions: [
       {
         id: 'l-ser-cristiano-q1',
+        audioSrc: '/audio/quiz-ser-cristiano-1.mp3',
         question: '¿Qué significa ser cristiano?',
         options: [
           'Ir de vez en cuando a la iglesia',
@@ -83,6 +88,7 @@ export const lessonSerCristiano: Lesson = {
       },
       {
         id: 'l-ser-cristiano-q2',
+        audioSrc: '/audio/quiz-ser-cristiano-2.mp3',
         question: '¿Qué es la Iglesia?',
         options: [
           'Solo el edificio donde se celebra la misa',
@@ -96,6 +102,7 @@ export const lessonSerCristiano: Lesson = {
       },
       {
         id: 'l-ser-cristiano-q3',
+        audioSrc: '/audio/quiz-ser-cristiano-3.mp3',
         question: '¿Cuál es la señal que distingue a los cristianos?',
         options: [
           'El amor a los demás',
@@ -109,6 +116,7 @@ export const lessonSerCristiano: Lesson = {
       },
       {
         id: 'l-ser-cristiano-q4',
+        audioSrc: '/audio/quiz-ser-cristiano-4.mp3',
         question: '¿Cuándo vivimos como cristianos?',
         options: [
           'Solo los domingos en misa',
@@ -134,6 +142,7 @@ export const lessonSerCristiano: Lesson = {
     ],
   },
   family: {
+    audioSrc: '/audio/familia-ser-cristiano.mp3',
     activityTitle: 'El árbol de nuestra familia cristiana',
     activity:
       'Dibujad en un papel grande un árbol con muchas ramas. En cada rama escribid el nombre de alguien de vuestra familia o parroquia. Pegadlo en la nevera y recordad: ¡formamos parte de la gran familia de Jesús!',

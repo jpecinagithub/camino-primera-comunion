@@ -22,6 +22,7 @@ export const lessonComoConfesarse: Lesson = {
     {
       id: 'cf1',
       kind: 'descubre',
+      audioSrc: '/audio/bloque-cf1.mp3',
       title: 'CREEMOS · No tengas miedo',
       paragraphs: [
         'Confesarse es ir al encuentro de Jesús, que nos espera para perdonarnos y abrazarnos.',
@@ -49,6 +50,7 @@ export const lessonComoConfesarse: Lesson = {
     {
       id: 'cf3',
       kind: 'piensa',
+      audioSrc: '/audio/bloque-cf3.mp3',
       title: 'VIVIMOS · El examen de conciencia',
       paragraphs: [
         'El examen de conciencia se hace en silencio, con calma, hablando con Jesús en el corazón.',
@@ -59,6 +61,7 @@ export const lessonComoConfesarse: Lesson = {
     {
       id: 'cf4',
       kind: 'piensa',
+      audioSrc: '/audio/bloque-cf4.mp3',
       title: 'CELEBRAMOS · El abrazo del perdón',
       paragraphs: [
         'Cuando el sacerdote te da la absolución, es Jesús mismo quien te perdona y te dice: «empieza de nuevo».',
@@ -69,6 +72,7 @@ export const lessonComoConfesarse: Lesson = {
     {
       id: 'cf5',
       kind: 'reza',
+      audioSrc: '/audio/bloque-cf5.mp3',
       title: 'ORAMOS · Lo siento, Jesús',
       paragraphs: [
         'El acto de contrición es decirle a Jesús, con palabras sencillas, que lo sientes y que lo quieres.',
@@ -83,6 +87,7 @@ export const lessonComoConfesarse: Lesson = {
     questions: [
       {
         id: 'qc1',
+audioSrc: '/audio/quiz-como-confesarse-1.mp3',
         question: '¿Qué es lo primero que hacemos antes de confesarnos?',
         options: [
           'El examen de conciencia: pensar en silencio en los momentos en que no amamos',
@@ -96,6 +101,7 @@ export const lessonComoConfesarse: Lesson = {
       },
       {
         id: 'qc2',
+audioSrc: '/audio/quiz-como-confesarse-2.mp3',
         question: '¿Cómo te trata el sacerdote en la confesión?',
         options: [
           'Te escucha con cariño, te ayuda y guarda secreto de todo',
@@ -109,6 +115,7 @@ export const lessonComoConfesarse: Lesson = {
       },
       {
         id: 'qc3',
+audioSrc: '/audio/quiz-como-confesarse-3.mp3',
         question: '¿Qué es la absolución?',
         options: [
           'El momento en que el sacerdote, en nombre de Jesús, te perdona y te bendice',
@@ -122,6 +129,7 @@ export const lessonComoConfesarse: Lesson = {
       },
       {
         id: 'qc4',
+audioSrc: '/audio/quiz-como-confesarse-4.mp3',
         question: 'Después de confesarte, ¿qué haces?',
         options: [
           'Sales corriendo sin decir nada',
@@ -149,6 +157,7 @@ export const lessonComoConfesarse: Lesson = {
     ],
   },
   family: {
+    audioSrc: '/audio/familia-como-confesarse.mp3',
     activityTitle: 'Practicar la confianza',
     activity:
       'Hablad en familia de cómo fue vuestra primera confesión (los padres pueden contar la suya con cariño y humor). Representad juntos, como un juego tranquilo, cómo se saluda al sacerdote y cómo se empieza («Bendígame, padre…»). Lo importante es que el niño sienta que confesarse es algo bueno y sencillo.',

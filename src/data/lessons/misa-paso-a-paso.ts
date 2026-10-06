@@ -21,6 +21,7 @@ export const lessonMisaPasoAPaso: Lesson = {
     {
       id: 'ms1',
       kind: 'descubre',
+      audioSrc: '/audio/bloque-ms1.mp3',
       title: 'CREEMOS · La fiesta de cada domingo',
       paragraphs: [
         'La Misa es la gran fiesta semanal de la familia de Jesús: nos reunimos para escucharle y para recibirle.',
@@ -44,6 +45,7 @@ export const lessonMisaPasoAPaso: Lesson = {
     {
       id: 'ms3',
       kind: 'descubre',
+      audioSrc: '/audio/bloque-ms3.mp3',
       title: 'CELEBRAMOS · Liturgia de la Palabra: Dios nos habla',
       paragraphs: [
         '• LECTURAS: escuchamos la Palabra de Dios desde el AMBÓN, que es como el atril de la iglesia.',
@@ -57,6 +59,7 @@ export const lessonMisaPasoAPaso: Lesson = {
     {
       id: 'ms4',
       kind: 'descubre',
+      audioSrc: '/audio/bloque-ms4.mp3',
       title: 'CELEBRAMOS · Liturgia eucarística: el gran regalo',
       paragraphs: [
         '• OFERTORIO: llevamos al ALTAR el pan y el vino, y también nuestra vida y nuestras ofrendas.',
@@ -68,6 +71,7 @@ export const lessonMisaPasoAPaso: Lesson = {
     {
       id: 'ms5',
       kind: 'piensa',
+      audioSrc: '/audio/bloque-ms5.mp3',
       title: 'CELEBRAMOS Y VIVIMOS · Comunión y despedida',
       paragraphs: [
         '• COMUNIÓN: recibimos a Jesús con el corazón preparado. Pregunta a tu catequista cómo se hace en tu parroquia: en cada lugar puede haber costumbres distintas.',
@@ -79,6 +83,7 @@ export const lessonMisaPasoAPaso: Lesson = {
     {
       id: 'ms6',
       kind: 'reza',
+      audioSrc: '/audio/bloque-ms6.mp3',
       title: 'ORAMOS · Gracias por invitarme',
       paragraphs: [
         'La Misa es una invitación de Jesús: Él te espera cada domingo en su mesa.',
@@ -93,6 +98,7 @@ export const lessonMisaPasoAPaso: Lesson = {
     questions: [
       {
         id: 'qmi1',
+audioSrc: '/audio/quiz-misa-paso-a-paso-1.mp3',
         question: '¿Cuáles son las grandes partes de la Misa?',
         options: [
           'Ritos iniciales, Liturgia de la Palabra, Liturgia eucarística, Comunión y despedida',
@@ -106,6 +112,7 @@ export const lessonMisaPasoAPaso: Lesson = {
       },
       {
         id: 'qmi2',
+audioSrc: '/audio/quiz-misa-paso-a-paso-2.mp3',
         question: '¿Qué es el ambón?',
         options: [
           'El atril desde donde se proclama la Palabra de Dios',
@@ -119,6 +126,7 @@ export const lessonMisaPasoAPaso: Lesson = {
       },
       {
         id: 'qmi3',
+audioSrc: '/audio/quiz-misa-paso-a-paso-3.mp3',
         question: '¿Qué ocurre en la consagración?',
         options: [
           'El pan y el vino se convierten en el Cuerpo y la Sangre de Jesús',
@@ -132,6 +140,7 @@ export const lessonMisaPasoAPaso: Lesson = {
       },
       {
         id: 'qmi4',
+audioSrc: '/audio/quiz-misa-paso-a-paso-4.mp3',
         question: '¿Qué es el sagrario?',
         options: [
           'La capillita donde se guarda a Jesús después de la Misa',
@@ -145,6 +154,7 @@ export const lessonMisaPasoAPaso: Lesson = {
       },
       {
         id: 'qmi5',
+audioSrc: '/audio/quiz-misa-paso-a-paso-5.mp3',
         question: '¿Con qué palabras nos envía el sacerdote al final de la Misa?',
         options: [
           '«Podéis ir en paz»',
@@ -173,6 +183,7 @@ export const lessonMisaPasoAPaso: Lesson = {
     ],
   },
   family: {
+    audioSrc: '/audio/familia-misa-paso-a-paso.mp3',
     activityTitle: 'Exploradores de la Misa',
     activity:
       'Id juntos a Misa el domingo con «misión de exploradores»: cada uno se fija en un detalle (el ambón, el altar, el sagrario, la lucecita roja). Al salir, compartid lo que habéis descubierto y preguntad al sacerdote o al catequista lo que no entendáis.',

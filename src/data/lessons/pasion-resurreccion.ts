@@ -38,6 +38,7 @@ export const lessonPasionResurreccion: Lesson = {
     {
       id: 'l-pasion-resurreccion-b3',
       kind: 'descubre',
+      audioSrc: '/audio/bloque-pasion-resurreccion-b3.mp3',
       title: '¡Jesús ha resucitado!',
       imageLabel: 'Amanecer luminoso: el sepulcro vacío y luz de Pascua',
       paragraphs: [
@@ -48,6 +49,7 @@ export const lessonPasionResurreccion: Lesson = {
     {
       id: 'l-pasion-resurreccion-b4',
       kind: 'piensa',
+      audioSrc: '/audio/bloque-pasion-resurreccion-b4.mp3',
       title: 'La cruz, signo de amor',
       paragraphs: [
         'Cuando ves una cruz, no veas solo sufrimiento: ve el amor más grande del mundo.',
@@ -58,6 +60,7 @@ export const lessonPasionResurreccion: Lesson = {
     {
       id: 'l-pasion-resurreccion-b5',
       kind: 'reza',
+      audioSrc: '/audio/bloque-pasion-resurreccion-b5.mp3',
       title: 'Gracias por tu amor',
       paragraphs: [
         'Jesús, gracias por entregar tu vida por mí.',
@@ -73,6 +76,7 @@ export const lessonPasionResurreccion: Lesson = {
     questions: [
       {
         id: 'l-pasion-resurreccion-q1',
+        audioSrc: '/audio/quiz-pasion-resurreccion-1.mp3',
         question: '¿Qué nos regaló Jesús en la Última Cena?',
         options: ['La Eucaristía', 'Una fiesta', 'Un viaje'],
         correctIndex: 0,
@@ -82,6 +86,7 @@ export const lessonPasionResurreccion: Lesson = {
       },
       {
         id: 'l-pasion-resurreccion-q2',
+        audioSrc: '/audio/quiz-pasion-resurreccion-2.mp3',
         question: '¿Por qué aceptó Jesús la cruz?',
         options: [
           'Porque no pudo evitarlo',
@@ -95,6 +100,7 @@ export const lessonPasionResurreccion: Lesson = {
       },
       {
         id: 'l-pasion-resurreccion-q3',
+        audioSrc: '/audio/quiz-pasion-resurreccion-3.mp3',
         question: '¿Qué pasó al tercer día?',
         options: [
           'Sus amigos se olvidaron de Él',
@@ -108,6 +114,7 @@ export const lessonPasionResurreccion: Lesson = {
       },
       {
         id: 'l-pasion-resurreccion-q4',
+        audioSrc: '/audio/quiz-pasion-resurreccion-4.mp3',
         question: '¿Qué significa la cruz para los cristianos?',
         options: [
           'Un adorno bonito',
@@ -133,6 +140,7 @@ export const lessonPasionResurreccion: Lesson = {
     ],
   },
   family: {
+    audioSrc: '/audio/familia-pasion-resurreccion.mp3',
     activityTitle: 'Nuestro rincón de Pascua',
     activity:
       'En casa, colocad una cruz en un lugar visible con una vela (de mentira) o una flor. Durante la Semana Santa, rezad juntos ante ella cada noche dando gracias a Jesús por su amor. El Domingo de Pascua, celebrad con alegría: ¡Cristo ha resucitado!',

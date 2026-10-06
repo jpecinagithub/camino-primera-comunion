@@ -13,6 +13,7 @@ import { Church, Cross, Flame, Gift, Heart, Sun } from 'lucide-react';
 import { SectionTitle } from '../components/SectionTitle';
 import { Card } from '../components/Card';
 import { ReadAloud } from '../a11y/ReadAloud';
+import { AudioPlayer } from '../components/AudioPlayer';
 import './ano-liturgico.css';
 
 interface Tiempo {
@@ -23,11 +24,15 @@ interface Tiempo {
   color: string;
   icon: typeof Sun;
   texto: string;
+  /** Ruta al MP3 de narración pre-generado. */
+  audioSrc?: string;
 }
 
-const TIEMPOS: Tiempo[] = [
+/** Tiempos del año litúrgico (exportado para tests de audios). */
+export const TIEMPOS: Tiempo[] = [
   {
     id: 'adviento',
+    audioSrc: '/audio/ano-adviento.mp3',
     nombre: 'Adviento',
     semanas: 4,
     color: '#6b4e9b',
@@ -36,6 +41,7 @@ const TIEMPOS: Tiempo[] = [
   },
   {
     id: 'navidad',
+    audioSrc: '/audio/ano-navidad.mp3',
     nombre: 'Navidad',
     semanas: 3,
     color: 'var(--color-gold-dark)',
@@ -44,6 +50,7 @@ const TIEMPOS: Tiempo[] = [
   },
   {
     id: 'cuaresma',
+    audioSrc: '/audio/ano-cuaresma.mp3',
     nombre: 'Cuaresma',
     semanas: 5,
     color: '#6b4e9b',
@@ -52,6 +59,7 @@ const TIEMPOS: Tiempo[] = [
   },
   {
     id: 'semana-santa',
+    audioSrc: '/audio/ano-semana-santa.mp3',
     nombre: 'Semana Santa',
     semanas: 1,
     color: '#d95d4e',
@@ -61,6 +69,7 @@ const TIEMPOS: Tiempo[] = [
   },
   {
     id: 'pascua',
+    audioSrc: '/audio/ano-pascua.mp3',
     nombre: 'Pascua',
     semanas: 7,
     color: 'var(--color-green-dark)',
@@ -69,6 +78,7 @@ const TIEMPOS: Tiempo[] = [
   },
   {
     id: 'ordinario',
+    audioSrc: '/audio/ano-ordinario.mp3',
     nombre: 'Tiempo Ordinario',
     semanas: 32,
     color: 'var(--color-sky-dark)',
@@ -157,7 +167,7 @@ export function AnoLiturgico() {
             className="ano__centro-num"
             aria-hidden="true"
           >
-            5
+            6
           </text>
           <text
             x={CX}
@@ -177,7 +187,14 @@ export function AnoLiturgico() {
           </span>
           <h2 className="ano__nombre">{selected.nombre}</h2>
           <p className="ano__texto">{selected.texto}</p>
-          <ReadAloud text={`${selected.nombre}. ${selected.texto}`} />
+          {selected.audioSrc ? (
+            <AudioPlayer
+              src={selected.audioSrc}
+              label={`Escuchar la narración: ${selected.nombre}`}
+            />
+          ) : (
+            <ReadAloud text={`${selected.nombre}. ${selected.texto}`} />
+          )}
         </div>
       </Card>
     </div>
