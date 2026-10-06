@@ -99,31 +99,33 @@ interface Case {
   contains: string;
   /** Longitud mínima de texto (las páginas muy visuales tienen menos texto). */
   minLength?: number;
+  /** Etiqueta esperada del botón volver contextual (pantallas anidadas). */
+  backLabel?: string;
 }
 
 const CASES: Case[] = [
   { path: '/', mode: null, contains: 'Comunión', minLength: 20 },
   { path: '/selector', mode: null, contains: 'niño', minLength: 40 },
   { path: '/ninos', mode: 'ninos', contains: 'Mi Camino' },
-  { path: '/ninos/camino', mode: 'ninos', contains: 'Iglesia' },
-  { path: '/ninos/nucleo/n1', mode: 'ninos', contains: 'cristianos' },
-  { path: '/ninos/leccion/ser-cristiano', mode: 'ninos', contains: 'cristiano' },
-  { path: '/ninos/jugar', mode: 'ninos', contains: 'Jugar' },
-  { path: '/ninos/juego/memory', mode: 'ninos', contains: 'parejas' },
-  { path: '/ninos/orar', mode: 'ninos', contains: 'Orar' },
-  { path: '/ninos/misa', mode: 'ninos', contains: 'Misa' },
-  { path: '/ninos/reconciliacion', mode: 'ninos', contains: 'reconcili' },
-  { path: '/ninos/mi-comunion', mode: 'ninos', contains: 'Comunión' },
-  { path: '/ninos/avatar', mode: 'ninos', contains: 'avatar' },
-  { path: '/ninos/progreso', mode: 'ninos', contains: 'progreso' },
-  { path: '/ninos/ano-liturgico', mode: 'ninos', contains: 'Pascua', minLength: 100 },
+  { path: '/ninos/camino', mode: 'ninos', contains: 'Iglesia', backLabel: 'Inicio' },
+  { path: '/ninos/nucleo/n1', mode: 'ninos', contains: 'cristianos', backLabel: 'Mi Camino' },
+  { path: '/ninos/leccion/ser-cristiano', mode: 'ninos', contains: 'cristiano', backLabel: 'El núcleo' },
+  { path: '/ninos/jugar', mode: 'ninos', contains: 'Jugar', backLabel: 'Inicio' },
+  { path: '/ninos/juego/memory', mode: 'ninos', contains: 'parejas', backLabel: 'Jugar' },
+  { path: '/ninos/orar', mode: 'ninos', contains: 'Orar', backLabel: 'Inicio' },
+  { path: '/ninos/misa', mode: 'ninos', contains: 'Misa', backLabel: 'Mi Primera Comunión' },
+  { path: '/ninos/reconciliacion', mode: 'ninos', contains: 'reconcili', backLabel: 'Mi Primera Comunión' },
+  { path: '/ninos/mi-comunion', mode: 'ninos', contains: 'Comunión', backLabel: 'Inicio' },
+  { path: '/ninos/avatar', mode: 'ninos', contains: 'avatar', backLabel: 'Inicio' },
+  { path: '/ninos/progreso', mode: 'ninos', contains: 'progreso', backLabel: 'Inicio' },
+  { path: '/ninos/ano-liturgico', mode: 'ninos', contains: 'Pascua', minLength: 100, backLabel: 'Inicio' },
   { path: '/padres', mode: 'padres', contains: 'padres' },
-  { path: '/padres/tema/n1', mode: 'padres', contains: 'cristianos' },
-  { path: '/padres/actividades', mode: 'padres', contains: 'familia' },
-  { path: '/padres/guia', mode: 'padres', contains: 'Comunión' },
-  { path: '/padres/faq', mode: 'padres', contains: 'Misa' },
-  { path: '/padres/recursos', mode: 'padres', contains: 'Recursos' },
-  { path: '/padres/privacidad', mode: 'padres', contains: 'privacidad' },
+  { path: '/padres/tema/n1', mode: 'padres', contains: 'cristianos', backLabel: 'Inicio de padres' },
+  { path: '/padres/actividades', mode: 'padres', contains: 'familia', backLabel: 'Inicio de padres' },
+  { path: '/padres/guia', mode: 'padres', contains: 'Comunión', backLabel: 'Inicio de padres' },
+  { path: '/padres/faq', mode: 'padres', contains: 'Misa', backLabel: 'Inicio de padres' },
+  { path: '/padres/recursos', mode: 'padres', contains: 'Recursos', backLabel: 'Inicio de padres' },
+  { path: '/padres/privacidad', mode: 'padres', contains: 'privacidad', backLabel: 'Inicio de padres' },
   { path: '/acerca', mode: null, contains: 'Conferencia Episcopal' },
   { path: '/ruta-que-no-existe', mode: null, contains: 'camino', minLength: 30 },
 ];
@@ -182,6 +184,17 @@ describe('smoke de rutas', () => {
         reactErrors,
         `errores de consola en ${c.path}: ${reactErrors.map((call: unknown[]) => String(call[0]).slice(0, 120)).join(' | ')}`,
       ).toHaveLength(0);
+      if (c.backLabel) {
+        const backBtn = container.querySelector('.app-shell__back');
+        expect(
+          backBtn,
+          `la ruta ${c.path} no muestra botón volver contextual`,
+        ).not.toBeNull();
+        expect(
+          backBtn!.textContent ?? '',
+          `el botón volver de ${c.path} no lleva la etiqueta «${c.backLabel}»`,
+        ).toContain(c.backLabel);
+      }
     });
   }
 });

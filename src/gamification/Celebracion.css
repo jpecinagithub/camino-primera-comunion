@@ -1,4 +1,5 @@
 .celebracion {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,6 +12,19 @@
   box-shadow: var(--shadow-lg);
   max-width: 420px;
   margin: 0 auto;
+}
+
+/* Capa de partículas: decorativa, no intercepta toques, visible fuera */
+.celebracion__confetti {
+  position: absolute;
+  inset: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.celebracion__particula {
+  position: absolute;
+  top: 32%;
 }
 
 .celebracion__titulo {

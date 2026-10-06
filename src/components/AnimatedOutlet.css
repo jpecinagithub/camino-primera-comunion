@@ -1,0 +1,6 @@
+/* AnimatedOutlet — el envoltorio animado no debe alterar el layout:
+   se comporta como un bloque neutro dentro del <main> de AppShell. */
+.animated-outlet {
+  display: block;
+  min-width: 0;
+}

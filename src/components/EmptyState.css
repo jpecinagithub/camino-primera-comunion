@@ -5,6 +5,12 @@
   text-align: center;
   gap: var(--space-3);
   padding: var(--space-7) var(--space-5);
+  background-color: #fffdf8;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  max-width: 440px;
+  margin: var(--space-5) auto;
 }
 
 .empty-state__icon {
@@ -21,6 +27,8 @@
 .empty-state__title {
   margin: 0;
   font-size: var(--font-size-lg);
+  font-weight: 800;
+  color: var(--color-ink);
 }
 
 .empty-state__description {

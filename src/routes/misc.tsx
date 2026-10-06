@@ -157,7 +157,7 @@ export function OfflinePage() {
   );
 }
 
-/** 404 — ruta no encontrada. */
+/** 404 — ruta no encontrada, con enlaces de recuperación a cada zona. */
 export function NotFound() {
   const { t } = useTranslation();
   return (
@@ -165,9 +165,30 @@ export function NotFound() {
       title={t('notfound.title')}
       description={t('notfound.description')}
       action={
-        <Link to="/">
-          <Button variant="primary">{t('notfound.cta')}</Button>
-        </Link>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 'var(--space-2)',
+            width: '100%',
+          }}
+        >
+          <Link to="/ninos">
+            <Button variant="primary" style={{ width: '100%' }}>
+              {t('nav.notfound.ninos')}
+            </Button>
+          </Link>
+          <Link to="/padres">
+            <Button variant="secondary" style={{ width: '100%' }}>
+              {t('nav.notfound.padres')}
+            </Button>
+          </Link>
+          <Link to="/selector">
+            <Button variant="ghost" style={{ width: '100%' }}>
+              {t('nav.notfound.mode')}
+            </Button>
+          </Link>
+        </div>
       }
     />
   );

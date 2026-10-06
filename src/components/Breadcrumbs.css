@@ -1,0 +1,48 @@
+.breadcrumbs {
+  width: 100%;
+}
+
+.breadcrumbs__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.breadcrumbs__item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--font-size-sm);
+  color: var(--color-ink-soft);
+}
+
+.breadcrumbs__link {
+  color: var(--color-sky-dark);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  /* Objetivo táctil generoso sin romper el flujo de la línea */
+  padding: var(--space-2) var(--space-1);
+  min-height: var(--touch-min);
+  display: inline-flex;
+  align-items: center;
+}
+
+.breadcrumbs__sep {
+  color: var(--color-ink-soft);
+}
+
+.breadcrumbs__current {
+  font-weight: 700;
+  color: var(--color-ink);
+  padding: var(--space-2) 0;
+  display: inline-block;
+  max-width: 40ch;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

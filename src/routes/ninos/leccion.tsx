@@ -14,6 +14,7 @@
  */
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import {
   Check,
   ClipboardCheck,
@@ -23,6 +24,7 @@ import {
   Sparkles,
   Star,
   Users,
+  X,
 } from 'lucide-react';
 import type { ContentBlock, Lesson, QuizQuestion } from '../../data/model';
 import { getLessonBySlug } from '../../data/lessons/index';
@@ -294,6 +296,7 @@ function QuizRunner({
 export function Leccion() {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const lesson = slug ? getLessonBySlug(slug) : undefined;
   const [stepIndex, setStepIndex] = useState(0);
   const [finished, setFinished] = useState<{ score: number; total: number } | null>(null);
@@ -338,9 +341,23 @@ export function Leccion() {
         <Celebracion
           title="¡Lección completada!"
           message={`Has ganado ${finished.score} de ${finished.total} estrellas en esta lección. ¡Sigue así!`}
-          cta="Ver mi núcleo"
-          onContinue={() => navigate(`/ninos/nucleo/${lesson.nucleusId}`)}
+          cta={t('nav.finish.continuePath')}
+          onContinue={() => navigate('/ninos/camino')}
         />
+        <div
+          className="ninos-navegacion"
+          style={{ justifyContent: 'center', flexWrap: 'wrap' }}
+        >
+          <Button
+            variant="secondary"
+            onClick={() => navigate(`/ninos/nucleo/${lesson.nucleusId}`)}
+          >
+            {t('nav.finish.viewNucleus')}
+          </Button>
+          <Button variant="secondary" onClick={() => navigate('/ninos/jugar')}>
+            {t('nav.finish.play')}
+          </Button>
+        </div>
       </div>
     );
   }
@@ -354,6 +371,17 @@ export function Leccion() {
 
   return (
     <div className="ninos">
+      <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+        <Button
+          variant="ghost"
+          onClick={() => navigate(`/ninos/nucleo/${lesson.nucleusId}`)}
+          aria-label={t('nav.exitLesson')}
+        >
+          <X size={20} aria-hidden="true" />
+          {t('nav.exitLesson')}
+        </Button>
+      </div>
+
       <p style={{ margin: 0, color: 'var(--color-ink-soft)' }}>{lesson.title}</p>
 
       <div

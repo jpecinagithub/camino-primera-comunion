@@ -1,0 +1,69 @@
+/* AmbientBackground — fondo decorativo fijo, detrás de todo el contenido.
+   Solo formas y degradados de la paleta; sin texto sobre ellos. */
+
+.ambient-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* El contenido de la app queda por encima del fondo ambiental */
+.app-shell {
+  position: relative;
+  z-index: 1;
+}
+
+.ambient-background__mancha {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.5;
+  animation: ambient-float 24s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.ambient-background__mancha--cielo {
+  top: -18vmax;
+  left: -14vmax;
+  width: 60vmax;
+  height: 60vmax;
+  background: radial-gradient(circle, rgb(191 227 247 / 0.7), transparent 70%);
+}
+
+.ambient-background__mancha--dorada {
+  bottom: -20vmax;
+  right: -12vmax;
+  width: 56vmax;
+  height: 56vmax;
+  background: radial-gradient(circle, rgb(239 217 160 / 0.65), transparent 70%);
+  animation-duration: 29s;
+  animation-delay: -8s;
+}
+
+.ambient-background__mancha--verde {
+  top: 36%;
+  left: 54%;
+  width: 44vmax;
+  height: 44vmax;
+  background: radial-gradient(circle, rgb(205 234 192 / 0.55), transparent 70%);
+  animation-duration: 33s;
+  animation-delay: -15s;
+}
+
+@keyframes ambient-float {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(4vmax, 3vmax, 0) scale(1.08);
+  }
+}
+
+/* Movimiento reducido: el fondo ambiental desaparece del todo */
+@media (prefers-reduced-motion: reduce) {
+  .ambient-background {
+    display: none;
+  }
+}

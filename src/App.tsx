@@ -7,6 +7,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Analytics } from '@vercel/analytics/react';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { LoadingState } from './components/LoadingState';
+import { AmbientBackground } from './components/AmbientBackground';
 import { AppShell } from './components/AppShell';
 import { ModeGate } from './components/ModeGate';
 
@@ -127,6 +128,7 @@ if (window.location.pathname === '/index.html') {
 export default function App() {
   return (
     <ErrorBoundary>
+      <AmbientBackground />
       <Suspense fallback={<LoadingState />}>
         <RouterProvider router={router} />
       </Suspense>

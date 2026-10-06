@@ -157,6 +157,57 @@
   position: relative;
 }
 
+/* Lista animada (cascada): mismo layout que el sendero estático */
+.ninos-sendero__lista {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* Camino punteado decorativo: pasa por el centro de los números de parada.
+   Las tarjetas (fondo crema opaco) lo tapan; solo asoma en los huecos. */
+.ninos-sendero__linea {
+  position: absolute;
+  top: 36px;
+  bottom: 36px;
+  left: 35px; /* 16px de padding + 24px (mitad del número de 48px) - 5px */
+  width: 10px;
+  pointer-events: none;
+}
+
+.ninos-sendero__trazo {
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(
+    circle,
+    var(--color-gold-dark) 3px,
+    transparent 3.5px
+  );
+  background-size: 10px 22px;
+  background-repeat: repeat-y;
+  background-position: center top;
+  opacity: 0.5;
+}
+
+/* Sello dorado de núcleo completado (decorativo: el texto ya lo dice) */
+.ninos-sendero__check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--color-gold);
+  color: var(--color-gold-dark);
+  border: 2px solid var(--color-gold-dark);
+  flex-shrink: 0;
+}
+
+/* Tarjeta de núcleo completado: borde dorado sutil */
+.ninos-sendero__tarjeta--completa {
+  border-color: var(--color-gold-dark);
+}
+
 .ninos-sendero__tarjeta {
   display: flex;
   align-items: center;

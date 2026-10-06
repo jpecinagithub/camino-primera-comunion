@@ -36,7 +36,6 @@ const resources = {
 
       'notfound.title': 'Esta página se ha perdido por el camino',
       'notfound.description': 'La dirección que buscas no existe. Volvamos al camino.',
-      'notfound.cta': 'Volver al inicio',
 
       'selector.firstTime': '¿Primera vez por aquí? Mira la bienvenida',
 
@@ -72,6 +71,22 @@ const resources = {
 
       'profile.nicknameLabel': 'Tu apodo',
       'profile.nicknameHint': 'Inventa un apodo divertido. No uses tu nombre real.',
+
+      'nav.backTo': 'Volver a {{label}}',
+      'nav.changeMode': 'Cambiar de modo',
+      'nav.switchToParents': 'Soy padre o madre',
+      'nav.switchToKids': 'Soy niño o niña',
+      'nav.breadcrumbs': 'Migas de pan',
+      'nav.exitLesson': 'Salir de la lección',
+      'nav.finish.continuePath': 'Continuar mi camino',
+      'nav.finish.viewNucleus': 'Ver mi núcleo',
+      'nav.finish.play': 'Jugar',
+      'nav.game.repeat': 'Repetir',
+      'nav.game.otherGames': 'Jugar a otro juego',
+      'nav.game.backToPath': 'Volver al camino',
+      'nav.notfound.ninos': 'Zona de niños',
+      'nav.notfound.padres': 'Zona de padres',
+      'nav.notfound.mode': 'Cambiar de modo',
     },
   },
 } as const;

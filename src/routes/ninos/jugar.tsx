@@ -8,13 +8,11 @@
  * Juego — /ninos/juego/:id · GameHost + botón volver. onExit → /ninos/jugar.
  */
 import { useNavigate, useParams } from 'react-router-dom';
-import { Gamepad2 } from 'lucide-react';
 import { getGame } from '../../games/registry';
 import { GameHost } from '../../games/GameHost';
 import { JUEGOS } from '../../data/juegos';
 import { NUCLEUS_COLOR_TOKENS } from '../../data/nuclei';
 import { SectionTitle } from '../../components/SectionTitle';
-import { Button } from '../../components/Button';
 import { getGameIcon } from './shared';
 import './ninos.css';
 
@@ -89,14 +87,11 @@ export function Juego() {
 
   return (
     <div className="ninos">
-      <Button
-        variant="ghost"
-        onClick={() => navigate('/ninos/jugar')}
-        aria-label="Volver a la lista de juegos"
-      >
-        <Gamepad2 size={22} aria-hidden="true" /> ← Volver a Jugar
-      </Button>
-      <GameHost gameId={id} onExit={() => navigate('/ninos/jugar')} />
+      <GameHost
+        gameId={id}
+        onExit={() => navigate('/ninos/jugar')}
+        onGoCamino={() => navigate('/ninos/camino')}
+      />
     </div>
   );
 }

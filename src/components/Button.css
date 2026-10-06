@@ -13,11 +13,21 @@
   line-height: 1.2;
   cursor: pointer;
   border: 2px solid transparent;
-  transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.12s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
 }
 
+/* Estado pressed: leve hundimiento táctil */
 .btn:active {
   transform: scale(0.97);
+}
+
+/* Sin movimiento: el pressed no deforma el botón */
+@media (prefers-reduced-motion: reduce) {
+  .btn,
+  .btn:active {
+    transform: none;
+    transition: none;
+  }
 }
 
 .btn:disabled {

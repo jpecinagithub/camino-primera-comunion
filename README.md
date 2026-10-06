@@ -64,6 +64,19 @@ src/
 Separación UI / lógica / contenido / datos: el contenido vive en `src/data`
 como objetos `Lesson` validados con Zod, nunca incrustado en JSX.
 
+## Navegación
+
+Mapa central en `src/navigation.ts` (`getBackTarget`, `getBreadcrumbs`):
+- **Botón "volver" contextual** en todas las pantallas anidadas
+  ("← {etiqueta}" con navegación directa, sin depender del historial).
+- **Migas de pan** bajo la cabecera en pantallas de profundidad ≥ 3
+  (lección, núcleo, juego, tema de padres).
+- **Cambio de modo visible** en la cabecera: "Soy padre o madre" ⇄
+  "Soy niño o niña" (el logo-iglesia ya no es la única vía).
+- Sin callejones sin salida: fin de lección (Continuar mi camino / Ver mi
+  núcleo / Jugar) y fin de juego (Repetir / Jugar a otro juego / Volver al
+  camino). Detalle completo en [`docs/navigation.md`](docs/navigation.md).
+
 ## PWA
 
 `vite-plugin-pwa` con `registerType: 'autoUpdate'`, `navigateFallback` para

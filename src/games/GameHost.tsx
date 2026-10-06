@@ -53,12 +53,17 @@ export const ENGINE_COMPONENTS: Record<
 
 interface GameHostProps {
   gameId: string;
+  /** "Jugar a otro juego" (en /ninos/juego/:id → /ninos/jugar). */
   onExit?: () => void;
+  /** "Volver al camino" (→ /ninos/camino). */
+  onGoCamino?: () => void;
 }
 
-export function GameHost({ gameId, onExit }: GameHostProps) {
+export function GameHost({ gameId, onExit, onGoCamino }: GameHostProps) {
   const { t } = useTranslation();
   const [finished, setFinished] = useState<GameResult | null>(null);
+  /** Se incrementa en "Repetir" para remontar el motor con estado limpio. */
+  const [runKey, setRunKey] = useState(0);
   const meta: GameMeta | undefined = getGame(gameId);
   const Engine = meta ? ENGINE_COMPONENTS[meta.engine] : undefined;
 
@@ -69,6 +74,11 @@ export function GameHost({ gameId, onExit }: GameHostProps) {
     },
     [gameId],
   );
+
+  const repeat = useCallback(() => {
+    setRunKey((k) => k + 1);
+    setFinished(null);
+  }, []);
 
   if (!meta || !Engine) {
     return (
@@ -101,13 +111,30 @@ export function GameHost({ gameId, onExit }: GameHostProps) {
   if (finished) {
     return (
       <Card>
-        <div style={{ textAlign: 'center', padding: 'var(--space-5)' }}>
-          <h2>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: 'var(--space-3)',
+            textAlign: 'center',
+            padding: 'var(--space-5)',
+          }}
+        >
+          <h2 style={{ margin: 0 }}>
             {t('game.finished', { score: finished.score, total: finished.total })}
           </h2>
+          <Button variant="primary" onClick={repeat}>
+            {t('nav.game.repeat')}
+          </Button>
           {onExit && (
-            <Button variant="primary" onClick={onExit}>
-              {t('common.continue')}
+            <Button variant="secondary" onClick={onExit}>
+              {t('nav.game.otherGames')}
+            </Button>
+          )}
+          {onGoCamino && (
+            <Button variant="ghost" onClick={onGoCamino}>
+              {t('nav.game.backToPath')}
             </Button>
           )}
         </div>
@@ -115,5 +142,5 @@ export function GameHost({ gameId, onExit }: GameHostProps) {
     );
   }
 
-  return <Engine config={{}} gameId={gameId} onComplete={handleComplete} />;
+  return <Engine key={runKey} config={{}} gameId={gameId} onComplete={handleComplete} />;
 }

@@ -59,9 +59,63 @@
   text-decoration: none;
 }
 
+/* Volver contextual: "← {etiqueta}" con etiqueta legible */
+.app-shell__back {
+  gap: var(--space-1);
+  padding: 0 var(--space-2);
+  font-weight: 700;
+  font-size: var(--font-size-md);
+  color: var(--color-sky-dark);
+}
+
+.app-shell__back-label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 26ch;
+}
+
 .app-shell__home:hover,
 .app-shell__back:hover {
   background-color: rgb(30 111 168 / 0.08);
+}
+
+/* Cambio de modo visible (no escondido tras el logo) */
+.app-shell__mode {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-height: var(--touch-min);
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-cream);
+  color: var(--color-sky-dark);
+  font-weight: 700;
+  font-size: var(--font-size-sm);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.app-shell__mode:hover {
+  background-color: rgb(30 111 168 / 0.08);
+}
+
+.app-shell__mode-label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 18ch;
+}
+
+/* Franja de migas de pan bajo la cabecera */
+.app-shell__crumbs {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--space-1) var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-cream);
 }
 
 .app-shell__actions {
@@ -76,4 +130,28 @@
   max-width: 720px;
   margin: 0 auto;
   padding: var(--space-5) var(--space-4) var(--space-7);
+}
+
+/* 360px: hay sitio para volver + píldora de modo, pero no para el título
+   de la cabecera (cada pantalla ya tiene su propio título). */
+@media (max-width: 480px) {
+  .app-shell__header {
+    gap: var(--space-2);
+  }
+
+  .app-shell__title {
+    display: none;
+  }
+
+  .app-shell__back-label {
+    max-width: 14ch;
+  }
+
+  .app-shell__mode {
+    padding: 0 var(--space-2);
+  }
+
+  .app-shell__mode-label {
+    max-width: 13ch;
+  }
 }
