@@ -1,0 +1,25 @@
+.jardin {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.jardin__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-2);
+  max-width: 320px;
+}
+
+.jardin__plant {
+  width: 100%;
+  height: auto;
+}
+
+.jardin__caption {
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--color-ink-soft);
+}

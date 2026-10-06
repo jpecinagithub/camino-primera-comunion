@@ -1,0 +1,55 @@
+.bienvenida {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-5) var(--space-4);
+  background: linear-gradient(180deg, var(--color-cream) 0%, var(--color-green) 130%);
+}
+
+.bienvenida__tarjeta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  max-width: 480px;
+  width: 100%;
+  padding: var(--space-6) var(--space-5);
+  background-color: var(--color-cream);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  text-align: center;
+}
+
+.bienvenida__titulo {
+  margin: 0;
+  font-size: var(--font-size-2xl);
+}
+
+.bienvenida__texto {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  color: var(--color-ink-soft);
+}
+
+.bienvenida__puntos {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.bienvenida__punto {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--color-cream-dark);
+}
+
+.bienvenida__punto--activo {
+  background-color: var(--color-sky-dark);
+}
+
+.bienvenida__acciones {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}

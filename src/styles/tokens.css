@@ -1,0 +1,74 @@
+/* ==========================================================================
+   Design tokens — Camino a la Primera Comunión
+   --------------------------------------------------------------------------
+   Paleta cálida pensada para niños de 9 años. Todas las combinaciones de
+   texto documentadas cumplen WCAG 2.1 AA (contraste ≥ 4.5:1).
+   Ver combinaciones aprobadas en src/styles/README.md
+   ========================================================================== */
+
+:root {
+  /* ---- Fondos ---- */
+  --color-cream: #fdf6e9; /* fondo base cálido */
+  --color-cream-dark: #f3e8d2; /* fondo alternativo / superficies hundidas */
+
+  /* ---- Azul cielo ---- */
+  --color-sky: #bfe3f7; /* decorativo y fondos suaves (NO texto) */
+  --color-sky-dark: #1e6fa8; /* texto sobre cream · botones (texto blanco) */
+
+  /* ---- Verde suave ---- */
+  --color-green: #cdeac0; /* decorativo y fondos suaves (NO texto) */
+  --color-green-dark: #2e7d4f; /* botones (texto blanco) */
+
+  /* ---- Dorado tenue ---- */
+  --color-gold: #efd9a0; /* decorativo y fondos suaves (NO texto) */
+  --color-gold-dark: #8a6410; /* texto sobre cream · botones (texto blanco) */
+
+  /* ---- Coral (acento) ---- */
+  --color-coral: #f6a08c; /* decorativo y fondos suaves (NO texto) */
+  --color-coral-dark: #c0392b; /* botones y acentos fuertes (texto blanco) */
+
+  /* ---- Texto ---- */
+  --color-ink: #3a2e1f; /* texto principal */
+  --color-ink-soft: #6b5b45; /* texto secundario */
+  --color-on-dark: #ffffff; /* texto sobre *-dark */
+
+  /* ---- Bordes y líneas ---- */
+  --color-border: #e3d5b8;
+
+  /* ---- Radios ---- */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+
+  /* ---- Sombras ---- */
+  --shadow-sm: 0 1px 2px rgb(58 46 31 / 0.08);
+  --shadow-md: 0 4px 12px rgb(58 46 31 / 0.12);
+  --shadow-lg: 0 12px 32px rgb(58 46 31 / 0.16);
+
+  /* ---- Espaciados ---- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+
+  /* ---- Tipografía ---- */
+  --font-family: 'Atkinson Hyperlegible', system-ui, -apple-system, 'Segoe UI',
+    Roboto, sans-serif;
+  --font-size-xs: 0.75rem; /* 12px — solo etiquetas no esenciales */
+  --font-size-sm: 0.875rem; /* 14px */
+  --font-size-md: 1rem; /* 16px — cuerpo base */
+  --font-size-lg: 1.25rem; /* 20px */
+  --font-size-xl: 1.5rem; /* 24px */
+  --font-size-2xl: 2rem; /* 32px — titulares */
+
+  /* ---- Táctil (niños, 44–48px mínimo) ---- */
+  --touch-min: 44px;
+  --touch-comfort: 48px;
+
+  /* ---- Foco visible ---- */
+  --focus-ring: 0 0 0 3px var(--color-cream), 0 0 0 6px var(--color-sky-dark);
+}

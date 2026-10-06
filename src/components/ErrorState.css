@@ -1,0 +1,30 @@
+.error-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-3);
+  padding: var(--space-7) var(--space-5);
+}
+
+.error-state__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background-color: var(--color-coral);
+  color: var(--color-ink);
+}
+
+.error-state__title {
+  margin: 0;
+  font-size: var(--font-size-lg);
+}
+
+.error-state__description {
+  margin: 0;
+  color: var(--color-ink-soft);
+  max-width: 36ch;
+}

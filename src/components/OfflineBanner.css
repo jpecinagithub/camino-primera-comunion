@@ -1,0 +1,12 @@
+.offline-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  background-color: var(--color-gold-dark); /* blanco sobre él: 5.37:1 AA */
+  color: var(--color-on-dark);
+  font-weight: 700;
+  font-size: var(--font-size-md);
+  text-align: center;
+}

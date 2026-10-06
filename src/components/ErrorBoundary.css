@@ -1,0 +1,53 @@
+.error-boundary {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  background-color: var(--color-cream);
+}
+
+.error-boundary__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background-color: var(--color-coral);
+  color: var(--color-ink);
+}
+
+.error-boundary__title {
+  margin: 0;
+  font-size: var(--font-size-2xl);
+}
+
+.error-boundary__description {
+  margin: 0;
+  color: var(--color-ink-soft);
+  max-width: 38ch;
+}
+
+/* Reutiliza el estilo de .btn de Button.css sin acoplar el componente */
+.error-boundary .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--touch-comfort);
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-pill);
+  font-family: inherit;
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.error-boundary .btn--primary {
+  background-color: var(--color-sky-dark);
+  color: var(--color-on-dark);
+}

@@ -1,0 +1,20 @@
+.vitral {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.vitral__svg {
+  width: 200px;
+  height: 200px;
+  max-width: 60vw;
+  filter: drop-shadow(0 4px 12px rgb(58 46 31 / 0.15));
+}
+
+.vitral__caption {
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--color-ink-soft);
+}

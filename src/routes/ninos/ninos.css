@@ -1,0 +1,479 @@
+/**
+ * Estilos del área de niños (/ninos/*).
+ * ----------------------------------------------------------------------------
+ * Diseñados para niños de 9 años: tarjetas grandes, botones táctiles ≥48px,
+ * iconos + texto siempre. Respeta prefers-reduced-motion.
+ */
+
+.ninos {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* ------------------------------- Cabeceras -------------------------------- */
+
+.ninos-hero {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+.ninos-hero h1 {
+  margin: 0;
+  font-size: var(--font-size-2xl);
+}
+
+.ninos-hero p {
+  margin: 0;
+  color: var(--color-ink-soft);
+  font-size: var(--font-size-lg);
+}
+
+.ninos-avatar-circulo {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid var(--color-ink);
+  box-shadow: var(--shadow-md);
+}
+
+/* ------------------------------ Mosaicos ---------------------------------- */
+
+.ninos-tiles {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+}
+
+.ninos-tile {
+  min-height: 48px;
+  padding: var(--space-5) var(--space-3);
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--color-border);
+  background: var(--color-cream);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--color-ink);
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.ninos-tile:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.ninos-tile__icono {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ninos-boton-grande {
+  min-height: 56px;
+  font-size: var(--font-size-lg);
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-pill);
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* ------------------------------ Tarjetas ---------------------------------- */
+
+.ninos-card {
+  background: var(--color-cream);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.ninos-fila {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.ninos-fila--entre {
+  justify-content: space-between;
+}
+
+.ninos-numero {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.ninos-etiqueta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  border-radius: var(--radius-pill);
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+}
+
+/* ---------------------------- Sendero (camino) ----------------------------- */
+
+.ninos-sendero {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  position: relative;
+}
+
+.ninos-sendero__tarjeta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  width: 100%;
+  min-height: 72px;
+  text-align: left;
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--color-border);
+  background: var(--color-cream);
+  cursor: pointer;
+  font-size: var(--font-size-md);
+  color: var(--color-ink);
+  text-decoration: none;
+}
+
+.ninos-sendero__tarjeta--bloqueada {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.ninos-sendero__tarjeta h3 {
+  margin: 0;
+  font-size: var(--font-size-lg);
+}
+
+.ninos-sendero__tarjeta p {
+  margin: 0;
+  color: var(--color-ink-soft);
+  font-size: var(--font-size-sm);
+}
+
+.ninos-sendero__icono {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* --------------------------- Pasos de lección ------------------------------ */
+
+.ninos-pasos {
+  display: flex;
+  gap: var(--space-2);
+  justify-content: center;
+  margin: var(--space-2) 0;
+}
+
+.ninos-paso__punto {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--color-cream-dark);
+  border: 2px solid var(--color-border);
+}
+
+.ninos-paso__punto--hecho {
+  background: var(--color-green-dark);
+  border-color: var(--color-green-dark);
+}
+
+.ninos-paso__punto--actual {
+  background: var(--color-gold-dark);
+  border-color: var(--color-gold-dark);
+  transform: scale(1.25);
+}
+
+.ninos-navegacion {
+  display: flex;
+  gap: var(--space-3);
+  justify-content: space-between;
+  margin-top: var(--space-4);
+}
+
+.ninos-navegacion .btn {
+  flex: 1;
+}
+
+.ninos-parrafo {
+  font-size: var(--font-size-lg);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* -------------------------------- Quiz ------------------------------------ */
+
+.ninos-opcion {
+  width: 100%;
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  border: 2px solid var(--color-border);
+  background: var(--color-cream);
+  font-size: var(--font-size-md);
+  color: var(--color-ink);
+  cursor: pointer;
+  text-align: left;
+}
+
+.ninos-opcion:disabled {
+  cursor: default;
+}
+
+.ninos-opcion--correcta {
+  border-color: var(--color-green-dark);
+  background: var(--color-green);
+}
+
+.ninos-opcion--intento {
+  border-color: var(--color-gold-dark);
+  background: var(--color-gold);
+}
+
+.ninos-feedback {
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  font-size: var(--font-size-md);
+  line-height: 1.6;
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+}
+
+.ninos-feedback--bien {
+  background: var(--color-green);
+  border: 2px solid var(--color-green-dark);
+}
+
+.ninos-feedback--pista {
+  background: var(--color-gold);
+  border: 2px solid var(--color-gold-dark);
+}
+
+/* --------------------------------- Misa ----------------------------------- */
+
+.ninos-misa-svg {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--color-border);
+}
+
+.ninos-momento {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+}
+
+.ninos-momento__numero {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  border: 2px solid var(--color-gold-dark);
+  color: var(--color-ink);
+  font-weight: 700;
+  font-size: var(--font-size-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ninos-aviso {
+  background: var(--color-sky);
+  border: 2px solid var(--color-sky-dark);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  font-size: var(--font-size-md);
+  line-height: 1.6;
+  color: var(--color-ink);
+}
+
+.ninos-tabs {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.ninos-tab {
+  flex: 1;
+  min-height: 48px;
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--color-border);
+  background: var(--color-cream);
+  font-size: var(--font-size-md);
+  font-weight: 700;
+  color: var(--color-ink);
+  cursor: pointer;
+}
+
+.ninos-tab--activa {
+  background: var(--color-gold);
+  border-color: var(--color-gold-dark);
+}
+
+/* ------------------------------ Reconciliación ----------------------------- */
+
+.ninos-paso-simu {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--color-border);
+  background: var(--color-cream);
+}
+
+.ninos-paso-simu__icono {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* -------------------------------- Avatar ---------------------------------- */
+
+.ninos-avatar-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-3);
+}
+
+.ninos-avatar-opcion {
+  aspect-ratio: 1;
+  border-radius: var(--radius-md);
+  border: 3px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  min-height: 64px;
+}
+
+.ninos-avatar-opcion--elegido {
+  border-color: var(--color-coral-dark);
+  box-shadow: var(--shadow-md);
+}
+
+.ninos-input {
+  width: 100%;
+  min-height: 48px;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--color-border);
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--font-size-lg);
+  font-family: inherit;
+  color: var(--color-ink);
+  background: #fff;
+}
+
+/* ------------------------------- Checklist -------------------------------- */
+
+.ninos-check {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  min-height: 56px;
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  border: 2px solid var(--color-border);
+  background: var(--color-cream);
+  font-size: var(--font-size-md);
+  color: var(--color-ink);
+  cursor: pointer;
+  text-align: left;
+}
+
+.ninos-check--marcado {
+  border-color: var(--color-green-dark);
+  background: var(--color-green);
+}
+
+/* ------------------------------ Oración ----------------------------------- */
+
+.ninos-oracion {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-5) 0;
+}
+
+.ninos-oracion p {
+  font-size: var(--font-size-xl);
+  line-height: 2;
+  margin: 0;
+  font-style: italic;
+}
+
+/* ------------------------------ Proximamente ------------------------------- */
+
+.ninos-proximamente {
+  opacity: 0.75;
+}
+
+/* --------------------------- Movimiento reducido --------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .ninos * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@media (min-width: 640px) {
+  .ninos-avatar-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}

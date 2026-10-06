@@ -1,0 +1,26 @@
+.celebracion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-6) var(--space-4);
+  text-align: center;
+  background-color: var(--color-cream);
+  border: 2px solid var(--color-gold-dark);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.celebracion__titulo {
+  margin: 0;
+  font-size: var(--font-size-2xl);
+  color: var(--color-coral-dark);
+}
+
+.celebracion__mensaje {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  color: var(--color-ink-soft);
+}

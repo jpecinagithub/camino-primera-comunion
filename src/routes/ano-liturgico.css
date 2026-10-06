@@ -1,0 +1,67 @@
+.ano {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.ano__rueda-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.ano__rueda {
+  width: 280px;
+  height: 280px;
+  max-width: 80vw;
+  filter: drop-shadow(0 4px 12px rgb(58 46 31 / 0.15));
+}
+
+.ano__gajo {
+  cursor: pointer;
+}
+
+.ano__gajo:focus-visible {
+  outline: none;
+  stroke: var(--color-ink);
+  stroke-width: 5;
+}
+
+.ano__centro-num {
+  font-size: 28px;
+  font-weight: 800;
+  fill: var(--color-ink);
+}
+
+.ano__centro-txt {
+  font-size: 14px;
+  fill: var(--color-ink-soft);
+}
+
+.ano__tarjeta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  text-align: center;
+  padding: var(--space-2);
+}
+
+.ano__icono {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+}
+
+.ano__nombre {
+  margin: 0;
+  font-size: var(--font-size-xl);
+}
+
+.ano__texto {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  color: var(--color-ink-soft);
+}

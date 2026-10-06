@@ -1,0 +1,62 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: var(--touch-comfort); /* 48px */
+  min-width: var(--touch-min);
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-pill);
+  font-family: inherit;
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  line-height: 1.2;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.12s ease;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Primary: azul cielo oscuro, texto blanco (5.39:1, AA) */
+.btn--primary {
+  background-color: var(--color-sky-dark);
+  color: var(--color-on-dark);
+  box-shadow: var(--shadow-md);
+}
+
+.btn--primary:hover:not(:disabled) {
+  background-color: #185d8c;
+}
+
+/* Secondary: crema, texto tinta, borde */
+.btn--secondary {
+  background-color: #fffdf8;
+  color: var(--color-ink);
+  border-color: var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn--secondary:hover:not(:disabled) {
+  background-color: var(--color-cream-dark);
+}
+
+/* Ghost: transparente, texto azul oscuro (5.02:1 sobre crema, AA) */
+.btn--ghost {
+  background-color: transparent;
+  color: var(--color-sky-dark);
+  min-height: var(--touch-min);
+  padding: var(--space-2) var(--space-4);
+}
+
+.btn--ghost:hover:not(:disabled) {
+  background-color: rgb(30 111 168 / 0.08);
+}

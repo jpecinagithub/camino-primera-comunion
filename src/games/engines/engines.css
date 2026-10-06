@@ -1,0 +1,687 @@
+/* ==========================================================================
+   Estilos compartidos de los 12 motores de juego.
+   Solo combinaciones de color aprobadas (ver src/styles/README.md).
+   ========================================================================== */
+
+.game {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.game__card {
+  padding: var(--space-5);
+}
+
+.game__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.game__title {
+  margin: 0;
+  font-size: var(--font-size-xl);
+  color: var(--color-ink);
+}
+
+.game__instructions {
+  margin: var(--space-2) 0 var(--space-4);
+  color: var(--color-ink-soft);
+  font-size: var(--font-size-md);
+  line-height: 1.5;
+}
+
+.game__progress {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.game__progress .progressbar {
+  flex: 1;
+}
+
+.game__progress-text {
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--color-ink-soft);
+  white-space: nowrap;
+}
+
+.game__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* Foco visible obligatorio en todos los interactivos del juego */
+.game :is(button, a, [tabindex]):focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+/* ---------- Rejillas y tarjetas seleccionables ---------- */
+
+.gx-grid {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.gx-grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.gx-grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.gx-grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+@media (max-width: 480px) {
+  .gx-grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .gx-grid--3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+.gx-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 64px;
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  border: 2px solid var(--color-border);
+  background-color: #fffdf8;
+  color: var(--color-ink);
+  font-family: inherit;
+  font-size: var(--font-size-md);
+  font-weight: 700;
+  line-height: 1.3;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.12s ease, background-color 0.12s ease,
+    border-color 0.12s ease;
+}
+
+.gx-tile:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.gx-tile--selected {
+  border-color: var(--color-sky-dark);
+  background-color: var(--color-sky);
+}
+
+.gx-tile--done {
+  border-color: var(--color-green-dark);
+  background-color: var(--color-green);
+  cursor: default;
+}
+
+.gx-tile--dim {
+  opacity: 0.55;
+}
+
+.gx-tile:disabled:not(.gx-tile--done) {
+  cursor: default;
+}
+
+.gx-tile__sub {
+  font-size: var(--font-size-sm);
+  font-weight: 400;
+  color: var(--color-ink-soft);
+}
+
+.gx-icon {
+  display: inline-flex;
+  line-height: 0;
+}
+
+/* ---------- Columnas (unir por selección) ---------- */
+
+.gx-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+@media (max-width: 480px) {
+  .gx-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+.gx-col-title {
+  margin: 0 0 var(--space-2);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--color-ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.gx-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+/* ---------- Feedback ---------- */
+
+.gx-feedback {
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.gx-feedback--success {
+  background-color: var(--color-green);
+  border: 2px solid var(--color-green-dark);
+}
+
+.gx-feedback--gentle {
+  background-color: var(--color-gold);
+  border: 2px solid var(--color-gold-dark);
+}
+
+.gx-feedback__head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-ink);
+}
+
+.gx-feedback__title {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  color: var(--color-ink);
+}
+
+.gx-feedback__message {
+  margin: 0;
+  color: var(--color-ink);
+  font-size: var(--font-size-md);
+  line-height: 1.5;
+}
+
+.gx-feedback__hint,
+.gx-feedback__explanation {
+  margin: 0;
+  color: var(--color-ink);
+  font-size: var(--font-size-md);
+  line-height: 1.5;
+}
+
+.gx-feedback__hint {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+
+.gx-feedback__hint .badge {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.gx-feedback__actions {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+  flex-wrap: wrap;
+}
+
+/* ---------- Banco de palabras y huecos ---------- */
+
+.gx-bank {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  background-color: var(--color-cream-dark);
+}
+
+.gx-word {
+  min-height: var(--touch-min);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--color-sky-dark);
+  background-color: var(--color-sky);
+  color: var(--color-ink);
+  font-family: inherit;
+  font-size: var(--font-size-md);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.gx-word--selected {
+  background-color: var(--color-sky-dark);
+  color: var(--color-on-dark);
+}
+
+.gx-word:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.gx-blank {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 110px;
+  min-height: var(--touch-min);
+  margin: 0 var(--space-1);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-sm);
+  border: 2px dashed var(--color-gold-dark);
+  background-color: #fffdf8;
+  color: var(--color-ink);
+  font-family: inherit;
+  font-size: var(--font-size-md);
+  font-weight: 700;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.gx-blank--filled {
+  border-style: solid;
+  border-color: var(--color-green-dark);
+  background-color: var(--color-green);
+}
+
+.gx-blank--active {
+  border-color: var(--color-sky-dark);
+  background-color: var(--color-sky);
+}
+
+.gx-text-flow {
+  font-size: var(--font-size-lg);
+  line-height: 2.1;
+  color: var(--color-ink);
+}
+
+/* ---------- Ranuras de ordenación ---------- */
+
+.gx-slots {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.gx-slot {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: 60px;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  border: 2px dashed var(--color-border);
+  background-color: #fffdf8;
+  color: var(--color-ink);
+  font-family: inherit;
+  font-size: var(--font-size-md);
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+}
+
+.gx-slot--filled {
+  border-style: solid;
+  border-color: var(--color-sky-dark);
+  background-color: var(--color-sky);
+  font-weight: 700;
+}
+
+.gx-slot__num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background-color: var(--color-cream-dark);
+  color: var(--color-ink);
+  font-weight: 700;
+}
+
+.gx-slot--filled .gx-slot__num {
+  background-color: var(--color-sky-dark);
+  color: var(--color-on-dark);
+}
+
+.gx-actions {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-top: var(--space-2);
+}
+
+/* ---------- Rueda del año litúrgico ---------- */
+
+.gx-wheel-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.gx-wheel {
+  position: relative;
+  width: min(78vw, 320px);
+  aspect-ratio: 1 / 1;
+}
+
+.gx-wheel__center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 34%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background-color: var(--color-cream-dark);
+  border: 2px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--color-ink-soft);
+  padding: var(--space-2);
+}
+
+.gx-wheel__btn {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 3px solid var(--color-ink);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-ink);
+  box-shadow: var(--shadow-md);
+  transition: transform 0.12s ease;
+}
+
+.gx-wheel__btn:active {
+  transform: translate(-50%, -50%) scale(0.94) !important;
+}
+
+.gx-wheel__btn--selected {
+  outline: none;
+  box-shadow: var(--focus-ring), var(--shadow-md);
+}
+
+.gx-season-card {
+  width: 100%;
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  border: 2px solid var(--color-border);
+  background-color: #fffdf8;
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+}
+
+.gx-swatch {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--color-ink);
+}
+
+.gx-season-card h3 {
+  margin: 0 0 var(--space-1);
+  color: var(--color-ink);
+}
+
+.gx-season-card p {
+  margin: 0;
+  color: var(--color-ink-soft);
+  line-height: 1.5;
+}
+
+/* ---------- Memory ---------- */
+
+.gx-memory {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-2);
+}
+
+@media (max-width: 420px) {
+  .gx-memory {
+    gap: var(--space-1);
+  }
+}
+
+.gx-mcard {
+  aspect-ratio: 3 / 4;
+  min-height: 76px;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--color-border);
+  background-color: var(--color-cream-dark);
+  color: var(--color-ink);
+  font-family: inherit;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  padding: var(--space-1);
+  box-shadow: var(--shadow-sm);
+}
+
+.gx-mcard--up {
+  background-color: #fffdf8;
+  border-color: var(--color-sky-dark);
+}
+
+.gx-mcard--matched {
+  background-color: var(--color-green);
+  border-color: var(--color-green-dark);
+  cursor: default;
+}
+
+.gx-mcard__label {
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.gx-mcard__back {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--color-gold-dark);
+}
+
+/* ---------- Zonas clicables sobre SVG (iglesia / mapa) ---------- */
+
+.gx-svg-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.gx-svg-wrap svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--color-border);
+}
+
+.gx-zone {
+  position: absolute;
+  transform: translate(0, 0);
+  border: 2px dashed rgb(30 111 168 / 0.35);
+  border-radius: var(--radius-sm);
+  background-color: rgb(191 227 247 / 0.12);
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+}
+
+.gx-zone:hover {
+  background-color: rgb(191 227 247 / 0.3);
+}
+
+.gx-zone--found {
+  border-style: solid;
+  border-color: var(--color-green-dark);
+  background-color: rgb(205 234 192 / 0.25);
+  cursor: default;
+}
+
+.gx-zone__num {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--color-sky-dark);
+  color: var(--color-on-dark);
+  font-weight: 700;
+  font-size: var(--font-size-sm);
+  box-shadow: var(--shadow-md);
+  pointer-events: none;
+}
+
+.gx-zone--found .gx-zone__num {
+  background-color: var(--color-green-dark);
+}
+
+.gx-prompt {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  font-size: var(--font-size-lg);
+  color: var(--color-ink);
+}
+
+.gx-prompt strong {
+  color: var(--color-sky-dark);
+}
+
+.gx-map-label {
+  font-size: 13px;
+  font-weight: 700;
+  fill: var(--color-ink);
+  paint-order: stroke;
+  stroke: var(--color-cream);
+  stroke-width: 4px;
+}
+
+/* ---------- Detective: pistas ---------- */
+
+.gx-clues {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.gx-clue {
+  display: flex;
+  gap: var(--space-2);
+  align-items: flex-start;
+  background-color: var(--color-cream-dark);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  color: var(--color-ink);
+  line-height: 1.5;
+}
+
+.gx-clue__num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background-color: var(--color-gold-dark);
+  color: var(--color-on-dark);
+  font-weight: 700;
+  font-size: var(--font-size-sm);
+}
+
+/* ---------- Retos ---------- */
+
+.gx-challenge {
+  text-align: left;
+  align-items: flex-start;
+}
+
+.gx-challenge__head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+}
+
+.gx-challenge p {
+  margin: 0;
+  font-weight: 400;
+  color: var(--color-ink-soft);
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+}
+
+.gx-challenge--picked {
+  border-color: var(--color-green-dark);
+  background-color: var(--color-green);
+}
+
+.gx-check-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-left: auto;
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--color-green-dark);
+}
+
+/* ---------- Miscelánea ---------- */
+
+.gx-note {
+  font-size: var(--font-size-sm);
+  color: var(--color-ink-soft);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.gx-center {
+  display: flex;
+  justify-content: center;
+}
+
+.gx-quiz-q {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--color-ink);
+  margin: 0;
+  line-height: 1.4;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .game :is(button, .gx-tile, .gx-mcard) {
+    transition: none;
+  }
+}

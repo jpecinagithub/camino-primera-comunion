@@ -1,0 +1,61 @@
+.insignias__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: var(--space-3);
+}
+
+.insignia {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-3);
+  border-radius: var(--radius-md);
+  text-align: center;
+  border: 2px solid var(--color-border);
+  background-color: var(--color-cream);
+}
+
+.insignia__icono {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+}
+
+.insignia--lograda {
+  border-color: var(--color-gold-dark);
+}
+
+.insignia--lograda .insignia__icono {
+  background-color: var(--color-gold);
+  color: var(--color-gold-dark);
+}
+
+.insignia--pendiente {
+  opacity: 0.75;
+}
+
+.insignia--pendiente .insignia__icono {
+  background-color: var(--color-cream-dark);
+  color: var(--color-ink-soft);
+}
+
+.insignia__titulo {
+  display: block;
+  font-size: var(--font-size-md);
+}
+
+.insignia__pista {
+  display: block;
+  font-size: var(--font-size-sm);
+  color: var(--color-ink-soft);
+}
+
+.insignia--lograda .insignia__pista {
+  color: var(--color-gold-dark);
+  font-weight: 700;
+}
