@@ -34,6 +34,7 @@ export const lessonLaBiblia: Lesson = {
     },
     {
       id: 'l-la-biblia-b3',
+      audioSrc: '/audio/escucha-la-biblia.mp3',
       kind: 'escucha',
       title: 'Los cuatro Evangelios',
       imageLabel: 'Cuatro amigos escribiendo la historia de Jesús',
@@ -125,6 +126,7 @@ export const lessonLaBiblia: Lesson = {
   },
   prayer: {
     id: 'l-la-biblia-prayer',
+    audioSrc: '/audio/oracion-l-la-biblia-prayer.mp3',
     title: 'Tu Palabra, mi luz',
     lines: [
       'Señor Jesús,',

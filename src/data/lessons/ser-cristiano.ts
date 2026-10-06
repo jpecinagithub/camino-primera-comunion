@@ -25,6 +25,7 @@ export const lessonSerCristiano: Lesson = {
     },
     {
       id: 'l-ser-cristiano-b2',
+      audioSrc: '/audio/escucha-ser-cristiano.mp3',
       kind: 'escucha',
       title: 'La primera familia de Jesús',
       imageLabel: 'Los primeros cristianos compartiendo el pan',
@@ -123,6 +124,7 @@ export const lessonSerCristiano: Lesson = {
   },
   prayer: {
     id: 'l-ser-cristiano-prayer',
+    audioSrc: '/audio/oracion-l-ser-cristiano-prayer.mp3',
     title: 'Amigo de Jesús',
     lines: [
       'Jesús, gracias por llamarme por mi nombre.',

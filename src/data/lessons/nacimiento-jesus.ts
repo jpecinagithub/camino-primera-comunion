@@ -15,6 +15,7 @@ export const lessonNacimientoJesus: Lesson = {
   blocks: [
     {
       id: 'l-nacimiento-jesus-b1',
+      audioSrc: '/audio/escucha-nacimiento-jesus.mp3',
       kind: 'escucha',
       title: 'Un viaje a Belén',
       imageLabel: 'María y José caminando hacia Belén al atardecer',
@@ -25,6 +26,7 @@ export const lessonNacimientoJesus: Lesson = {
     },
     {
       id: 'l-nacimiento-jesus-b2',
+      audioSrc: '/audio/escucha-nacimiento-jesus-2.mp3',
       kind: 'escucha',
       title: 'Pastores y magos',
       imageLabel: 'Pastores y magos adorando al Niño Jesús',
@@ -120,6 +122,7 @@ export const lessonNacimientoJesus: Lesson = {
   },
   prayer: {
     id: 'l-nacimiento-jesus-prayer',
+    audioSrc: '/audio/oracion-l-nacimiento-jesus-prayer.mp3',
     title: 'Gracias por nacer',
     lines: [
       'Niño Jesús, qué alegría que nacieras,',

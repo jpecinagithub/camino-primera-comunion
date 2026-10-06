@@ -15,6 +15,8 @@ export interface ContentBlock {
   title: string;
   paragraphs: string[];
   imageLabel?: string;
+  /** Ruta al MP3 de narración pre-generado (p. ej. '/audio/escucha-ser-cristiano.mp3'). */
+  audioSrc?: string;
 }
 
 export interface QuizQuestion {
@@ -36,6 +38,8 @@ export interface Prayer {
   id: string;
   title: string;
   lines: string[];
+  /** Ruta al MP3 de narración pre-generado (p. ej. '/audio/oracion-padrenuestro.mp3'). */
+  audioSrc?: string;
 }
 
 export interface FamilyBlock {

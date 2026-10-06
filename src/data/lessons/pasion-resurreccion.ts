@@ -15,6 +15,7 @@ export const lessonPasionResurreccion: Lesson = {
   blocks: [
     {
       id: 'l-pasion-resurreccion-b1',
+      audioSrc: '/audio/escucha-pasion-resurreccion.mp3',
       kind: 'escucha',
       title: 'La Última Cena',
       imageLabel: 'Jesús compartiendo el pan con sus amigos',
@@ -25,6 +26,7 @@ export const lessonPasionResurreccion: Lesson = {
     },
     {
       id: 'l-pasion-resurreccion-b2',
+      audioSrc: '/audio/escucha-pasion-resurreccion-2.mp3',
       kind: 'escucha',
       title: 'Jesús entrega su vida',
       imageLabel: 'La cruz al atardecer, con luz suave y serena',
@@ -121,6 +123,7 @@ export const lessonPasionResurreccion: Lesson = {
   },
   prayer: {
     id: 'l-pasion-resurreccion-prayer',
+    audioSrc: '/audio/oracion-l-pasion-resurreccion-prayer.mp3',
     title: 'Jesús vivo',
     lines: [
       'Jesús, que moriste por amor',

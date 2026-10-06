@@ -15,6 +15,7 @@ export const lessonMaria: Lesson = {
   blocks: [
     {
       id: 'l-maria-b1',
+      audioSrc: '/audio/escucha-maria.mp3',
       kind: 'escucha',
       title: 'El "sí" de María',
       imageLabel: 'María escuchando al ángel con alegría',
@@ -114,6 +115,7 @@ export const lessonMaria: Lesson = {
   },
   prayer: {
     id: 'l-maria-prayer',
+    audioSrc: '/audio/oracion-l-maria-prayer.mp3',
     title: 'Madre mía',
     lines: [
       'María, Madre de Jesús y madre mía,',

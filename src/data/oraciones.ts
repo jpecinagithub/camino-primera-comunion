@@ -13,11 +13,14 @@ export interface OracionFundamental {
   lines: string[];
   /** Nota corta para el niño (cómo/cuándo rezarla). */
   note: string;
+  /** Ruta al MP3 de narración pre-generado (p. ej. '/audio/oracion-padrenuestro.mp3'). */
+  audioSrc?: string;
 }
 
 export const ORACIONES_FUNDAMENTALES: OracionFundamental[] = [
   {
     id: 'padrenuestro',
+    audioSrc: '/audio/oracion-padrenuestro.mp3',
     title: 'Padrenuestro',
     lines: [
       'Padre nuestro, que estás en el cielo,',
@@ -35,6 +38,7 @@ export const ORACIONES_FUNDAMENTALES: OracionFundamental[] = [
   },
   {
     id: 'avemaria',
+    audioSrc: '/audio/oracion-avemaria.mp3',
     title: 'Avemaría',
     lines: [
       'Dios te salve, María,',
@@ -51,6 +55,7 @@ export const ORACIONES_FUNDAMENTALES: OracionFundamental[] = [
   },
   {
     id: 'gloria',
+    audioSrc: '/audio/oracion-gloria.mp3',
     title: 'Gloria',
     lines: [
       'Gloria al Padre, y al Hijo, y al Espíritu Santo.',
@@ -63,6 +68,7 @@ export const ORACIONES_FUNDAMENTALES: OracionFundamental[] = [
   },
   {
     id: 'angel-de-la-guarda',
+    audioSrc: '/audio/oracion-angel-de-la-guarda.mp3',
     title: 'Ángel de mi guarda',
     lines: [
       'Ángel de mi guarda,',

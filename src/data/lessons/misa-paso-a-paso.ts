@@ -31,6 +31,7 @@ export const lessonMisaPasoAPaso: Lesson = {
     },
     {
       id: 'ms2',
+      audioSrc: '/audio/escucha-misa-paso-a-paso.mp3',
       kind: 'escucha',
       title: 'CELEBRAMOS · Ritos iniciales: nos reunimos',
       paragraphs: [
@@ -159,6 +160,7 @@ export const lessonMisaPasoAPaso: Lesson = {
   },
   prayer: {
     id: 'oracion-misa',
+    audioSrc: '/audio/oracion-oracion-misa.mp3',
     title: 'Gracias por tu fiesta',
     lines: [
       'Jesús, gracias por invitarme',

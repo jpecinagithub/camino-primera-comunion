@@ -30,6 +30,7 @@ import { JUEGOS } from '../../data/juegos';
 import { markLessonComplete, markQuizComplete } from '../../db/hooks';
 import { Celebracion } from '../../gamification/Celebracion';
 import { ReadAloud } from '../../a11y/ReadAloud';
+import { AudioPlayer } from '../../components/AudioPlayer';
 import { LiveRegion } from '../../a11y/live';
 import { Button } from '../../components/Button';
 import { EmptyState } from '../../components/EmptyState';
@@ -408,7 +409,19 @@ export function Leccion() {
             </div>
           )}
 
-          <ReadAloud text={readText} />
+          {step.block?.audioSrc ? (
+            <AudioPlayer
+              src={step.block.audioSrc}
+              label={`Escuchar la narración: ${step.title}`}
+            />
+          ) : step.key === 'oracion' && lesson.prayer.audioSrc ? (
+            <AudioPlayer
+              src={lesson.prayer.audioSrc}
+              label={`Escuchar la oración: ${step.title}`}
+            />
+          ) : (
+            <ReadAloud text={readText} />
+          )}
         </div>
       )}
 

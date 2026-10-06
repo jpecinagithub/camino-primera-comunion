@@ -30,6 +30,7 @@ export const lessonMandamientoAmor: Lesson = {
     },
     {
       id: 'ma2',
+      audioSrc: '/audio/escucha-mandamiento-amor.mp3',
       kind: 'escucha',
       title: 'CREEMOS · Dios nos enseña el camino',
       paragraphs: [
@@ -136,6 +137,7 @@ export const lessonMandamientoAmor: Lesson = {
   },
   prayer: {
     id: 'oracion-mandamiento-amor',
+    audioSrc: '/audio/oracion-oracion-mandamiento-amor.mp3',
     title: 'Enséñame a amar',
     lines: [
       'Jesús, tú me enseñas a amar:',

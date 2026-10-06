@@ -131,6 +131,7 @@ export const lessonPreparacionPrimeraComunion: Lesson = {
   },
   prayer: {
     id: 'oracion-preparacion',
+    audioSrc: '/audio/oracion-oracion-preparacion.mp3',
     title: 'Prepárame, Jesús',
     lines: [
       'Jesús, ya falta poco',

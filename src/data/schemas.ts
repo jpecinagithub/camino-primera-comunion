@@ -26,6 +26,7 @@ export const ContentBlockSchema = z.object({
   title: z.string().min(1),
   paragraphs: z.array(z.string().min(1)).min(1),
   imageLabel: z.string().optional(),
+  audioSrc: z.string().optional(),
 });
 
 export const QuizQuestionSchema = z.object({
@@ -50,6 +51,7 @@ export const PrayerSchema = z.object({
   id: z.string().min(1),
   title: z.string().min(1),
   lines: z.array(z.string().min(1)).min(1),
+  audioSrc: z.string().optional(),
 });
 
 export const FamilyBlockSchema = z.object({

@@ -44,7 +44,8 @@ export default defineConfig({
       },
       workbox: {
         // El shell de la app queda precacheado (offline-first para la navegación).
-        globPatterns: ['**/*.{js,css,html,png,svg,ico,woff2}'],
+        // Los MP3 de narración (public/audio) también: el niño escucha sin conexión.
+        globPatterns: ['**/*.{js,css,html,png,svg,ico,woff2,mp3}'],
         navigateFallback: '/index.html',
         navigateFallbackDenylist: [/^\/api\//],
         runtimeCaching: [

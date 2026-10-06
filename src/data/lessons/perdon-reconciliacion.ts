@@ -30,6 +30,7 @@ export const lessonPerdonReconciliacion: Lesson = {
     },
     {
       id: 'pr2',
+      audioSrc: '/audio/escucha-perdon-reconciliacion.mp3',
       kind: 'escucha',
       title: 'CREEMOS · El hijo que volvió a casa',
       paragraphs: [
@@ -130,6 +131,7 @@ export const lessonPerdonReconciliacion: Lesson = {
   },
   prayer: {
     id: 'oracion-perdon-reconciliacion',
+    audioSrc: '/audio/oracion-oracion-perdon-reconciliacion.mp3',
     title: 'El abrazo del Padre',
     lines: [
       'Padre bueno, como el hijo de la historia,',

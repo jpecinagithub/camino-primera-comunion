@@ -67,9 +67,31 @@ como objetos `Lesson` validados con Zod, nunca incrustado en JSX.
 ## PWA
 
 `vite-plugin-pwa` con `registerType: 'autoUpdate'`, `navigateFallback` para
-navegación offline, precache del shell (37 entradas) y runtime caching de
-contenidos. Sin conexión se muestra "Estás sin conexión. Puedes seguir
-aprendiendo." Iconos generados con `tools/generate_icons.py`.
+navegación offline, precache del shell y runtime caching de contenidos. Sin
+conexión se muestra "Estás sin conexión. Puedes seguir aprendiendo." Iconos
+generados con `tools/generate_icons.py`. Los MP3 de narración
+(`public/audio/*.mp3`) también quedan precacheados: el niño escucha sin conexión.
+
+## Audios de narración
+
+Las narraciones (bloques `escucha` y oraciones) se **pre-generan en tiempo de
+autoría** como MP3 y se sirven con el reproductor propio `AudioPlayer`
+(`src/components/AudioPlayer.tsx`): sin IA en runtime, contenido determinista
+y revisable, funciona offline. Donde no hay audio pre-generado se mantiene el
+botón "Leer en voz alta" (SpeechSynthesis) como reserva.
+
+- Voz elegida por el usuario (2026-10-06): **"Vivacious Fountain"**
+  (`avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k`), femenina, español peninsular,
+  joven y alegre; idioma `es_ES`.
+- Groq TTS se descartó: verificado en su documentación oficial, solo ofrece
+  inglés y árabe, sin español.
+- Generar: `node tools/generate-audio.mjs` (idempotente; `--force` regenera,
+  `--inventory` muestra el manifiesto sin generar). Guarda en `public/audio/`
+  y registra el manifiesto en `tools/audio-manifest.json`. Nombres estables:
+  `escucha-<slug>.mp3` y `oracion-<id>.mp3`.
+- Si añades una lección con bloques `escucha` u oraciones nuevas, genera sus
+  audios y añade el campo `audioSrc` correspondiente en los datos
+  (`ContentBlock`, `Prayer`, `OracionFundamental`).
 
 ## Privacidad infantil (privacy by design)
 
@@ -92,7 +114,9 @@ aprendiendo." Iconos generados con `tools/generate_icons.py`.
 3. Añádela al array correspondiente (`part1.ts`/`part2.ts` o uno nuevo);
    `src/data/lessons/index.ts` la incluye en `LESSONS` automáticamente.
 4. Valídala: `validateLesson(leccion)` y añade un test en `__tests__/`.
-5. Aparecerá automáticamente en Mi Camino, Orar y la zona de padres.
+5. Genera los audios de sus bloques `escucha` y su oración:
+   `node tools/generate-audio.mjs` (rellena `audioSrc` en los datos).
+6. Aparecerá automáticamente en Mi Camino, Orar y la zona de padres.
 
 ## Cómo añadir un juego
 

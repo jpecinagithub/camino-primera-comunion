@@ -1,0 +1,258 @@
+{
+  "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+  "language": "es_ES",
+  "files": {
+    "escucha-ser-cristiano.mp3": {
+      "bytes": 145381,
+      "chars": 281,
+      "at": "2026-10-06T07:47:36.892Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "oracion-l-ser-cristiano-prayer.mp3": {
+      "bytes": 102181,
+      "chars": 153,
+      "at": "2026-10-06T07:47:40.807Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "escucha-dios-padre-creador.mp3": {
+      "bytes": 177253,
+      "chars": 316,
+      "at": "2026-10-06T07:47:45.866Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "oracion-l-dios-padre-creador-prayer.mp3": {
+      "bytes": 109861,
+      "chars": 197,
+      "at": "2026-10-06T07:47:49.963Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "escucha-la-biblia.mp3": {
+      "bytes": 174373,
+      "chars": 324,
+      "at": "2026-10-06T07:47:55.335Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "oracion-l-la-biblia-prayer.mp3": {
+      "bytes": 85093,
+      "chars": 137,
+      "at": "2026-10-06T07:47:58.909Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "escucha-maria.mp3": {
+      "bytes": 177253,
+      "chars": 297,
+      "at": "2026-10-06T07:48:04.789Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "oracion-l-maria-prayer.mp3": {
+      "bytes": 88357,
+      "chars": 137,
+      "at": "2026-10-06T07:48:07.794Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "escucha-nacimiento-jesus.mp3": {
+      "bytes": 147493,
+      "chars": 273,
+      "at": "2026-10-06T07:48:13.126Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "escucha-nacimiento-jesus-2.mp3": {
+      "bytes": 160933,
+      "chars": 289,
+      "at": "2026-10-06T07:48:18.623Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "oracion-l-nacimiento-jesus-prayer.mp3": {
+      "bytes": 91813,
+      "chars": 137,
+      "at": "2026-10-06T07:48:21.907Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "escucha-buena-noticia.mp3": {
+      "bytes": 168421,
+      "chars": 304,
+      "at": "2026-10-06T07:48:27.367Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "escucha-buena-noticia-2.mp3": {
+      "bytes": 152101,
+      "chars": 284,
+      "at": "2026-10-06T07:48:32.150Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "oracion-l-buena-noticia-prayer.mp3": {
+      "bytes": 90661,
+      "chars": 143,
+      "at": "2026-10-06T07:48:35.736Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "escucha-pasion-resurreccion.mp3": {
+      "bytes": 164197,
+      "chars": 275,
+      "at": "2026-10-06T07:48:40.903Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "escucha-pasion-resurreccion-2.mp3": {
+      "bytes": 162853,
+      "chars": 288,
+      "at": "2026-10-06T07:48:46.802Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "oracion-l-pasion-resurreccion-prayer.mp3": {
+      "bytes": 93541,
+      "chars": 132,
+      "at": "2026-10-06T07:48:49.863Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "escucha-pentecostes.mp3": {
+      "bytes": 168997,
+      "chars": 315,
+      "at": "2026-10-06T07:48:55.516Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "oracion-l-pentecostes-prayer.mp3": {
+      "bytes": 88933,
+      "chars": 125,
+      "at": "2026-10-06T07:48:58.781Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "escucha-bautismo.mp3": {
+      "bytes": 178981,
+      "chars": 306,
+      "at": "2026-10-06T07:49:04.199Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "oracion-oracion-bautismo.mp3": {
+      "bytes": 124453,
+      "chars": 218,
+      "at": "2026-10-06T07:49:08.085Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "escucha-mandamiento-amor.mp3": {
+      "bytes": 167461,
+      "chars": 311,
+      "at": "2026-10-06T07:49:13.823Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "oracion-oracion-mandamiento-amor.mp3": {
+      "bytes": 143461,
+      "chars": 225,
+      "at": "2026-10-06T07:49:19.017Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "escucha-perdon-reconciliacion.mp3": {
+      "bytes": 178213,
+      "chars": 319,
+      "at": "2026-10-06T07:49:24.800Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "oracion-oracion-perdon-reconciliacion.mp3": {
+      "bytes": 122533,
+      "chars": 205,
+      "at": "2026-10-06T07:49:30.274Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "escucha-como-confesarse.mp3": {
+      "bytes": 1071397,
+      "chars": 801,
+      "at": "2026-10-06T07:49:56.993Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "oracion-oracion-acto-contricion.mp3": {
+      "bytes": 95077,
+      "chars": 156,
+      "at": "2026-10-06T07:50:00.416Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "escucha-misa-paso-a-paso.mp3": {
+      "bytes": 238501,
+      "chars": 425,
+      "at": "2026-10-06T07:50:08.265Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "oracion-oracion-misa.mp3": {
+      "bytes": 111973,
+      "chars": 191,
+      "at": "2026-10-06T07:50:12.331Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "escucha-eucaristia.mp3": {
+      "bytes": 196837,
+      "chars": 312,
+      "at": "2026-10-06T07:50:18.482Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "oracion-oracion-eucaristia.mp3": {
+      "bytes": 98341,
+      "chars": 184,
+      "at": "2026-10-06T07:50:22.249Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "oracion-oracion-preparacion.mp3": {
+      "bytes": 123877,
+      "chars": 198,
+      "at": "2026-10-06T07:50:26.949Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "oracion-padrenuestro.mp3": {
+      "bytes": 187237,
+      "chars": 341,
+      "at": "2026-10-06T07:50:33.205Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "oracion-avemaria.mp3": {
+      "bytes": 151333,
+      "chars": 268,
+      "at": "2026-10-06T07:50:38.390Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "oracion-gloria.mp3": {
+      "bytes": 84133,
+      "chars": 137,
+      "at": "2026-10-06T07:50:41.682Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    },
+    "oracion-angel-de-la-guarda.mp3": {
+      "bytes": 95077,
+      "chars": 141,
+      "at": "2026-10-06T07:50:45.280Z",
+      "voice": "avocado_v2:vd2_r8_rep5k_2623_v068_28k_g5k",
+      "language": "es_ES"
+    }
+  }
+}

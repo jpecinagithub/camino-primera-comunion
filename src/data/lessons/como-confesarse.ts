@@ -31,6 +31,7 @@ export const lessonComoConfesarse: Lesson = {
     },
     {
       id: 'cf2',
+      audioSrc: '/audio/escucha-como-confesarse.mp3',
       kind: 'escucha',
       title: 'CELEBRAMOS · Paso a paso',
       paragraphs: [
@@ -136,6 +137,7 @@ export const lessonComoConfesarse: Lesson = {
   },
   prayer: {
     id: 'oracion-acto-contricion',
+    audioSrc: '/audio/oracion-oracion-acto-contricion.mp3',
     title: 'Acto de contrición',
     lines: [
       'Jesús, lo siento de corazón',

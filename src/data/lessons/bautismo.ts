@@ -31,6 +31,7 @@ export const lessonBautismo: Lesson = {
     },
     {
       id: 'bt2',
+      audioSrc: '/audio/escucha-bautismo.mp3',
       kind: 'escucha',
       title: 'CREEMOS · El río Jordán',
       paragraphs: [
@@ -142,6 +143,7 @@ export const lessonBautismo: Lesson = {
   },
   prayer: {
     id: 'oracion-bautismo',
+    audioSrc: '/audio/oracion-oracion-bautismo.mp3',
     title: 'Gracias por mi Bautismo',
     lines: [
       'Jesús, gracias por mi Bautismo,',

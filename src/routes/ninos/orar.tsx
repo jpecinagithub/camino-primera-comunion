@@ -10,6 +10,7 @@ import { BookHeart, HandHeart } from 'lucide-react';
 import { LESSONS } from '../../data/lessons/index';
 import { ORACIONES_FUNDAMENTALES } from '../../data/oraciones';
 import { ReadAloud } from '../../a11y/ReadAloud';
+import { AudioPlayer } from '../../components/AudioPlayer';
 import { SectionTitle } from '../../components/SectionTitle';
 import { Button } from '../../components/Button';
 import { getNucleus } from '../../data/nuclei';
@@ -20,6 +21,7 @@ interface OracionVista {
   title: string;
   lines: string[];
   origen: string;
+  audioSrc?: string;
 }
 
 function buildOraciones(): OracionVista[] {
@@ -28,12 +30,14 @@ function buildOraciones(): OracionVista[] {
     title: l.prayer.title,
     lines: l.prayer.lines,
     origen: `De la lección «${l.title}»`,
+    audioSrc: l.prayer.audioSrc,
   }));
   const fundamentales: OracionVista[] = ORACIONES_FUNDAMENTALES.map((o) => ({
     id: `fund-${o.id}`,
     title: o.title,
     lines: o.lines,
     origen: o.note,
+    audioSrc: o.audioSrc,
   }));
   return [...fundamentales, ...deLecciones];
 }
@@ -65,7 +69,14 @@ export function Orar() {
           <p style={{ fontStyle: 'normal', fontSize: 'var(--font-size-sm)', color: 'var(--color-ink-soft)' }}>
             {seleccionada.origen}
           </p>
-          <ReadAloud text={texto} />
+          {seleccionada.audioSrc ? (
+            <AudioPlayer
+              src={seleccionada.audioSrc}
+              label={`Escuchar la oración: ${seleccionada.title}`}
+            />
+          ) : (
+            <ReadAloud text={texto} />
+          )}
           <Button variant="ghost" onClick={() => setSeleccionada(null)}>
             ← Todas las oraciones
           </Button>

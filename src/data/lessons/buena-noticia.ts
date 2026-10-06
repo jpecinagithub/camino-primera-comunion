@@ -25,6 +25,7 @@ export const lessonBuenaNoticia: Lesson = {
     },
     {
       id: 'l-buena-noticia-b2',
+      audioSrc: '/audio/escucha-buena-noticia.mp3',
       kind: 'escucha',
       title: 'El Buen Pastor',
       imageLabel: 'Jesús pastor cargando una ovejita sobre sus hombros',
@@ -35,6 +36,7 @@ export const lessonBuenaNoticia: Lesson = {
     },
     {
       id: 'l-buena-noticia-b3',
+      audioSrc: '/audio/escucha-buena-noticia-2.mp3',
       kind: 'escucha',
       title: 'Jesús hace milagros',
       imageLabel: 'Jesús curando a un enfermo rodeado de gente',
@@ -148,6 +150,7 @@ export const lessonBuenaNoticia: Lesson = {
   },
   prayer: {
     id: 'l-buena-noticia-prayer',
+    audioSrc: '/audio/oracion-l-buena-noticia-prayer.mp3',
     title: 'Buen Pastor',
     lines: [
       'Jesús, mi Buen Pastor,',

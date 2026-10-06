@@ -15,6 +15,7 @@ export const lessonPentecostes: Lesson = {
   blocks: [
     {
       id: 'l-pentecostes-b1',
+      audioSrc: '/audio/escucha-pentecostes.mp3',
       kind: 'escucha',
       title: 'Un viento muy especial',
       imageLabel: 'Lenguas de fuego sobre los apóstoles reunidos',
@@ -123,6 +124,7 @@ export const lessonPentecostes: Lesson = {
   },
   prayer: {
     id: 'l-pentecostes-prayer',
+    audioSrc: '/audio/oracion-l-pentecostes-prayer.mp3',
     title: 'Ven, Espíritu Santo',
     lines: [
       'Ven, Espíritu Santo,',

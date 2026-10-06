@@ -25,6 +25,7 @@ export const lessonDiosPadreCreador: Lesson = {
     },
     {
       id: 'l-dios-padre-creador-b2',
+      audioSrc: '/audio/escucha-dios-padre-creador.mp3',
       kind: 'escucha',
       title: 'Al principio, Dios creó todo',
       imageLabel: 'El sol, las estrellas, los animales y la naturaleza',
@@ -124,6 +125,7 @@ export const lessonDiosPadreCreador: Lesson = {
   },
   prayer: {
     id: 'l-dios-padre-creador-prayer',
+    audioSrc: '/audio/oracion-l-dios-padre-creador-prayer.mp3',
     title: 'Gracias, Padre Creador',
     lines: [
       'Padre bueno, Creador del cielo y de la tierra,',

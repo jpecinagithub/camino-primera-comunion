@@ -20,6 +20,7 @@ export const lessonEucaristia: Lesson = {
   blocks: [
     {
       id: 'eu1',
+      audioSrc: '/audio/escucha-eucaristia.mp3',
       kind: 'escucha',
       title: 'CREEMOS · La Última Cena',
       paragraphs: [
@@ -129,6 +130,7 @@ export const lessonEucaristia: Lesson = {
   },
   prayer: {
     id: 'oracion-eucaristia',
+    audioSrc: '/audio/oracion-oracion-eucaristia.mp3',
     title: 'Quédate conmigo, Jesús',
     lines: [
       'Jesús, creo que estás aquí,',

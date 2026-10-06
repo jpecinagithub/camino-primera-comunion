@@ -1,0 +1,77 @@
+/* AudioPlayer — reproductor de narración. Tokens del design system. */
+.audio-player {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--color-border);
+  background-color: var(--color-cream-dark);
+}
+
+.audio-player__boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--color-sky-dark);
+  color: var(--color-on-dark);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.12s ease, background-color 0.12s ease;
+}
+
+.audio-player__boton:hover {
+  background-color: #185d8c;
+}
+
+.audio-player__boton:active {
+  transform: scale(0.94);
+}
+
+.audio-player__boton:focus-visible {
+  outline: 3px solid var(--color-gold-dark);
+  outline-offset: 2px;
+}
+
+.audio-player__icono {
+  color: var(--color-sky-dark);
+  flex: 0 0 auto;
+}
+
+.audio-player__barra {
+  flex: 1 1 140px;
+  min-height: 48px; /* target táctil amplio */
+  accent-color: var(--color-sky-dark);
+  cursor: pointer;
+}
+
+.audio-player__tiempo {
+  font-size: var(--font-size-sm);
+  color: var(--color-ink-soft);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.audio-player__etiqueta {
+  flex-basis: 100%;
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--color-ink-soft);
+}
+
+.audio-player__error {
+  color: var(--color-coral-dark);
+  font-size: var(--font-size-md);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .audio-player__boton {
+    transition: none;
+  }
+}
