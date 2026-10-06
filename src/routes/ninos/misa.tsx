@@ -22,6 +22,7 @@ import { getGame } from '../../games/registry';
 import { GameHost } from '../../games/GameHost';
 import { ReadAloud } from '../../a11y/ReadAloud';
 import { AudioPlayer } from '../../components/AudioPlayer';
+import { audioIdFromSrc, markListened } from '../../db/hooks';
 import { LiveRegion } from '../../a11y/live';
 import { SectionTitle } from '../../components/SectionTitle';
 import { Button } from '../../components/Button';
@@ -178,6 +179,11 @@ export function PlaylistRecorrido() {
   }, []);
 
   const onEnded = () => {
+    // El momento que acaba de terminar queda registrado como escuchado.
+    const terminado = MISA_MOMENTOS[index];
+    if (terminado?.audioSrc) {
+      void markListened(audioIdFromSrc(terminado.audioSrc));
+    }
     if (index + 1 < total) {
       const next = index + 1;
       setIndex(next);

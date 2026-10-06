@@ -5,13 +5,17 @@
  * fila de gamificación (estrellas + mini vitral).
  */
 import { Link, useNavigate } from 'react-router-dom';
+import { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Footprints, Gamepad2, HandHeart, Map, PartyPopper, Star } from 'lucide-react';
-import { useLessonProgress, useProfile } from '../../db/hooks';
+import { useLessonProgress, useProfile, useResume } from '../../db/hooks';
 import { useStars, useVitral } from '../../gamification/hooks';
 import { Vitral } from '../../gamification/Vitral';
 import { Button } from '../../components/Button';
 import { SectionTitle } from '../../components/SectionTitle';
 import { getAvatarOption, getContinueLesson, isEverythingComplete } from './shared';
+import { getLessonBySlug } from '../../data/lessons/index';
+import { buildSteps } from './leccion';
 import { NUCLEUS_COLOR_TOKENS } from '../../data/nuclei';
 import './ninos.css';
 
@@ -24,8 +28,10 @@ const ACCESOS = [
 
 export function NinosHome() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const profile = useProfile();
   const lessonProgress = useLessonProgress();
+  const resume = useResume();
   const stars = useStars();
   const vitral = useVitral();
 
@@ -36,8 +42,24 @@ export function NinosHome() {
   const nextLesson = getContinueLesson(lessonProgress);
   const allDone = isEverythingComplete(lessonProgress);
 
+  // Punto de reanudación más reciente (lección empezada pero sin terminar).
+  const resumeTarget = useMemo(() => {
+    const entries = Object.values(resume)
+      .map((r) => ({ resume: r, lesson: getLessonBySlug(r.lessonSlug) }))
+      .filter(
+        (e): e is { resume: (typeof resume)[string]; lesson: NonNullable<ReturnType<typeof getLessonBySlug>> } =>
+          !!e.lesson && !(e.lesson.id in lessonProgress),
+      )
+      .sort((a, b) => b.resume.updatedAt - a.resume.updatedAt);
+    return entries[0];
+  }, [resume, lessonProgress]);
+
   const handleContinue = () => {
-    if (nextLesson) navigate(`/ninos/leccion/${nextLesson.slug}`);
+    if (resumeTarget) {
+      navigate(`/ninos/leccion/${resumeTarget.lesson.slug}`);
+    } else if (nextLesson) {
+      navigate(`/ninos/leccion/${nextLesson.slug}`);
+    }
   };
 
   return (
@@ -66,6 +88,24 @@ export function NinosHome() {
             Ver mi progreso
           </Button>
         </div>
+      ) : resumeTarget ? (
+        <Button
+          variant="primary"
+          className="ninos-boton-grande"
+          onClick={handleContinue}
+          aria-label={t('progress.continueWith', {
+            title: resumeTarget.lesson.title,
+            x: resumeTarget.resume.stepIndex + 1,
+            y: buildSteps(resumeTarget.lesson).length,
+          })}
+        >
+          <Footprints size={28} aria-hidden="true" />
+          {t('progress.continueWith', {
+            title: resumeTarget.lesson.title,
+            x: resumeTarget.resume.stepIndex + 1,
+            y: buildSteps(resumeTarget.lesson).length,
+          })}
+        </Button>
       ) : (
         <Button
           variant="primary"

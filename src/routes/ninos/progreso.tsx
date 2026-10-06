@@ -3,11 +3,15 @@
  * ----------------------------------------------------------------------------
  * Estrellas, Vitral (10 piezas), Jardin, Insignias y lista de núcleos con %.
  */
-import { Star } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import { Star, BookOpen, Gamepad2, Headphones } from 'lucide-react';
 import { NUCLEI, NUCLEUS_COLOR_TOKENS } from '../../data/nuclei';
 import { getLessonsByNucleus } from '../../data/lessons/index';
-import { useLessonProgress } from '../../db/hooks';
+import { JUEGOS } from '../../data/juegos';
+import { useGameProgress, useLessonProgress, useListened } from '../../db/hooks';
 import {
+  TOTAL_LESSONS,
+  countCompleted,
   useBadges,
   useGarden,
   useStars,
@@ -22,11 +26,42 @@ import { getNucleusIcon, nucleusCompletedCount } from './shared';
 import './ninos.css';
 
 export function Progreso() {
+  const { t } = useTranslation();
   const lessonProgress = useLessonProgress();
+  const gameProgress = useGameProgress();
+  const listened = useListened();
   const stars = useStars();
   const vitral = useVitral();
   const garden = useGarden();
   const badges = useBadges();
+
+  const lessonsDone = countCompleted(lessonProgress);
+  const gamesDone = countCompleted(gameProgress);
+  const audiosDone = countCompleted(listened);
+
+  const contadores = [
+    {
+      icon: BookOpen,
+      value: lessonsDone,
+      total: TOTAL_LESSONS,
+      label: t('progress.counters.lessons'),
+      color: 'sky' as const,
+    },
+    {
+      icon: Gamepad2,
+      value: gamesDone,
+      total: JUEGOS.length,
+      label: t('progress.counters.games'),
+      color: 'green' as const,
+    },
+    {
+      icon: Headphones,
+      value: audiosDone,
+      total: null,
+      label: t('progress.counters.audios'),
+      color: 'gold' as const,
+    },
+  ];
 
   return (
     <div className="ninos">
@@ -34,6 +69,31 @@ export function Progreso() {
         title="Mi progreso"
         subtitle="Mira todo lo que ya has aprendido. ¡Sigue así!"
       />
+
+      <div className="ninos-contadores" role="list" aria-label="Resumen de mi camino">
+        {contadores.map((c) => {
+          const Icon = c.icon;
+          const tokens = NUCLEUS_COLOR_TOKENS[c.color] ?? NUCLEUS_COLOR_TOKENS.sky;
+          return (
+            <div key={c.label} className="ninos-contador" role="listitem">
+              <span
+                className="ninos-contador__icono"
+                style={{ background: tokens.bg }}
+                aria-hidden="true"
+              >
+                <Icon size={30} color={tokens.fg} />
+              </span>
+              <strong className="ninos-contador__numero">
+                {c.value}
+                {c.total !== null && (
+                  <span className="ninos-contador__total">/{c.total}</span>
+                )}
+              </strong>
+              <span className="ninos-contador__etiqueta">{c.label}</span>
+            </div>
+          );
+        })}
+      </div>
 
       <div className="ninos-card" style={{ textAlign: 'center' }}>
         <span

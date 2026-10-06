@@ -87,6 +87,21 @@ const resources = {
       'nav.notfound.ninos': 'Zona de niños',
       'nav.notfound.padres': 'Zona de padres',
       'nav.notfound.mode': 'Cambiar de modo',
+
+      'progress.resume.title': 'Seguimos donde lo dejaste',
+      'progress.resume.restart': 'Empezar desde el principio',
+      'progress.resume.step': 'Paso {{x}} de {{y}}',
+      'progress.continueWith': 'Continuar: {{title}} · Paso {{x}} de {{y}}',
+      'progress.inProgress': 'En curso · Continuar',
+      'progress.done': '¡Hecha!',
+      'progress.pending': 'Pendiente',
+      'progress.played': '¡Jugado!',
+      'progress.counters.lessons': 'lecciones hechas',
+      'progress.counters.games': 'juegos jugados',
+      'progress.counters.audios': 'audios escuchados',
+
+      'audio.listened': 'Escuchado',
+      'audio.listenedFeminine': 'Escuchada',
     },
   },
 } as const;

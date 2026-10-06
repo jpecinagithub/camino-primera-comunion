@@ -16,7 +16,7 @@ import { Check, Lock } from 'lucide-react';
 import { NUCLEI, NUCLEUS_COLOR_TOKENS } from '../../data/nuclei';
 import type { Nucleus } from '../../data/model';
 import { getLessonsByNucleus } from '../../data/lessons/index';
-import { useLessonProgress } from '../../db/hooks';
+import { useLessonProgress, useResume } from '../../db/hooks';
 import { useFootprints } from '../../gamification/hooks';
 import { CaminoHuellas } from '../../gamification/CaminoHuellas';
 import { SectionTitle } from '../../components/SectionTitle';
@@ -48,6 +48,7 @@ interface TarjetaProps {
   unlocked: boolean;
   done: number;
   complete: boolean;
+  inProgress: boolean;
   lessonCount: number;
   animated: boolean;
   onOpen: () => void;
@@ -58,6 +59,7 @@ function TarjetaCamino({
   unlocked,
   done,
   complete,
+  inProgress,
   lessonCount,
   animated,
   onOpen,
@@ -95,7 +97,11 @@ function TarjetaCamino({
         <h3>{nucleus.title}</h3>
         <p>
           {lessonCount} {lessonCount === 1 ? 'lección' : 'lecciones'} ·{' '}
-          {complete ? '¡Completado!' : `${done} de ${lessonCount} hechas`}
+          {complete
+            ? '¡Completado!'
+            : inProgress
+              ? `${done} de ${lessonCount} hechas · En curso`
+              : `${done} de ${lessonCount} hechas`}
         </p>
         <ProgressBar
           value={done}
@@ -124,7 +130,7 @@ function TarjetaCamino({
         disabled={!unlocked}
         aria-label={
           unlocked
-            ? `Núcleo ${nucleus.number}: ${nucleus.title}. ${done} de ${lessonCount} lecciones.`
+            ? `Núcleo ${nucleus.number}: ${nucleus.title}. ${done} de ${lessonCount} lecciones.${complete ? ' Completado.' : inProgress ? ' En curso.' : ''}`
             : `Núcleo ${nucleus.number} bloqueado: termina el anterior para abrirlo.`
         }
       >
@@ -142,7 +148,7 @@ function TarjetaCamino({
       disabled={!unlocked}
       aria-label={
         unlocked
-          ? `Núcleo ${nucleus.number}: ${nucleus.title}. ${done} de ${lessonCount} lecciones.`
+          ? `Núcleo ${nucleus.number}: ${nucleus.title}. ${done} de ${lessonCount} lecciones.${complete ? ' Completado.' : inProgress ? ' En curso.' : ''}`
           : `Núcleo ${nucleus.number} bloqueado: termina el anterior para abrirlo.`
       }
     >
@@ -154,9 +160,16 @@ function TarjetaCamino({
 export function Camino() {
   const navigate = useNavigate();
   const lessonProgress = useLessonProgress();
+  const resume = useResume();
   const footprints = useFootprints();
   const reduced = useReducedMotion();
   const animated = !reduced;
+
+  /** ¿Tiene el núcleo alguna lección empezada (con resume) sin terminar? */
+  const nucleusInProgress = (nucleusId: string): boolean =>
+    getLessonsByNucleus(nucleusId).some(
+      (l) => !(l.id in lessonProgress) && l.slug in resume,
+    );
 
   return (
     <div className="ninos">
@@ -203,6 +216,7 @@ export function Camino() {
                     nucleusCompletedCount(nucleus.id, lessonProgress) ===
                       lessons.length
                   }
+                  inProgress={nucleusInProgress(nucleus.id)}
                   lessonCount={lessons.length}
                   animated
                   onOpen={() => navigate(`/ninos/nucleo/${nucleus.id}`)}
@@ -225,6 +239,7 @@ export function Camino() {
                     nucleusCompletedCount(nucleus.id, lessonProgress) ===
                       lessons.length
                   }
+                  inProgress={nucleusInProgress(nucleus.id)}
                   lessonCount={lessons.length}
                   animated={false}
                   onOpen={() => navigate(`/ninos/nucleo/${nucleus.id}`)}

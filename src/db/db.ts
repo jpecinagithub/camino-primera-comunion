@@ -42,6 +42,28 @@ export interface NucleusProgress {
 }
 
 /**
+ * Punto de reanudación de una lección (dónde la dejó el niño/a).
+ * Clave = lesson.slug. No es dato personal: solo posición de lectura.
+ */
+export interface ResumeState {
+  /** slug de la Lesson (ver src/data/model.ts) */
+  lessonSlug: string;
+  /** índice del paso dentro del player (0-based) */
+  stepIndex: number;
+  updatedAt: number; // epoch ms
+}
+
+/**
+ * Audio escuchado hasta el final. id = nombre del fichero sin extensión
+ * (p. ej. `escucha-ser-cristiano`), derivado del audioSrc.
+ */
+export interface ListenedAudio {
+  /** id estable del audio */
+  id: string;
+  listenedAt: number; // epoch ms (primera escucha completa)
+}
+
+/**
  * Perfil del niño/a. Un único registro con id 'profile'.
  * nickname = apodo FICTICIO elegido por el niño/a. avatar = clave del
  * avatar local (ver equipo de avatar). NUNCA nombre real ni fotos.
@@ -59,6 +81,8 @@ export class CaminoDB extends Dexie {
   quizzes!: Table<QuizProgress, string>;
   nuclei!: Table<NucleusProgress, string>;
   profile!: Table<Profile, string>;
+  resume!: Table<ResumeState, string>;
+  listened!: Table<ListenedAudio, string>;
 
   constructor() {
     super('caminoDB');
@@ -68,6 +92,16 @@ export class CaminoDB extends Dexie {
       quizzes: 'id',
       nuclei: 'id',
       profile: 'id',
+    });
+    // v2: punto de reanudación de lecciones + audios escuchados.
+    this.version(2).stores({
+      lessons: 'id',
+      games: 'id',
+      quizzes: 'id',
+      nuclei: 'id',
+      profile: 'id',
+      resume: 'lessonSlug',
+      listened: 'id',
     });
   }
 }

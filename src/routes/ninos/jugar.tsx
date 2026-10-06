@@ -8,9 +8,12 @@
  * Juego — /ninos/juego/:id · GameHost + botón volver. onExit → /ninos/jugar.
  */
 import { useNavigate, useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { Check } from 'lucide-react';
 import { getGame } from '../../games/registry';
 import { GameHost } from '../../games/GameHost';
 import { JUEGOS } from '../../data/juegos';
+import { useGameProgress } from '../../db/hooks';
 import { NUCLEUS_COLOR_TOKENS } from '../../data/nuclei';
 import { SectionTitle } from '../../components/SectionTitle';
 import { getGameIcon } from './shared';
@@ -23,6 +26,8 @@ function isAvailable(gameId: string): boolean {
 
 export function Jugar() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
+  const gameProgress = useGameProgress();
   const todosDisponibles = JUEGOS.every((j) => isAvailable(j.id));
 
   return (
@@ -35,6 +40,7 @@ export function Jugar() {
       <div className="ninos-tiles">
         {JUEGOS.map((juego) => {
           const available = isAvailable(juego.id);
+          const played = juego.id in gameProgress;
           const Icon = getGameIcon(juego.icon);
           const tokens =
             NUCLEUS_COLOR_TOKENS[juego.color] ?? NUCLEUS_COLOR_TOKENS.sky;
@@ -47,7 +53,7 @@ export function Jugar() {
               onClick={() => navigate(`/ninos/juego/${juego.id}`)}
               aria-label={
                 available
-                  ? `Jugar a ${juego.title}`
+                  ? `Jugar a ${juego.title}.${played ? ` ${t('progress.played')}` : ''}`
                   : `${juego.title}: próximamente`
               }
             >
@@ -59,6 +65,12 @@ export function Jugar() {
                 <Icon size={34} color={tokens.fg} />
               </span>
               {juego.title}
+              {played && available && (
+                <span className="ninos-sello ninos-sello--jugado">
+                  <Check size={16} aria-hidden="true" strokeWidth={3} />
+                  {t('progress.played')}
+                </span>
+              )}
               <span style={{ fontSize: 'var(--font-size-sm)', fontWeight: 400, color: 'var(--color-ink-soft)' }}>
                 {available ? juego.description : 'Próximamente'}
               </span>

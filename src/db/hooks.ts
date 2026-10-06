@@ -15,9 +15,11 @@ import { db } from './db';
 import type {
   GameProgress,
   LessonProgress,
+  ListenedAudio,
   NucleusProgress,
   Profile,
   QuizProgress,
+  ResumeState,
 } from './db';
 
 /* ------------------------------- Hooks ---------------------------------- */
@@ -49,6 +51,27 @@ export function useQuizProgress(): Record<string, QuizProgress> {
 export function useNucleusProgress(): Record<string, NucleusProgress> {
   const rows = useLiveQuery(() => db.nuclei.toArray(), []);
   return toMap(rows, (r) => r.id);
+}
+
+/** Mapa lessonSlug → ResumeState (punto de reanudación). */
+export function useResume(): Record<string, ResumeState> {
+  const rows = useLiveQuery(() => db.resume.toArray(), []);
+  return toMap(rows, (r) => r.lessonSlug);
+}
+
+/** Mapa audioId → ListenedAudio (audios escuchados hasta el final). */
+export function useListened(): Record<string, ListenedAudio> {
+  const rows = useLiveQuery(() => db.listened.toArray(), []);
+  return toMap(rows, (r) => r.id);
+}
+
+/**
+ * Id estable de un audio a partir de su src.
+ * '/audio/escucha-ser-cristiano.mp3' → 'escucha-ser-cristiano'.
+ */
+export function audioIdFromSrc(src: string): string {
+  const base = src.split('/').pop() ?? src;
+  return base.replace(/\.mp3$/i, '');
 }
 
 function toMap<T>(rows: T[] | undefined, key: (r: T) => string): Record<string, T> {
@@ -85,6 +108,33 @@ export async function markQuizComplete(
 /** Marca un núcleo como completado (id = n1..n10). */
 export async function markNucleusComplete(nucleusId: string): Promise<void> {
   await db.nuclei.put({ id: nucleusId, completedAt: Date.now() });
+}
+
+/**
+ * Guarda el punto de reanudación de una lección (se llama con debounce
+ * desde el player; ~500 ms tras cambiar de paso).
+ */
+export async function saveResume(
+  lessonSlug: string,
+  stepIndex: number,
+): Promise<void> {
+  await db.resume.put({ lessonSlug, stepIndex, updatedAt: Date.now() });
+}
+
+/** Borra el punto de reanudación (al completar la lección o reiniciarla). */
+export async function clearResume(lessonSlug: string): Promise<void> {
+  await db.resume.delete(lessonSlug);
+}
+
+/**
+ * Registra un audio escuchado hasta el final. Idempotente: conserva la
+ * primera fecha de escucha completa.
+ */
+export async function markListened(audioId: string): Promise<void> {
+  const existing = await db.listened.get(audioId);
+  if (!existing) {
+    await db.listened.put({ id: audioId, listenedAt: Date.now() });
+  }
 }
 
 /**

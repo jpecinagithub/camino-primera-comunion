@@ -128,6 +128,47 @@ El botón "Escuchar todo el recorrido" de la Misa reproduce los 24 momentos
   `tools/generate-audio.mjs` los elimina de todo texto enviado al CLI,
   incluidos los títulos. No envíes nunca esos caracteres al TTS.
 
+## Progreso: qué se guarda y dónde
+
+Todo el progreso vive en **IndexedDB local** (Dexie, base `caminoDB`),
+sin cuentas y sin datos personales. Tablas:
+
+| Tabla      | Clave        | Qué guarda                                              |
+|------------|--------------|---------------------------------------------------------|
+| `lessons`  | `id`         | Lecciones completadas (`completedAt`). Regla pedagógica: una lección solo se marca al **terminar su quiz**. |
+| `quizzes`  | `id`         | Resultado de cada quiz (`score`, `total`).              |
+| `games`    | `id`         | Juegos completados (`score`, `total`).                  |
+| `nuclei`   | `id`         | Núcleos completados.                                    |
+| `resume`   | `lessonSlug` | **Punto de reanudación exacto**: `{ stepIndex, updatedAt }`. Se guarda con debounce de 500 ms cada vez que el niño cambia de paso en el player de lección. |
+| `listened` | `audioId`    | **Audios escuchados hasta el final** (`listenedAt`, idempotente). El `audioId` es el nombre del fichero sin extensión (p. ej. `escucha-ser-cristiano`), derivado con `audioIdFromSrc()`. |
+| `profile`  | `'profile'`  | Apodo ficticio + avatar.                                |
+
+**Continuidad (2026-10-06):**
+- Al abrir una lección con `resume`, se reanuda en el paso exacto con el
+  aviso «Seguimos donde lo dejaste · Paso X de Y» y la opción
+  «Empezar desde el principio» (limpia el `resume`).
+- «Continuar mi camino» lleva al paso exacto si hay `resume` pendiente;
+  el botón muestra «Continuar: {título} · Paso X de Y».
+- Al completar la lección (quiz terminado), el `resume` se borra.
+- Lección con `resume` pero sin completar → estado **«En curso»**
+  (distinto de «¡Hecha!»): sello dorado en la tarjeta del Núcleo y
+  mención «En curso» en Mi Camino.
+- `AudioPlayer` acepta `audioId` (por defecto, derivado del `src`) y al
+  evento `ended` llama a `markListened()`. Muestra la píldora
+  «✓ Escuchado» cuando el audio consta; también la lista de Oraciones
+  (check «Escuchada») y la playlist de la Misa registran cada momento.
+- Pantalla **Mi progreso**: contadores grandes (lecciones X/15, juegos
+  X/12, audios escuchados), barras por núcleo, estrellas, vitral y jardín.
+- Tarjetas de juegos: sello verde «¡Jugado!» con check cuando el juego
+  consta en `games`.
+
+**Nota de tests (2026-10-06):** `src/__tests__/flujo-progreso.test.tsx`
+cubre el flujo completo (resume → reanudar → quiz → ¡Hecha!, ¡Jugado!,
+escuchado). Patrón obligatorio en este repo con React 19 + jsdom:
+montajes con `createRoot`+`render()` **sin** `act()` (un segundo
+`await act(async …)` en el mismo test se cuelga), eventos y unmount con
+`act(() => …)` síncrono, y esperas con sondeo fuera de `act()`.
+
 ## Privacidad infantil (privacy by design)
 
 - Solo se guarda en local: apodo **ficticio**, avatar elegido, progreso.

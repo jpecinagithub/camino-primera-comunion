@@ -19,6 +19,7 @@ import {
   Check,
   ClipboardCheck,
   Ear,
+  Footprints,
   Gamepad2,
   Lightbulb,
   Sparkles,
@@ -29,7 +30,14 @@ import {
 import type { ContentBlock, Lesson, QuizQuestion } from '../../data/model';
 import { getLessonBySlug } from '../../data/lessons/index';
 import { JUEGOS } from '../../data/juegos';
-import { markLessonComplete, markQuizComplete } from '../../db/hooks';
+import {
+  clearResume,
+  markLessonComplete,
+  markQuizComplete,
+  saveResume,
+  useLessonProgress,
+} from '../../db/hooks';
+import { db } from '../../db/db';
 import { Celebracion } from '../../gamification/Celebracion';
 import { ReadAloud } from '../../a11y/ReadAloud';
 import { AudioPlayer } from '../../components/AudioPlayer';
@@ -64,6 +72,9 @@ interface Step {
 /** Audio del paso estático "Juega" (texto fijo, no viene de datos). */
 const JUEGA_AUDIO_SRC = '/audio/paso-juega.mp3';
 
+/** Retardo para guardar el punto de reanudación tras cambiar de paso. */
+const RESUME_DEBOUNCE_MS = 500;
+
 const SECTION_META: Record<
   SectionKey,
   { label: string; icon: typeof Sparkles }
@@ -77,7 +88,7 @@ const SECTION_META: Record<
   comprueba: { label: 'Comprueba', icon: ClipboardCheck },
 };
 
-function buildSteps(lesson: Lesson): Step[] {
+export function buildSteps(lesson: Lesson): Step[] {
   const steps: Step[] = [];
   const byKind = (kind: ContentBlock['kind']) =>
     lesson.blocks.filter((b) => b.kind === kind);
@@ -317,9 +328,13 @@ export function Leccion() {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const lesson = slug ? getLessonBySlug(slug) : undefined;
+  const lessonProgress = useLessonProgress();
   const [stepIndex, setStepIndex] = useState(0);
   const [finished, setFinished] = useState<{ score: number; total: number } | null>(null);
+  /** Paso reanudado (para mostrar el aviso "seguimos donde lo dejaste"). */
+  const [resumeNotice, setResumeNotice] = useState<number | null>(null);
   const trackedRef = useRef(false);
+  const slugRef = useRef(slug);
 
   const steps = useMemo(() => (lesson ? buildSteps(lesson) : []), [lesson]);
 
@@ -333,6 +348,35 @@ export function Leccion() {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
   }, [stepIndex]);
+
+  // Reanudar donde se dejó: al abrir la lección, recupera el paso guardado.
+  useEffect(() => {
+    if (!slug || !lesson) return;
+    slugRef.current = slug;
+    setResumeNotice(null);
+    // Si la lección ya está completada, el resume no tiene sentido.
+    if (lesson.id in lessonProgress) {
+      void clearResume(slug);
+      return;
+    }
+    void db.resume.get(slug).then((r) => {
+      if (slugRef.current !== slug) return;
+      if (r && r.stepIndex > 0 && r.stepIndex < steps.length) {
+        setStepIndex(r.stepIndex);
+        setResumeNotice(r.stepIndex);
+      }
+    });
+  }, [slug, lesson, steps.length, lessonProgress]);
+
+  // Guardar el punto de reanudación con debounce al cambiar de paso.
+  useEffect(() => {
+    if (!slug || !lesson || finished) return;
+    if (lesson.id in lessonProgress) return;
+    const timer = setTimeout(() => {
+      void saveResume(slug, stepIndex);
+    }, RESUME_DEBOUNCE_MS);
+    return () => clearTimeout(timer);
+  }, [slug, lesson, stepIndex, finished, lessonProgress]);
 
   if (!lesson) {
     return (
@@ -351,7 +395,20 @@ export function Leccion() {
   const handleQuizFinish = async (score: number, total: number) => {
     await markQuizComplete(lesson.quiz.id, score, total);
     await markLessonComplete(lesson.id);
+    await clearResume(lesson.slug);
     setFinished({ score, total });
+  };
+
+  const restartFromBeginning = () => {
+    if (!slug) return;
+    void clearResume(slug);
+    setResumeNotice(null);
+    setStepIndex(0);
+  };
+
+  const goStep = (next: number) => {
+    setResumeNotice(null);
+    setStepIndex(next);
   };
 
   if (finished) {
@@ -425,6 +482,20 @@ export function Leccion() {
         {SECTION_META[step.section].label} · Paso {stepIndex + 1} de {steps.length}
       </span>
 
+      {resumeNotice !== null && stepIndex === resumeNotice && (
+        <div className="ninos-aviso ninos-aviso--resume" role="status">
+          <Footprints size={22} aria-hidden="true" />
+          <span style={{ flex: 1 }}>
+            <strong>{t('progress.resume.title')}</strong>
+            {' · '}
+            {t('progress.resume.step', { x: stepIndex + 1, y: steps.length })}
+          </span>
+          <Button variant="ghost" onClick={restartFromBeginning}>
+            {t('progress.resume.restart')}
+          </Button>
+        </div>
+      )}
+
       {isQuizStep ? (
         <QuizRunner lesson={lesson} onFinish={handleQuizFinish} />
       ) : (
@@ -471,16 +542,14 @@ export function Leccion() {
         <div className="ninos-navegacion">
           <Button
             variant="ghost"
-            onClick={() => setStepIndex((i) => Math.max(0, i - 1))}
+            onClick={() => goStep(Math.max(0, stepIndex - 1))}
             disabled={stepIndex === 0}
           >
             ← Atrás
           </Button>
           <Button
             variant="primary"
-            onClick={() =>
-              setStepIndex((i) => Math.min(steps.length - 1, i + 1))
-            }
+            onClick={() => goStep(Math.min(steps.length - 1, stepIndex + 1))}
           >
             Siguiente →
           </Button>

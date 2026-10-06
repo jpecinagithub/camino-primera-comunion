@@ -7,7 +7,9 @@
  * Importar desde: `src/components/AudioPlayer.tsx`
  */
 import { useEffect, useRef, useState } from 'react';
-import { Pause, Play, Volume2 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import { Pause, Play, Volume2, Check } from 'lucide-react';
+import { audioIdFromSrc, markListened, useListened } from '../db/hooks';
 import './AudioPlayer.css';
 
 export interface AudioPlayerProps {
@@ -15,6 +17,11 @@ export interface AudioPlayerProps {
   src: string;
   /** Etiqueta visible y ARIA. Por defecto "Escuchar la narración". */
   label?: string;
+  /**
+   * Id estable para el registro de "escuchado". Por defecto se deriva del
+   * src (nombre del fichero sin extensión).
+   */
+  audioId?: string;
 }
 
 function formatTime(totalSeconds: number): string {
@@ -24,12 +31,16 @@ function formatTime(totalSeconds: number): string {
   return `${m}:${String(s).padStart(2, '0')}`;
 }
 
-export function AudioPlayer({ src, label = 'Escuchar la narración' }: AudioPlayerProps) {
+export function AudioPlayer({ src, label = 'Escuchar la narración', audioId }: AudioPlayerProps) {
+  const { t } = useTranslation();
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [playing, setPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [failed, setFailed] = useState(false);
+  const listened = useListened();
+  const id = audioId ?? audioIdFromSrc(src);
+  const isListened = id in listened;
 
   useEffect(() => {
     setPlaying(false);
@@ -74,6 +85,8 @@ export function AudioPlayer({ src, label = 'Escuchar la narración' }: AudioPlay
         onEnded={() => {
           setPlaying(false);
           setCurrentTime(0);
+          // Escucha completa: queda registrada en el historial local.
+          void markListened(id);
         }}
         onTimeUpdate={(e) => setCurrentTime(e.currentTarget.currentTime)}
         onLoadedMetadata={(e) => setDuration(e.currentTarget.duration)}
@@ -104,6 +117,12 @@ export function AudioPlayer({ src, label = 'Escuchar la narración' }: AudioPlay
         {formatTime(currentTime)} / {formatTime(duration)}
       </span>
       <span className="audio-player__etiqueta">{label}</span>
+      {isListened && (
+        <span className="audio-player__escuchado">
+          <Check size={16} aria-hidden="true" />
+          {t('audio.listened')}
+        </span>
+      )}
     </div>
   );
 }

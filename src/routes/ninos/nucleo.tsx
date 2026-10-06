@@ -7,13 +7,15 @@
  */
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Clock } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import { Clock, Check } from 'lucide-react';
 import { getNucleus, NUCLEUS_COLOR_TOKENS } from '../../data/nuclei';
 import { getLessonsByNucleus } from '../../data/lessons/index';
 import {
   markNucleusComplete,
   useLessonProgress,
   useNucleusProgress,
+  useResume,
 } from '../../db/hooks';
 import { Celebracion } from '../../gamification/Celebracion';
 import { EmptyState } from '../../components/EmptyState';
@@ -25,8 +27,10 @@ import './ninos.css';
 export function Nucleo() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const lessonProgress = useLessonProgress();
   const nucleusProgress = useNucleusProgress();
+  const resume = useResume();
   const [celebrating, setCelebrating] = useState(false);
   const markedRef = useRef(false);
 
@@ -104,16 +108,26 @@ export function Nucleo() {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
         {lessons.map((lesson) => {
           const isDone = lesson.id in lessonProgress;
+          const inProgress = !isDone && lesson.slug in resume;
+          const cardClass =
+            `ninos-sendero__tarjeta` +
+            (isDone ? ' ninos-sendero__tarjeta--hecha' : '') +
+            (inProgress ? ' ninos-sendero__tarjeta--curso' : '');
+          const estado = isDone
+            ? t('progress.done')
+            : inProgress
+              ? t('progress.inProgress')
+              : t('progress.pending');
           return (
             <button
               key={lesson.id}
               type="button"
-              className="ninos-sendero__tarjeta"
+              className={cardClass}
               onClick={() => {
                 trackLessonOpened(lesson.id);
                 navigate(`/ninos/leccion/${lesson.slug}`);
               }}
-              aria-label={`Lección: ${lesson.title}. ${isDone ? 'Completada.' : 'Pendiente.'}`}
+              aria-label={`Lección: ${lesson.title}. ${estado}.`}
             >
               <span aria-hidden="true">
                 <EstadoLeccion done={isDone} />
@@ -125,6 +139,16 @@ export function Nucleo() {
                   <Clock size={14} aria-hidden="true" /> {lesson.estimatedMinutes}{' '}
                   minutos
                 </p>
+                {isDone ? (
+                  <span className="ninos-sello ninos-sello--hecha">
+                    <Check size={18} aria-hidden="true" strokeWidth={3} />
+                    {t('progress.done')}
+                  </span>
+                ) : inProgress ? (
+                  <span className="ninos-sello ninos-sello--curso">
+                    {t('progress.inProgress')}
+                  </span>
+                ) : null}
               </span>
             </button>
           );

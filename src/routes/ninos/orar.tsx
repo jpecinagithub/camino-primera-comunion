@@ -6,9 +6,11 @@
  * lee en una pantalla serena con "Leer en voz alta".
  */
 import { useState } from 'react';
-import { BookHeart, HandHeart } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import { BookHeart, Check, HandHeart } from 'lucide-react';
 import { LESSONS } from '../../data/lessons/index';
 import { ORACIONES_FUNDAMENTALES } from '../../data/oraciones';
+import { audioIdFromSrc, useListened } from '../../db/hooks';
 import { ReadAloud } from '../../a11y/ReadAloud';
 import { AudioPlayer } from '../../components/AudioPlayer';
 import { SectionTitle } from '../../components/SectionTitle';
@@ -43,7 +45,9 @@ function buildOraciones(): OracionVista[] {
 }
 
 export function Orar() {
+  const { t } = useTranslation();
   const [seleccionada, setSeleccionada] = useState<OracionVista | null>(null);
+  const listened = useListened();
   const oraciones = buildOraciones();
 
   if (seleccionada) {
@@ -93,27 +97,37 @@ export function Orar() {
       />
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
-        {oraciones.map((o) => (
-          <button
-            key={o.id}
-            type="button"
-            className="ninos-sendero__tarjeta"
-            onClick={() => setSeleccionada(o)}
-            aria-label={`Rezar: ${o.title}. ${o.origen}.`}
-          >
-            <span
-              className="ninos-sendero__icono"
-              style={{ background: 'var(--color-gold)' }}
-              aria-hidden="true"
+        {oraciones.map((o) => {
+          const audioId = o.audioSrc ? audioIdFromSrc(o.audioSrc) : null;
+          const escuchada = !!audioId && audioId in listened;
+          return (
+            <button
+              key={o.id}
+              type="button"
+              className="ninos-sendero__tarjeta"
+              onClick={() => setSeleccionada(o)}
+              aria-label={`Rezar: ${o.title}. ${o.origen}.${escuchada ? ' Ya la has escuchado.' : ''}`}
             >
-              <BookHeart size={28} color="var(--color-gold-dark)" />
-            </span>
-            <span style={{ flex: 1 }}>
-              <h3>{o.title}</h3>
-              <p>{o.origen}</p>
-            </span>
-          </button>
-        ))}
+              <span
+                className="ninos-sendero__icono"
+                style={{ background: 'var(--color-gold)' }}
+                aria-hidden="true"
+              >
+                <BookHeart size={28} color="var(--color-gold-dark)" />
+              </span>
+              <span style={{ flex: 1 }}>
+                <h3>{o.title}</h3>
+                <p>{o.origen}</p>
+                {escuchada && (
+                  <span className="ninos-sello ninos-sello--escuchada">
+                    <Check size={16} aria-hidden="true" strokeWidth={3} />
+                    {t('audio.listenedFeminine')}
+                  </span>
+                )}
+              </span>
+            </button>
+          );
+        })}
       </div>
 
       <p style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-ink-soft)' }}>

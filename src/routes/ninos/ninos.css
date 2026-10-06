@@ -208,6 +208,113 @@
   border-color: var(--color-gold-dark);
 }
 
+/* Tarjeta de lección completada: sello verde celebratorio */
+.ninos-sendero__tarjeta--hecha {
+  border-color: var(--color-green-dark);
+  background: linear-gradient(180deg, var(--color-cream) 0%, var(--color-green) 140%);
+}
+
+/* Tarjeta de lección en curso: resalte dorado para invitar a continuar */
+.ninos-sendero__tarjeta--curso {
+  border-color: var(--color-gold-dark);
+  border-width: 3px;
+}
+
+/* Sello de estado: ¡Hecha! / En curso / ¡Jugado! / Escuchada. Muy visual. */
+.ninos-sello {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin-top: var(--space-2);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-md);
+  font-weight: 800;
+}
+
+.ninos-sello--hecha {
+  background-color: var(--color-green);
+  color: var(--color-green-dark);
+  border: 2px solid var(--color-green-dark);
+}
+
+.ninos-sello--curso {
+  background-color: var(--color-gold);
+  color: var(--color-ink);
+  border: 2px solid var(--color-gold-dark);
+}
+
+.ninos-sello--jugado {
+  background-color: var(--color-green);
+  color: var(--color-green-dark);
+  border: 2px solid var(--color-green-dark);
+  font-size: var(--font-size-sm);
+}
+
+.ninos-sello--escuchada {
+  background-color: var(--color-sky);
+  color: var(--color-sky-dark);
+  border: 2px solid var(--color-sky-dark);
+  font-size: var(--font-size-sm);
+}
+
+/* Aviso de reanudación: "Seguimos donde lo dejaste". */
+.ninos-aviso--resume {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  background: var(--color-gold);
+  border-color: var(--color-gold-dark);
+}
+
+/* Contadores grandes del panel Mi progreso */
+.ninos-contadores {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+}
+
+.ninos-contador {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-4) var(--space-2);
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--color-border);
+  background: var(--color-cream);
+  text-align: center;
+}
+
+.ninos-contador__icono {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ninos-contador__numero {
+  font-size: var(--font-size-2xl);
+  font-weight: 800;
+  color: var(--color-ink);
+  line-height: 1.1;
+}
+
+.ninos-contador__total {
+  font-size: var(--font-size-md);
+  font-weight: 400;
+  color: var(--color-ink-soft);
+}
+
+.ninos-contador__etiqueta {
+  font-size: var(--font-size-sm);
+  color: var(--color-ink-soft);
+  font-weight: 600;
+}
+
 .ninos-sendero__tarjeta {
   display: flex;
   align-items: center;
